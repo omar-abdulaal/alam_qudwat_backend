@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_b63bc0362a6a46f0_3020",
+  "sequence": 275,
+  "character_id": "siyar_b63bc0362a6a46f0",
+  "character_name": "الوليد بن عقبة بن أبي معيط بن أبي عمرو الأموي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 3020,
+  "page_id_end": 3023,
+  "source_page_ids": [
+    3020,
+    3021,
+    3022,
+    3023
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3020",
+    "https://read.shamela.ws/book/10906/3021",
+    "https://read.shamela.ws/book/10906/3022",
+    "https://read.shamela.ws/book/10906/3023"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 412,
+  "printed_page_end": 415,
+  "content_hash": "92dcee1aab7cd0b7ac64258f2e0f0927b7d26cc3a77ca6554762306e49be5c53",
+  "folder": "3020_الوليد_بن_عقبة_بن_أبي_معيط_بن_أبي_عمرو_الأموي"
+}

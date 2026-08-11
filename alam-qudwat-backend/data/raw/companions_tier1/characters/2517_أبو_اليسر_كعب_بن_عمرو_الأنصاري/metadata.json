@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_5f07c8323877729b_2517",
+  "sequence": 193,
+  "character_id": "siyar_5f07c8323877729b",
+  "character_name": "أبو اليسر كعب بن عمرو الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2517,
+  "page_id_end": 2517,
+  "source_page_ids": [
+    2517
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2517"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 537,
+  "printed_page_end": 537,
+  "content_hash": "026c4659c4ed7fb91cddca5c3361b3ebd2294041b8be8926f696195855a874cb",
+  "folder": "2517_أبو_اليسر_كعب_بن_عمرو_الأنصاري"
+}

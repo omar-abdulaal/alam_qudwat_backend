@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_b3c89ed9f0553cb8_3070",
+  "sequence": 300,
+  "character_id": "siyar_b3c89ed9f0553cb8",
+  "character_name": "قيس بن عائذ أبو كاهل الأحمسي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3070,
+  "page_id_end": 3070,
+  "source_page_ids": [
+    3070
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3070"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 462,
+  "printed_page_end": 462,
+  "content_hash": "e2ba6a81fe3924b010422bf8b2fef147dc64bf2d8ab6f1c20703981201967f24",
+  "folder": "3070_قيس_بن_عائذ_أبو_كاهل_الأحمسي"
+}

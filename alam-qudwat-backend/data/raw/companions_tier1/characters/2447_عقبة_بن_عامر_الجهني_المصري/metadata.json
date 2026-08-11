@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_39397787983754e5_2447",
+  "sequence": 175,
+  "character_id": "siyar_39397787983754e5",
+  "character_name": "عقبة بن عامر الجهني المصري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2447,
+  "page_id_end": 2448,
+  "source_page_ids": [
+    2447,
+    2448
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2447",
+    "https://read.shamela.ws/book/10906/2448"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 467,
+  "printed_page_end": 468,
+  "content_hash": "988a98d22e4994d6642e28d83b021555c29f22597d8411fc47f8edc319616cc3",
+  "folder": "2447_عقبة_بن_عامر_الجهني_المصري"
+}

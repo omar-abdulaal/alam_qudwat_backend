@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_33389fc8782701ed_2792",
+  "sequence": 245,
+  "character_id": "siyar_33389fc8782701ed",
+  "character_name": "سمرة بن جندب بن هلال الفزاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2792,
+  "page_id_end": 2794,
+  "source_page_ids": [
+    2792,
+    2793,
+    2794
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2792",
+    "https://read.shamela.ws/book/10906/2793",
+    "https://read.shamela.ws/book/10906/2794"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 183,
+  "printed_page_end": 185,
+  "content_hash": "2b748c0b401ea3a9291394c6ba8cbd0bc1e53e8d75d150d39ce312832b6c6637",
+  "folder": "2792_سمرة_بن_جندب_بن_هلال_الفزاري"
+}

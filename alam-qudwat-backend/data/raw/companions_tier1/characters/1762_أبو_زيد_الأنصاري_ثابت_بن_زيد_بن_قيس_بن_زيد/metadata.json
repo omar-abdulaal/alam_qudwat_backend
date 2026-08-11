@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_c36b803c53975156_1762",
+  "sequence": 71,
+  "character_id": "siyar_c36b803c53975156",
+  "character_name": "أبو زيد الأنصاري ثابت بن زيد بن قيس بن زيد",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1762,
+  "page_id_end": 1762,
+  "source_page_ids": [
+    1762
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1762"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 336,
+  "printed_page_end": 336,
+  "content_hash": "843961f07ac34baf9b994357ab563b132c92bee7f99b2239df98b18a1998d35b",
+  "folder": "1762_أبو_زيد_الأنصاري_ثابت_بن_زيد_بن_قيس_بن_زيد"
+}

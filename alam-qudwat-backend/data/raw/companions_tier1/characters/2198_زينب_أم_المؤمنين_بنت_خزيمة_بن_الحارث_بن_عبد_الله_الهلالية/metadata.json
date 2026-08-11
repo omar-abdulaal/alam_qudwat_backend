@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_2a8d12439bee0da8_2198",
+  "sequence": 112,
+  "character_id": "siyar_2a8d12439bee0da8",
+  "character_name": "زينب أم المؤمنين بنت خزيمة بن الحارث بن عبد الله الهلالية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2198,
+  "page_id_end": 2198,
+  "source_page_ids": [
+    2198
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2198"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 218,
+  "printed_page_end": 218,
+  "content_hash": "acbe01e651bdd99e8e63b01d6c22f016c4ae0ac896af04ba1e70221666a67eb6",
+  "folder": "2198_زينب_أم_المؤمنين_بنت_خزيمة_بن_الحارث_بن_عبد_الله_الهلالية"
+}

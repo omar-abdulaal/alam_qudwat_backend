@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_91a651d4ee690e05_3032",
+  "sequence": 281,
+  "character_id": "siyar_91a651d4ee690e05",
+  "character_name": "مسلمة بن مخلد بن الصامت الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3032,
+  "page_id_end": 3033,
+  "source_page_ids": [
+    3032,
+    3033
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3032",
+    "https://read.shamela.ws/book/10906/3033"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 424,
+  "printed_page_end": 425,
+  "content_hash": "2abe68a7b7e56d81f6dd82a8b19eecbb8b74f4c1aac8a4fb0ebbb8e8ef493c03",
+  "folder": "3032_مسلمة_بن_مخلد_بن_الصامت_الأنصاري"
+}

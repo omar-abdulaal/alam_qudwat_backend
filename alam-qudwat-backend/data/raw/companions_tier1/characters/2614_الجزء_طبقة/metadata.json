@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_763f08cd380d92f2_2614",
+  "sequence": 211,
+  "character_id": "siyar_763f08cd380d92f2",
+  "character_name": "الجزء طبقة",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2614,
+  "page_id_end": 2614,
+  "source_page_ids": [
+    2614
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2614"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 5,
+  "printed_page_end": 5,
+  "content_hash": "4781c4dc833b8d01d99b065785f78ffe650a6118b1faf01c2d709a26b79a0565",
+  "folder": "2614_الجزء_طبقة"
+}

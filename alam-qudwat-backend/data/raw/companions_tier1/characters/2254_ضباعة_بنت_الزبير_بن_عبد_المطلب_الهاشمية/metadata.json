@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_5ac98d6221621597_2254",
+  "sequence": 132,
+  "character_id": "siyar_5ac98d6221621597",
+  "character_name": "ضباعة بنت الزبير بن عبد المطلب الهاشمية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2254,
+  "page_id_end": 2254,
+  "source_page_ids": [
+    2254
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2254"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 274,
+  "printed_page_end": 274,
+  "content_hash": "c2efb6a59d9fb0101f824032ddbf74e27156cffdc83a46a25497d77eb52d6093",
+  "folder": "2254_ضباعة_بنت_الزبير_بن_عبد_المطلب_الهاشمية"
+}

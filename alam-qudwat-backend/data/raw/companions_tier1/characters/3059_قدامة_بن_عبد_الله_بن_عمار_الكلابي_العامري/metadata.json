@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_d288757e757a34f0_3059",
+  "sequence": 296,
+  "character_id": "siyar_d288757e757a34f0",
+  "character_name": "قدامة بن عبد الله بن عمار الكلابي العامري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3059,
+  "page_id_end": 3059,
+  "source_page_ids": [
+    3059
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3059"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 451,
+  "printed_page_end": 451,
+  "content_hash": "06827c3eb0e616d67b4a5d4ca00b1f7cdb23803e51cf1c3175015537b73434a7",
+  "folder": "3059_قدامة_بن_عبد_الله_بن_عمار_الكلابي_العامري"
+}

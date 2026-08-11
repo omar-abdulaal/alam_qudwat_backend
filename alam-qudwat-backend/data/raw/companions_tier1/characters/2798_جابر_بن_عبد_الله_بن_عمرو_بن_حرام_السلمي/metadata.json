@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_673e77c4ddbe7e46_2798",
+  "sequence": 248,
+  "character_id": "siyar_673e77c4ddbe7e46",
+  "character_name": "جابر بن عبد الله بن عمرو بن حرام السلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2798,
+  "page_id_end": 2802,
+  "source_page_ids": [
+    2798,
+    2799,
+    2800,
+    2801,
+    2802
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2798",
+    "https://read.shamela.ws/book/10906/2799",
+    "https://read.shamela.ws/book/10906/2800",
+    "https://read.shamela.ws/book/10906/2801",
+    "https://read.shamela.ws/book/10906/2802"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 189,
+  "printed_page_end": 193,
+  "content_hash": "6e84aabe954cde908afff2faf54d9f2b647d5a45de27bf49f3911ab6e46d4794",
+  "folder": "2798_جابر_بن_عبد_الله_بن_عمرو_بن_حرام_السلمي"
+}

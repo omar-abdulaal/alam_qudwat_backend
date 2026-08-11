@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_2a9b96f119aa9126_2615",
+  "sequence": 212,
+  "character_id": "siyar_2a9b96f119aa9126",
+  "character_name": "أبو بكرة الثقفي الطائفي نفيع بن الحارث",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2615,
+  "page_id_end": 2618,
+  "source_page_ids": [
+    2615,
+    2616,
+    2617,
+    2618
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2615",
+    "https://read.shamela.ws/book/10906/2616",
+    "https://read.shamela.ws/book/10906/2617",
+    "https://read.shamela.ws/book/10906/2618"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 6,
+  "printed_page_end": 9,
+  "content_hash": "458998ae3253cb3643f850b4020c2f4e0ae051314f59d6ddcf5e69dd4d23968b",
+  "folder": "2615_أبو_بكرة_الثقفي_الطائفي_نفيع_بن_الحارث"
+}

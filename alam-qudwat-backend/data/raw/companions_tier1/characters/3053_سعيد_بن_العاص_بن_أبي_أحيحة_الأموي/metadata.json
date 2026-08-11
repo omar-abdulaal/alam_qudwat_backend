@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_62e080930758082e_3053",
+  "sequence": 294,
+  "character_id": "siyar_62e080930758082e",
+  "character_name": "سعيد بن العاص بن أبي أحيحة الأموي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 3053,
+  "page_id_end": 3056,
+  "source_page_ids": [
+    3053,
+    3054,
+    3055,
+    3056
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3053",
+    "https://read.shamela.ws/book/10906/3054",
+    "https://read.shamela.ws/book/10906/3055",
+    "https://read.shamela.ws/book/10906/3056"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 445,
+  "printed_page_end": 448,
+  "content_hash": "cdbb02f310de4fb71ef61b407f4b0713aaf6057faf63bbd2d88cea4073514e63",
+  "folder": "3053_سعيد_بن_العاص_بن_أبي_أحيحة_الأموي"
+}

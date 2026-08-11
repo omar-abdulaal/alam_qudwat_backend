@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_7cbaf252b31cb847_2803",
+  "sequence": 249,
+  "character_id": "siyar_7cbaf252b31cb847",
+  "character_name": "البراء بن عازب بن الحارث الأنصاري الحارثي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2803,
+  "page_id_end": 2805,
+  "source_page_ids": [
+    2803,
+    2804,
+    2805
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2803",
+    "https://read.shamela.ws/book/10906/2804",
+    "https://read.shamela.ws/book/10906/2805"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 194,
+  "printed_page_end": 196,
+  "content_hash": "2b504f44fa7a0fb6e6c82e9c158ed94bb5e76187c906a2a4fbe5483adf35225f",
+  "folder": "2803_البراء_بن_عازب_بن_الحارث_الأنصاري_الحارثي"
+}

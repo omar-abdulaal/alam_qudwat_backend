@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_a118ad517b4ddbdc_2797",
+  "sequence": 247,
+  "character_id": "siyar_a118ad517b4ddbdc",
+  "character_name": "حبيب بن مسلمة بن مالك القرشي الفهري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2797,
+  "page_id_end": 2797,
+  "source_page_ids": [
+    2797
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2797"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 188,
+  "printed_page_end": 188,
+  "content_hash": "64fda5284fd59c9f4622b49d40e2cd99d1dd6ab5a44ea30fac258f380cee9931",
+  "folder": "2797_حبيب_بن_مسلمة_بن_مالك_القرشي_الفهري"
+}

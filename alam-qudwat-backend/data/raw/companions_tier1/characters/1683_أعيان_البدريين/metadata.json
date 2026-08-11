@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_da78dabd6520f249_1683",
+  "sequence": 44,
+  "character_id": "siyar_da78dabd6520f249",
+  "character_name": "أعيان البدريين",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1683,
+  "page_id_end": 1683,
+  "source_page_ids": [
+    1683
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1683"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 257,
+  "printed_page_end": 257,
+  "content_hash": "b0441ab55d4e0f5ca7fcabe7092c0744dbcb899af34cff32f714d32fa17dee46",
+  "folder": "1683_أعيان_البدريين"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_d51bd8e375bc8045_2232",
+  "sequence": 120,
+  "character_id": "siyar_d51bd8e375bc8045",
+  "character_name": "أم كلثوم بنت رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2232,
+  "page_id_end": 2232,
+  "source_page_ids": [
+    2232
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2232"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 252,
+  "printed_page_end": 252,
+  "content_hash": "fd9532dd5ea8579dbb48e653114335d8e23e1b695e2785b34cbd76fa394d6eac",
+  "folder": "2232_أم_كلثوم_بنت_رسول_الله_صلى_الله_عليه_وسلم"
+}

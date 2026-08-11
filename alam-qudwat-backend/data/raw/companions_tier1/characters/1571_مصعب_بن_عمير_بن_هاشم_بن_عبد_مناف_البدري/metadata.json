@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_fbf349df39e54f3e_1571",
+  "sequence": 7,
+  "character_id": "siyar_fbf349df39e54f3e",
+  "character_name": "مصعب بن عمير بن هاشم بن عبد مناف البدري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1571,
+  "page_id_end": 1574,
+  "source_page_ids": [
+    1571,
+    1572,
+    1573,
+    1574
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1571",
+    "https://read.shamela.ws/book/10906/1572",
+    "https://read.shamela.ws/book/10906/1573",
+    "https://read.shamela.ws/book/10906/1574"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 145,
+  "printed_page_end": 148,
+  "content_hash": "18f44eeca7c41e8d970cbdd25b39e3b312a90f36c22825cc75a1d4f21842b046",
+  "folder": "1571_مصعب_بن_عمير_بن_هاشم_بن_عبد_مناف_البدري"
+}

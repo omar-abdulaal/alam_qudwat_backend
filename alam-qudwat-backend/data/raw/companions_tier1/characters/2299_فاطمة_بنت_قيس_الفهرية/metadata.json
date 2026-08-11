@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_7ed2738ff9df83fe_2299",
+  "sequence": 145,
+  "character_id": "siyar_7ed2738ff9df83fe",
+  "character_name": "فاطمة بنت قيس الفهرية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2299,
+  "page_id_end": 2299,
+  "source_page_ids": [
+    2299
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2299"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 319,
+  "printed_page_end": 319,
+  "content_hash": "b6c1833206457335fabe391188ea29cee7199b7cd64727d957dce327b43eb5d0",
+  "folder": "2299_فاطمة_بنت_قيس_الفهرية"
+}

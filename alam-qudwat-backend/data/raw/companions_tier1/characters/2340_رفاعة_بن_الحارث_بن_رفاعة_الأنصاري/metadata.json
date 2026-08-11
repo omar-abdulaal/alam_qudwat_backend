@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_015ae5b13d2afd41_2340",
+  "sequence": 160,
+  "character_id": "siyar_015ae5b13d2afd41",
+  "character_name": "رفاعة بن الحارث بن رفاعة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2340,
+  "page_id_end": 2340,
+  "source_page_ids": [
+    2340
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2340"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 360,
+  "printed_page_end": 360,
+  "content_hash": "d6c208446b551af0618c770e874ab9327b2dcb4ca466b2399b604c28e3cb01aa",
+  "folder": "2340_رفاعة_بن_الحارث_بن_رفاعة_الأنصاري"
+}

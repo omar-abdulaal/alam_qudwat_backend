@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_848e3715cf24562f_1725",
+  "sequence": 57,
+  "character_id": "siyar_848e3715cf24562f",
+  "character_name": "أسعد بن زرارة بن عدس بن عبيد بن ثعلبة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 1725,
+  "page_id_end": 1729,
+  "source_page_ids": [
+    1725,
+    1726,
+    1727,
+    1728,
+    1729
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1725",
+    "https://read.shamela.ws/book/10906/1726",
+    "https://read.shamela.ws/book/10906/1727",
+    "https://read.shamela.ws/book/10906/1728",
+    "https://read.shamela.ws/book/10906/1729"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 299,
+  "printed_page_end": 303,
+  "content_hash": "86d1231aea5823c0b429ae945aa3abd8dd086a704a4f798dfb77debfe4c61a6e",
+  "folder": "1725_أسعد_بن_زرارة_بن_عدس_بن_عبيد_بن_ثعلبة_الأنصاري"
+}

@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_ab599ae0605d253c_1750",
+  "sequence": 66,
+  "character_id": "siyar_ab599ae0605d253c",
+  "character_name": "عبد الله بن عمرو بن حرام بن ثعلبة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1750,
+  "page_id_end": 1753,
+  "source_page_ids": [
+    1750,
+    1751,
+    1752,
+    1753
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1750",
+    "https://read.shamela.ws/book/10906/1751",
+    "https://read.shamela.ws/book/10906/1752",
+    "https://read.shamela.ws/book/10906/1753"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 324,
+  "printed_page_end": 327,
+  "content_hash": "60d5a9d89963e0f6e86601154f918bb0f5fd70a6dd76b53a77f763ccef92e5b2",
+  "folder": "1750_عبد_الله_بن_عمرو_بن_حرام_بن_ثعلبة_الأنصاري"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_90c7c0b3f0679988_1620",
+  "sequence": 23,
+  "character_id": "siyar_90c7c0b3f0679988",
+  "character_name": "سهيل بن عمرو",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1620,
+  "page_id_end": 1620,
+  "source_page_ids": [
+    1620
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1620"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 194,
+  "printed_page_end": 194,
+  "content_hash": "758a4fa8672a827c5e713514366d455ef27ffa597d9d3c016f2d00f68bc8a5c3",
+  "folder": "1620_سهيل_بن_عمرو"
+}

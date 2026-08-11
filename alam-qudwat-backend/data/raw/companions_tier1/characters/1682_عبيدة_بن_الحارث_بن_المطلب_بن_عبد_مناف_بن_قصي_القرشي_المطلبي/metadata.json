@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_46b86b993c3a0a06_1682",
+  "sequence": 43,
+  "character_id": "siyar_46b86b993c3a0a06",
+  "character_name": "عبيدة بن الحارث بن المطلب بن عبد مناف بن قصي القرشي المطلبي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1682,
+  "page_id_end": 1682,
+  "source_page_ids": [
+    1682
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1682"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 256,
+  "printed_page_end": 256,
+  "content_hash": "6473c88e87c806343e01d771a1bf3f5e1d9e367adfa34850bd5e006cee86f32c",
+  "folder": "1682_عبيدة_بن_الحارث_بن_المطلب_بن_عبد_مناف_بن_قصي_القرشي_المطلبي"
+}

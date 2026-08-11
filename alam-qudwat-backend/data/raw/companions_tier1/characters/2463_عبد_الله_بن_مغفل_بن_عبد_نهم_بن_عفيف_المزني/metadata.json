@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_2167832d38284d6c_2463",
+  "sequence": 184,
+  "character_id": "siyar_2167832d38284d6c",
+  "character_name": "عبد الله بن مغفل بن عبد نهم بن عفيف المزني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2463,
+  "page_id_end": 2464,
+  "source_page_ids": [
+    2463,
+    2464
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2463",
+    "https://read.shamela.ws/book/10906/2464"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 483,
+  "printed_page_end": 484,
+  "content_hash": "a18c5bd8c501e38439f99f09ff4461ada344268b19faa3d15290974fac9656b9",
+  "folder": "2463_عبد_الله_بن_مغفل_بن_عبد_نهم_بن_عفيف_المزني"
+}

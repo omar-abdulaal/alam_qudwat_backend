@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_1ef53e80a16b2532_2547",
+  "sequence": 204,
+  "character_id": "siyar_1ef53e80a16b2532",
+  "character_name": "أبو ثعلبة الخشني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2547,
+  "page_id_end": 2550,
+  "source_page_ids": [
+    2547,
+    2548,
+    2549,
+    2550
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2547",
+    "https://read.shamela.ws/book/10906/2548",
+    "https://read.shamela.ws/book/10906/2549",
+    "https://read.shamela.ws/book/10906/2550"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 567,
+  "printed_page_end": 570,
+  "content_hash": "f6922ee5a3ad75477a1bedaaa750a4c47cef8d1a35b9b1f01829747370ebca43",
+  "folder": "2547_أبو_ثعلبة_الخشني"
+}

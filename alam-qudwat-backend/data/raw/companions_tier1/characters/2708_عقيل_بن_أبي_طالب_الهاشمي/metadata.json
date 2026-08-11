@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_8409a55a8aa6c669_2708",
+  "sequence": 229,
+  "character_id": "siyar_8409a55a8aa6c669",
+  "character_name": "عقيل بن أبي طالب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2708,
+  "page_id_end": 2708,
+  "source_page_ids": [
+    2708
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2708"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 99,
+  "printed_page_end": 99,
+  "content_hash": "06eac3f27c85ddebe4727a7d029a61ec43999d5636116c131f102c203b76088a",
+  "folder": "2708_عقيل_بن_أبي_طالب_الهاشمي"
+}

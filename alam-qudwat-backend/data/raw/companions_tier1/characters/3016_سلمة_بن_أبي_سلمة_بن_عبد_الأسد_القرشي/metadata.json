@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_c9037f92ecdd8c93_3016",
+  "sequence": 272,
+  "character_id": "siyar_c9037f92ecdd8c93",
+  "character_name": "سلمة بن أبي سلمة بن عبد الأسد القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3016,
+  "page_id_end": 3016,
+  "source_page_ids": [
+    3016
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3016"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 408,
+  "printed_page_end": 408,
+  "content_hash": "3adc53b911360a26dfd63cf973d900d37fe9385d04a0c6dbf53976e18f9749c0",
+  "folder": "3016_سلمة_بن_أبي_سلمة_بن_عبد_الأسد_القرشي"
+}

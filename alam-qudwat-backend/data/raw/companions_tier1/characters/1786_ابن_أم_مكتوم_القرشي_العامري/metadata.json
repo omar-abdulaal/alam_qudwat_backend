@@ -1,0 +1,40 @@
+{
+  "biography_id": "siyar_93eeaf4e7e3b769e_1786",
+  "sequence": 76,
+  "character_id": "siyar_93eeaf4e7e3b769e",
+  "character_name": "ابن أم مكتوم القرشي العامري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 6,
+  "page_id_start": 1786,
+  "page_id_end": 1791,
+  "source_page_ids": [
+    1786,
+    1787,
+    1788,
+    1789,
+    1790,
+    1791
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1786",
+    "https://read.shamela.ws/book/10906/1787",
+    "https://read.shamela.ws/book/10906/1788",
+    "https://read.shamela.ws/book/10906/1789",
+    "https://read.shamela.ws/book/10906/1790",
+    "https://read.shamela.ws/book/10906/1791"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 360,
+  "printed_page_end": 365,
+  "content_hash": "19b71aa034842883a699911e606b0ed53831e509dc95dfe11b084304f4fadf65",
+  "folder": "1786_ابن_أم_مكتوم_القرشي_العامري"
+}

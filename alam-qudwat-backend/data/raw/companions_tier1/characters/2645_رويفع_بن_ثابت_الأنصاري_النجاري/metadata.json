@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_1296ed2dc8889d75_2645",
+  "sequence": 219,
+  "character_id": "siyar_1296ed2dc8889d75",
+  "character_name": "رويفع بن ثابت الأنصاري النجاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2645,
+  "page_id_end": 2645,
+  "source_page_ids": [
+    2645
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2645"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 36,
+  "printed_page_end": 36,
+  "content_hash": "9814d3a19bc8079fdb1a091d4b6d62a24891fbb913b3d27191426f7c2a66061b",
+  "folder": "2645_رويفع_بن_ثابت_الأنصاري_النجاري"
+}

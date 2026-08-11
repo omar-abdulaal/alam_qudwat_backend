@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_1789f7f263d8d2de_2358",
+  "sequence": 166,
+  "character_id": "siyar_1789f7f263d8d2de",
+  "character_name": "حارثة بن النعمان بن نفع بن زيد بن عبيد الخزرجي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2358,
+  "page_id_end": 2359,
+  "source_page_ids": [
+    2358,
+    2359
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2358",
+    "https://read.shamela.ws/book/10906/2359"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 378,
+  "printed_page_end": 379,
+  "content_hash": "ddff444e8e4b743cfdbd05ea42518ad3c9e2fe5167140f8718371a3e7d93f4f8",
+  "folder": "2358_حارثة_بن_النعمان_بن_نفع_بن_زيد_بن_عبيد_الخزرجي"
+}

@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_a1ba3cef77f33f48_2542",
+  "sequence": 203,
+  "character_id": "siyar_a1ba3cef77f33f48",
+  "character_name": "صفوان بن أمية بن خلف الجمحي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2542,
+  "page_id_end": 2546,
+  "source_page_ids": [
+    2542,
+    2543,
+    2544,
+    2545,
+    2546
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2542",
+    "https://read.shamela.ws/book/10906/2543",
+    "https://read.shamela.ws/book/10906/2544",
+    "https://read.shamela.ws/book/10906/2545",
+    "https://read.shamela.ws/book/10906/2546"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 562,
+  "printed_page_end": 566,
+  "content_hash": "c47d2e7a99afd5c8fbdc81ba3a548c7d9a457903d613ddf61340ef2a7dd7078a",
+  "folder": "2542_صفوان_بن_أمية_بن_خلف_الجمحي"
+}

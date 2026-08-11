@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_ee934a7748868d4d_2998",
+  "sequence": 268,
+  "character_id": "siyar_ee934a7748868d4d",
+  "character_name": "المسور بن مخرمة بن نوفل بن أهيب الزهري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2998,
+  "page_id_end": 3001,
+  "source_page_ids": [
+    2998,
+    2999,
+    3000,
+    3001
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2998",
+    "https://read.shamela.ws/book/10906/2999",
+    "https://read.shamela.ws/book/10906/3000",
+    "https://read.shamela.ws/book/10906/3001"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 390,
+  "printed_page_end": 393,
+  "content_hash": "c2d7d3fdada528de164a39f64c6d2eec64c60d4dbbf5d9dc95e5dd7f386e14af",
+  "folder": "2998_المسور_بن_مخرمة_بن_نوفل_بن_أهيب_الزهري"
+}

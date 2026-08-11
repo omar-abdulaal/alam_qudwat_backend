@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_da4047c19302eff0_2929",
+  "sequence": 258,
+  "character_id": "siyar_da4047c19302eff0",
+  "character_name": "عبد الله بن حنظلة الغسيل الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2929,
+  "page_id_end": 2933,
+  "source_page_ids": [
+    2929,
+    2930,
+    2931,
+    2932,
+    2933
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2929",
+    "https://read.shamela.ws/book/10906/2930",
+    "https://read.shamela.ws/book/10906/2931",
+    "https://read.shamela.ws/book/10906/2932",
+    "https://read.shamela.ws/book/10906/2933"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 321,
+  "printed_page_end": 325,
+  "content_hash": "1f7755fe7efdb0a087f2dd4831c05c58c00f247c805869a8e4c0ca847d64b59c",
+  "folder": "2929_عبد_الله_بن_حنظلة_الغسيل_الأنصاري"
+}

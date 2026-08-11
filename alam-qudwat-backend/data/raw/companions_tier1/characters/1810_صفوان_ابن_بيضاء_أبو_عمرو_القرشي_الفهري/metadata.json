@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_030bf97e46646916_1810",
+  "sequence": 78,
+  "character_id": "siyar_030bf97e46646916",
+  "character_name": "صفوان ابن بيضاء أبو عمرو القرشي الفهري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1810,
+  "page_id_end": 1810,
+  "source_page_ids": [
+    1810
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1810"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 384,
+  "printed_page_end": 384,
+  "content_hash": "ea0ddc13893540e71380c8c827341b56ffacf2d00e4cf619e49c8511575e6a13",
+  "folder": "1810_صفوان_ابن_بيضاء_أبو_عمرو_القرشي_الفهري"
+}

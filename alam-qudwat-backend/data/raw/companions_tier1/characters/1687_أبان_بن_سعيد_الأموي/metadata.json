@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_520f80d1db8fe3f8_1687",
+  "sequence": 48,
+  "character_id": "siyar_520f80d1db8fe3f8",
+  "character_name": "أبان بن سعيد الأموي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1687,
+  "page_id_end": 1687,
+  "source_page_ids": [
+    1687
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1687"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 261,
+  "printed_page_end": 261,
+  "content_hash": "a6e88a937418e74707a8b83541e7ee4b1e828aba7fbea1809038eb069cb21737",
+  "folder": "1687_أبان_بن_سعيد_الأموي"
+}

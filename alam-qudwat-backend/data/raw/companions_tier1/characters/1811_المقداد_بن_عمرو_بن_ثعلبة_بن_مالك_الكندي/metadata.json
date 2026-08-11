@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_659b90d2083f5df3_1811",
+  "sequence": 79,
+  "character_id": "siyar_659b90d2083f5df3",
+  "character_name": "المقداد بن عمرو بن ثعلبة بن مالك الكندي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1811,
+  "page_id_end": 1814,
+  "source_page_ids": [
+    1811,
+    1812,
+    1813,
+    1814
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1811",
+    "https://read.shamela.ws/book/10906/1812",
+    "https://read.shamela.ws/book/10906/1813",
+    "https://read.shamela.ws/book/10906/1814"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 385,
+  "printed_page_end": 388,
+  "content_hash": "a7592dd8277cdd5dda4df498aea28030d65ae0ad245f6b66531638b8bd737f56",
+  "folder": "1811_المقداد_بن_عمرو_بن_ثعلبة_بن_مالك_الكندي"
+}

@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_a028f5a197b1cce4_2525",
+  "sequence": 199,
+  "character_id": "siyar_a028f5a197b1cce4",
+  "character_name": "صفوان بن المعطل بن رحضة بن المؤمل السلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2525,
+  "page_id_end": 2529,
+  "source_page_ids": [
+    2525,
+    2526,
+    2527,
+    2528,
+    2529
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2525",
+    "https://read.shamela.ws/book/10906/2526",
+    "https://read.shamela.ws/book/10906/2527",
+    "https://read.shamela.ws/book/10906/2528",
+    "https://read.shamela.ws/book/10906/2529"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 545,
+  "printed_page_end": 549,
+  "content_hash": "3960e758be225047e87dbeed4314a7f01334e186d33c8cf2b83c90180c3bb62b",
+  "folder": "2525_صفوان_بن_المعطل_بن_رحضة_بن_المؤمل_السلمي"
+}

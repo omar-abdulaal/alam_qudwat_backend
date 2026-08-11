@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_4edc4da72a1af716_1761",
+  "sequence": 70,
+  "character_id": "siyar_4edc4da72a1af716",
+  "character_name": "أمامة بنت أبي العاص",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1761,
+  "page_id_end": 1761,
+  "source_page_ids": [
+    1761
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1761"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 335,
+  "printed_page_end": 335,
+  "content_hash": "ffcb442cae251320e00178dfc271512e5cf631cb8f7a0d301544b57b31979988",
+  "folder": "1761_أمامة_بنت_أبي_العاص"
+}

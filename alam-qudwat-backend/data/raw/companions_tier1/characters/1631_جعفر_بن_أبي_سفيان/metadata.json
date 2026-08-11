@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_5cd6e1067d0cde38_1631",
+  "sequence": 30,
+  "character_id": "siyar_5cd6e1067d0cde38",
+  "character_name": "جعفر بن أبي سفيان",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1631,
+  "page_id_end": 1631,
+  "source_page_ids": [
+    1631
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1631"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 205,
+  "printed_page_end": 205,
+  "content_hash": "d1ff764cad85c7603f9d7b581794b6cd697173cc3481ee93d83cb7af49eb8c33",
+  "folder": "1631_جعفر_بن_أبي_سفيان"
+}

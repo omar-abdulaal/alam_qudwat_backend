@@ -1,0 +1,29 @@
+{
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "character_id": "siyar_3df0e40010892785",
+  "character_name": "أبو عنبة الخولاني",
+  "page_id": 3042,
+  "url": "https://read.shamela.ws/book/10906/3042",
+  "scraped_at": "2026-08-11T00:39:39.967414+00:00",
+  "printed_volume": 3,
+  "printed_page": 434,
+  "entry_name": "أبو عنبة الخولاني",
+  "source_section": "-",
+  "breadcrumb": [
+    "الجزء ٣ [طبقة ١]",
+    "ومن صغار الصحابة",
+    "٧٨ - أبو عنبة الخولاني",
+    "+",
+    "-"
+  ],
+  "text": "قَالَ يَحْيَى بنُ مَعِيْنٍ:\nقَالَ أَهْلُ حِمْصَ:",
+  "content_hash": "84f8ca5a89dac63fdd1bcd5febc4adefc78730d86a943466f44485316f814c99",
+  "next_section_trimmed": true
+}

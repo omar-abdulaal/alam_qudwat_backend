@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_6b5560650b5b1174_1685",
+  "sequence": 46,
+  "character_id": "siyar_6b5560650b5b1174",
+  "character_name": "عبد الله بن الحارث بن عبد المطلب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1685,
+  "page_id_end": 1685,
+  "source_page_ids": [
+    1685
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1685"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 259,
+  "printed_page_end": 259,
+  "content_hash": "7e6376995be0bdb3cfdddd9321121f35ba47763c1196a1260181d22d2d205664",
+  "folder": "1685_عبد_الله_بن_الحارث_بن_عبد_المطلب_الهاشمي"
+}

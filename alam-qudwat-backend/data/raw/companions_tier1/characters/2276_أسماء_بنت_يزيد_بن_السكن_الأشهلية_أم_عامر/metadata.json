@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_befd89a07d9c730a_2276",
+  "sequence": 138,
+  "character_id": "siyar_befd89a07d9c730a",
+  "character_name": "أسماء بنت يزيد بن السكن الأشهلية أم عامر",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2276,
+  "page_id_end": 2276,
+  "source_page_ids": [
+    2276
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2276"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 296,
+  "printed_page_end": 296,
+  "content_hash": "6de05e029e55b4d3c93bdd644e32f5a9f2d78f7b6a0531cca34312e0cc3aceea",
+  "folder": "2276_أسماء_بنت_يزيد_بن_السكن_الأشهلية_أم_عامر"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_40a19a72add39b77_1733",
+  "sequence": 59,
+  "character_id": "siyar_40a19a72add39b77",
+  "character_name": "عكاشة بن محصن أبو محصن الأسدي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1733,
+  "page_id_end": 1733,
+  "source_page_ids": [
+    1733
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1733"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 307,
+  "printed_page_end": 307,
+  "content_hash": "6aa193a67080eab1c3de2aad7b9668701aae483c064a7d81b21df14dc5f86ae8",
+  "folder": "1733_عكاشة_بن_محصن_أبو_محصن_الأسدي"
+}

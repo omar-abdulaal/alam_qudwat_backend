@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_fe83158d87baf639_2230",
+  "sequence": 119,
+  "character_id": "siyar_fe83158d87baf639",
+  "character_name": "رقية بنت رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2230,
+  "page_id_end": 2231,
+  "source_page_ids": [
+    2230,
+    2231
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2230",
+    "https://read.shamela.ws/book/10906/2231"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 250,
+  "printed_page_end": 251,
+  "content_hash": "8fea4138f8251d55b433841173d5d79971daccf761a2ed1de777e074165645c2",
+  "folder": "2230_رقية_بنت_رسول_الله_صلى_الله_عليه_وسلم"
+}

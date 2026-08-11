@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_1f6488ecbf026163_2461",
+  "sequence": 182,
+  "character_id": "siyar_1f6488ecbf026163",
+  "character_name": "أبو حميد الساعدي الأنصاري المدني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2461,
+  "page_id_end": 2461,
+  "source_page_ids": [
+    2461
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2461"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 481,
+  "printed_page_end": 481,
+  "content_hash": "eb23d6e51fea499095780bfe3dee52c9b89d46f20a451a280597d478ad4e91ab",
+  "folder": "2461_أبو_حميد_الساعدي_الأنصاري_المدني"
+}

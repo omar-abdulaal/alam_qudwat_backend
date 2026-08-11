@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_65b44c27538dd8b2_1996",
+  "sequence": 93,
+  "character_id": "siyar_65b44c27538dd8b2",
+  "character_name": "أبو رافع مولى رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1996,
+  "page_id_end": 1996,
+  "source_page_ids": [
+    1996
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1996"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 16,
+  "printed_page_end": 16,
+  "content_hash": "88c852cf7903dc1e0f49e8fc0bc87d6e41bd52ad6d27ddd204cfb72f26cd0ebe",
+  "folder": "1996_أبو_رافع_مولى_رسول_الله_صلى_الله_عليه_وسلم"
+}

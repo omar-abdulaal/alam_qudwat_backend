@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_cd3a68073e855b81_2458",
+  "sequence": 180,
+  "character_id": "siyar_cd3a68073e855b81",
+  "character_name": "رافع بن عمرو المزني البصري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2458,
+  "page_id_end": 2458,
+  "source_page_ids": [
+    2458
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2458"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 478,
+  "printed_page_end": 478,
+  "content_hash": "8d3adbc574c188dd1c38f4b4c10df64faaaf8d90725268033bd1162aa264438e",
+  "folder": "2458_رافع_بن_عمرو_المزني_البصري"
+}

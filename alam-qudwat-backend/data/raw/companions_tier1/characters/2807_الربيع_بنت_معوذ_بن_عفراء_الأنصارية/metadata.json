@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_8561ebd8aaaaba79_2807",
+  "sequence": 250,
+  "character_id": "siyar_8561ebd8aaaaba79",
+  "character_name": "الربيع بنت معوذ بن عفراء الأنصارية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2807,
+  "page_id_end": 2808,
+  "source_page_ids": [
+    2807,
+    2808
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2807",
+    "https://read.shamela.ws/book/10906/2808"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 198,
+  "printed_page_end": 199,
+  "content_hash": "0c34e1966d897327b2173515d8324ff5d0aa9aff3f02f761919ba3a1b9915f0e",
+  "folder": "2807_الربيع_بنت_معوذ_بن_عفراء_الأنصارية"
+}

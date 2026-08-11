@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_3f8c2ca749ce8695_2349",
+  "sequence": 162,
+  "character_id": "siyar_3f8c2ca749ce8695",
+  "character_name": "محمد بن مسلمة بن سلمة بن خالد الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2349,
+  "page_id_end": 2353,
+  "source_page_ids": [
+    2349,
+    2350,
+    2351,
+    2352,
+    2353
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2349",
+    "https://read.shamela.ws/book/10906/2350",
+    "https://read.shamela.ws/book/10906/2351",
+    "https://read.shamela.ws/book/10906/2352",
+    "https://read.shamela.ws/book/10906/2353"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 369,
+  "printed_page_end": 373,
+  "content_hash": "6c50238bcb657747a6b29f50bf51e08b376483f744617d99aede3b3e97859ed9",
+  "folder": "2349_محمد_بن_مسلمة_بن_سلمة_بن_خالد_الأنصاري"
+}

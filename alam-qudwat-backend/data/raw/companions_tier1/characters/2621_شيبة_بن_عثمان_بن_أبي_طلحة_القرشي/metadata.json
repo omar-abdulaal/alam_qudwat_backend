@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_d6fe51b0dc0c66c6_2621",
+  "sequence": 214,
+  "character_id": "siyar_d6fe51b0dc0c66c6",
+  "character_name": "شيبة بن عثمان بن أبي طلحة القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2621,
+  "page_id_end": 2622,
+  "source_page_ids": [
+    2621,
+    2622
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2621",
+    "https://read.shamela.ws/book/10906/2622"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 12,
+  "printed_page_end": 13,
+  "content_hash": "cb3d87c186e3b6ca4048fdeb0c00876e7eb8f99731f2c154aee5454fac33642e",
+  "folder": "2621_شيبة_بن_عثمان_بن_أبي_طلحة_القرشي"
+}

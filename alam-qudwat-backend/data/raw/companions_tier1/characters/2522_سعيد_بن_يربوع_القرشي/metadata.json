@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_a74e1a62bebbc0c6_2522",
+  "sequence": 196,
+  "character_id": "siyar_a74e1a62bebbc0c6",
+  "character_name": "سعيد بن يربوع القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2522,
+  "page_id_end": 2522,
+  "source_page_ids": [
+    2522
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2522"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 542,
+  "printed_page_end": 542,
+  "content_hash": "8969bfdad698fe6b6153c6b9b0c2029f5e0be4539a134fb523f22cdc5bf8987b",
+  "folder": "2522_سعيد_بن_يربوع_القرشي"
+}

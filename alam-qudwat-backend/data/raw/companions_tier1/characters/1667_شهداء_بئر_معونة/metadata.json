@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_4b58566c635d1fa9_1667",
+  "sequence": 36,
+  "character_id": "siyar_4b58566c635d1fa9",
+  "character_name": "شهداء بئر معونة",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1667,
+  "page_id_end": 1667,
+  "source_page_ids": [
+    1667
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1667"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 241,
+  "printed_page_end": 241,
+  "content_hash": "ce2040b06dae4b11f6bc9105bd0af96c1e28a60c3da3188c649b7ea08cec183e",
+  "folder": "1667_شهداء_بئر_معونة"
+}

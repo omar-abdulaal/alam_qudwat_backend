@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_b830fd5649dc26cb_2249",
+  "sequence": 129,
+  "character_id": "siyar_b830fd5649dc26cb",
+  "character_name": "صفية بنت عبد المطلب الهاشمية عمة رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2249,
+  "page_id_end": 2251,
+  "source_page_ids": [
+    2249,
+    2250,
+    2251
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2249",
+    "https://read.shamela.ws/book/10906/2250",
+    "https://read.shamela.ws/book/10906/2251"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 269,
+  "printed_page_end": 271,
+  "content_hash": "c55b2b8a36975dc40e4a7f2fe9ba899472fb30cf5ba6a895dfba70b932de1db1",
+  "folder": "2249_صفية_بنت_عبد_المطلب_الهاشمية_عمة_رسول_الله_صلى_الله_عليه_وسلم"
+}

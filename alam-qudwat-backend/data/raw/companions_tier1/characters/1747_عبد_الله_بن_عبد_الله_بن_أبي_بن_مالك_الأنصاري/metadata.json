@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_1de53087bb0f63aa_1747",
+  "sequence": 64,
+  "character_id": "siyar_1de53087bb0f63aa",
+  "character_name": "عبد الله بن عبد الله بن أبي بن مالك الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1747,
+  "page_id_end": 1748,
+  "source_page_ids": [
+    1747,
+    1748
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1747",
+    "https://read.shamela.ws/book/10906/1748"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 321,
+  "printed_page_end": 322,
+  "content_hash": "6ff29df07d6ae72b0a758175154d9dd67e9ba254ed94c945ab102be9194b8fe1",
+  "folder": "1747_عبد_الله_بن_عبد_الله_بن_أبي_بن_مالك_الأنصاري"
+}

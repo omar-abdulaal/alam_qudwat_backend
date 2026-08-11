@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_13f5d597f4c93e4a_1618",
+  "sequence": 21,
+  "character_id": "siyar_13f5d597f4c93e4a",
+  "character_name": "أبو جندل العاص بن سهيل بن عمرو العامري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1618,
+  "page_id_end": 1618,
+  "source_page_ids": [
+    1618
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1618"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 192,
+  "printed_page_end": 192,
+  "content_hash": "e9baf005efb9d0c9a6e761b04a7fbe27d7854f16216d30046001d1b2bbc46820",
+  "folder": "1618_أبو_جندل_العاص_بن_سهيل_بن_عمرو_العامري"
+}

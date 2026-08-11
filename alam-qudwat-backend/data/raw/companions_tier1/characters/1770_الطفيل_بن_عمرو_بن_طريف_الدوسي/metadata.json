@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_b79e6d9a53da6f3d_1770",
+  "sequence": 74,
+  "character_id": "siyar_b79e6d9a53da6f3d",
+  "character_name": "الطفيل بن عمرو بن طريف الدوسي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 1770,
+  "page_id_end": 1772,
+  "source_page_ids": [
+    1770,
+    1771,
+    1772
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1770",
+    "https://read.shamela.ws/book/10906/1771",
+    "https://read.shamela.ws/book/10906/1772"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 344,
+  "printed_page_end": 346,
+  "content_hash": "e4bd18a792fdf67cc5452048b9dc449a8d3abfc2ae48597c2b38730d27715a1a",
+  "folder": "1770_الطفيل_بن_عمرو_بن_طريف_الدوسي"
+}

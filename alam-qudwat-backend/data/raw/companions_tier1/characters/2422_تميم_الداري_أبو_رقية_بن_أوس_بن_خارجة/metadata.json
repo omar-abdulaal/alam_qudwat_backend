@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_ad2ab3f40c6fb132_2422",
+  "sequence": 171,
+  "character_id": "siyar_ad2ab3f40c6fb132",
+  "character_name": "تميم الداري أبو رقية بن أوس بن خارجة",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2422,
+  "page_id_end": 2428,
+  "source_page_ids": [
+    2422,
+    2423,
+    2424,
+    2425,
+    2426,
+    2427,
+    2428
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2422",
+    "https://read.shamela.ws/book/10906/2423",
+    "https://read.shamela.ws/book/10906/2424",
+    "https://read.shamela.ws/book/10906/2425",
+    "https://read.shamela.ws/book/10906/2426",
+    "https://read.shamela.ws/book/10906/2427",
+    "https://read.shamela.ws/book/10906/2428"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 442,
+  "printed_page_end": 448,
+  "content_hash": "ee956e8a05fd947692f70118ea85cd34fc65b49a270c6bad8dd63f726655c6b2",
+  "folder": "2422_تميم_الداري_أبو_رقية_بن_أوس_بن_خارجة"
+}

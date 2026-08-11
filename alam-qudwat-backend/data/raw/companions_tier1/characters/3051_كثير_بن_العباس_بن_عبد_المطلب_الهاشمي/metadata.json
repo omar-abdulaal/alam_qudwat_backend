@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_f96cba57ebfd4216_3051",
+  "sequence": 292,
+  "character_id": "siyar_f96cba57ebfd4216",
+  "character_name": "كثير بن العباس بن عبد المطلب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3051,
+  "page_id_end": 3051,
+  "source_page_ids": [
+    3051
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3051"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 443,
+  "printed_page_end": 443,
+  "content_hash": "e25975ec7a8b441ac5c147760e38204220f2277b0df730650ad7f85d39b21a30",
+  "folder": "3051_كثير_بن_العباس_بن_عبد_المطلب_الهاشمي"
+}

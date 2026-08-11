@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_5be438d1688f50f8_2537",
+  "sequence": 202,
+  "character_id": "siyar_5be438d1688f50f8",
+  "character_name": "عمير بن سعد بن شهيد بن قيس الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2537,
+  "page_id_end": 2541,
+  "source_page_ids": [
+    2537,
+    2538,
+    2539,
+    2540,
+    2541
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2537",
+    "https://read.shamela.ws/book/10906/2538",
+    "https://read.shamela.ws/book/10906/2539",
+    "https://read.shamela.ws/book/10906/2540",
+    "https://read.shamela.ws/book/10906/2541"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 557,
+  "printed_page_end": 561,
+  "content_hash": "aacbd4a4ac696594b9327a8d608274691959ba4001da47c84ecf812dba880bb5",
+  "folder": "2537_عمير_بن_سعد_بن_شهيد_بن_قيس_الأنصاري"
+}

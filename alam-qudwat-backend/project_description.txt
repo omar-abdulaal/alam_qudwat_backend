@@ -1,0 +1,191 @@
+================================================================================
+ALAM QUDWAT — PROJECT DESCRIPTION (for the Flutter app agent)
+================================================================================
+
+This file describes the product and the backend it must integrate with, so
+a Flutter app can be built against it. Full API request/response shapes,
+the exact streaming contract, and a Dart consumption example are in
+api_documentation.txt in this same repo — read that before implementing
+any network code. This file is the "what and why"; api_documentation.txt
+is the "how".
+
+--------------------------------------------------------------------------------
+1. WHAT THIS PRODUCT IS
+--------------------------------------------------------------------------------
+
+"Alam Qudwat" (علام قدوة) is an Arabic-language educational storytelling
+app about early Islamic history, starting with the Rashidun Caliphs (أبو
+بكر الصديق، عمر بن الخطاب، عثمان بن عفان، علي بن أبي طالب). The core
+experience is a chat-style interface where the user picks a historical
+character and a narrator "tells the story" of that character in response
+to questions — but as a narrator/historian speaking ABOUT the figure, not
+as the figure impersonating themself.
+
+Every answer is grounded in real classical Arabic historical sources
+(currently: سير أعلام النبلاء by الذهبي, scraped from Shamela) and comes
+with structured citations back to the source page. The app must never
+present fabricated or unsourced historical claims as fact — this is a
+hard product requirement, not just a nice-to-have, given the
+religious/historical sensitivity of the content.
+
+The dataset and character roster are intentionally designed to grow over
+time (more caliphs-era and later other eras/categories of Islamic
+history), so the app's character browsing UI should not hardcode
+assumptions about exactly 4 characters or one era.
+
+--------------------------------------------------------------------------------
+2. TARGET AUDIENCE & THE TWO NARRATOR MODES
+--------------------------------------------------------------------------------
+
+The app serves two distinct audiences, toggled per conversation:
+
+- "kids" mode: simple, warm Arabic; focuses on values and life lessons
+  (honesty, courage, justice, loyalty) rather than political complexity;
+  short sentences; gentle tone; often ends with a takeaway a child can
+  remember. Avoid graphic detail.
+
+- "adults" mode: sophisticated fus-ha Arabic; includes historical,
+  political, and social context; more analytical; can discuss
+  controversy/disagreement between sources when relevant.
+
+The Flutter UI should make this mode an explicit, easily-switchable user
+choice (e.g. a toggle or profile setting), not something inferred
+automatically. It can be changed mid-conversation (the backend supports
+updating an existing conversation's mode).
+
+--------------------------------------------------------------------------------
+3. CORE USER FLOWS THE APP MUST SUPPORT
+--------------------------------------------------------------------------------
+
+a) Browse characters
+   - List available historical figures (name, short description, era,
+     category, avatar if set) and let the user pick one to start a chat
+     with. GET /api/v1/characters (optionally filtered by era/category).
+
+b) "Story of the day"
+   - A home-screen feature highlighting one character/story for the
+     current day, entirely resolved server-side (GET
+     /api/v1/story-of-day) — the app should not implement its own
+     rotation/scheduling logic client-side, just render whatever the
+     endpoint returns "as of today".
+
+c) Character-scoped chat
+   - After picking a character (and a narrator mode), the user asks
+     questions in a chat UI. Each answer:
+       - streams in progressively (token-by-token) so the UI should
+         render text incrementally, not wait for the full response
+       - is followed by a structured list of citations (book, author,
+         page, source URL) that the UI should render as visible,
+         tappable references — this is a trust/credibility feature, not
+         an afterthought. Inline citation markers like [1] [2] appear in
+         the streamed text (Arabic-Indic digits ١ ٢ ٣...) and should be
+         visually tied to the citations list.
+       - is sometimes followed by 0-3 suggested follow-up questions,
+         decided by the AI itself (not always present — an empty
+         suggestion list is the normal case, not a bug). When present,
+         show them as tappable chips; tapping one just sends it as the
+         next chat message.
+       - if the historical sources don't cover the question, the
+         narrator will say so honestly instead of inventing an answer —
+         the UI should present this gracefully (not as an error state),
+         since it's an expected, legitimate response. No suggestions are
+         offered for this case.
+
+c.1) Voice input and output
+   - The user can record a voice message instead of typing. The app
+     uploads the recording to the backend, gets back plain transcribed
+     text, and then sends that text through the normal chat flow exactly
+     like a typed message — transcription and answering are two separate
+     steps/requests, not one combined action.
+   - The app can also request an audio (spoken) version of any assistant
+     answer, streamed back as raw audio the app plays. Voice output is a
+     distinct, on-demand action (e.g. a "play" button on a chat bubble),
+     not something that happens automatically for every answer.
+
+d) Conversation continuity
+   - The app only needs to persist a `conversation_id` locally per
+     ongoing chat (e.g. one per character, or per chat session — product
+     decision) and keep sending it with follow-up messages. The backend
+     itself remembers prior turns; the app does not need to resend
+     history. On relaunch, the app can call GET
+     /api/v1/conversations/{id} to rehydrate a chat thread if it wants to
+     restore previous sessions.
+
+e) Starting a new topic/character
+   - Simply omit conversation_id and provide character_slug + mode to
+     start a fresh conversation. There's no explicit "create conversation"
+     step — it happens implicitly on the first message.
+
+--------------------------------------------------------------------------------
+4. THINGS THE APP SHOULD NOT DO
+--------------------------------------------------------------------------------
+
+- Do not let the UI present the narrator as if it IS the historical
+  figure (e.g. no "chat with Abu Bakr" framing implying first-person
+  impersonation) — the backend enforces third-person narration; the UI
+  copy/branding should stay consistent with that ("stories about
+  Abu Bakr", not "talk to Abu Bakr").
+- Do not fabricate or client-side "fill in" citation details — always
+  render exactly what the citations array returns.
+- Do not store or hardcode any secret (API_AUTH_TOKEN, OpenAI keys,
+  database credentials) in a way that ships insecurely in the client
+  build if avoidable; at minimum, never log or display these values in
+  the UI. The Flutter app only ever needs the backend's base URL and the
+  shared API_AUTH_TOKEN to call the API — it never talks to Postgres or
+  OpenAI directly.
+- Do not assume a fixed, small set of characters/eras — build character
+  browsing/filtering (era, category) generically since the roster is
+  expected to grow.
+- Do not treat voice input as "record and get an answer" in one step —
+  it is transcribe-then-send: the transcription endpoint only returns
+  text, and that text becomes a normal chat message. Don't auto-send it
+  without letting the user see/edit the transcription first if that fits
+  the UX better (product choice), but never skip straight from audio to
+  an answer inside a single backend call.
+- Do not treat an empty suggestions list as an error or a loading state —
+  it means the AI decided no follow-up question was natural here, which
+  is expected and common.
+
+--------------------------------------------------------------------------------
+5. TECHNICAL INTEGRATION SUMMARY
+--------------------------------------------------------------------------------
+
+- Backend: FastAPI, base URL configurable (local dev default
+  http://127.0.0.1:8000).
+- Auth: every /api/v1/* request needs header
+  `Authorization: Bearer <API_AUTH_TOKEN>` (value provided via the
+  backend's own .env / deployment config — the Flutter app just needs to
+  be configured with whatever token the backend deployment uses).
+- The chat endpoint (POST /api/v1/chat/stream) returns
+  `text/event-stream` over a normal HTTP POST — NOT a WebSocket and NOT
+  browser EventSource (which can't POST/send headers). Use a streamed
+  HTTP client (e.g. Dart's `http.Client().send()`), parse SSE frames
+  manually or with a package like `flutter_client_sse`. Full event names,
+  payload shapes, and a working Dart parsing example are in
+  api_documentation.txt, section 9.
+- Voice input: POST /api/v1/stt/transcribe takes a multipart audio file
+  upload and returns plain JSON `{"text": "..."}` — no streaming, no
+  conversation side effects.
+- Voice output: POST /api/v1/tts/speak takes JSON (`text` or an existing
+  `message_id`) and returns a streamed raw-PCM audio body (int16 LE,
+  mono, 32000 Hz — not a WAV/MP3 file), with headers describing the
+  format. Needs a raw-PCM-capable audio player on the Flutter side.
+- All other endpoints are plain JSON request/response.
+- Language/locale: all user-facing content from the API is Arabic
+  (right-to-left). The Flutter app should be built RTL-first for this
+  content (Arabic locale, RTL text direction, appropriate fonts for
+  Arabic including diacritics/tashkeel which may appear in quoted
+  historical text).
+
+--------------------------------------------------------------------------------
+6. WHERE TO GO NEXT
+--------------------------------------------------------------------------------
+
+Read api_documentation.txt in this repository for:
+  - exact endpoint list with request/response JSON shapes
+  - the full Server-Sent Events contract for the chat stream
+  - required environment/config values
+  - a working Dart code sample for consuming the streaming endpoint
+  - known limitations (e.g. no user-account system yet, so
+    conversation_id alone is the access boundary for a given chat)
+================================================================================

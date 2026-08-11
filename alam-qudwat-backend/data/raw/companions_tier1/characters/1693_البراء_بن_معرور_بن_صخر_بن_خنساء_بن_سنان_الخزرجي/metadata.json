@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_aeaee1033bd7634a_1693",
+  "sequence": 51,
+  "character_id": "siyar_aeaee1033bd7634a",
+  "character_name": "البراء بن معرور بن صخر بن خنساء بن سنان الخزرجي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1693,
+  "page_id_end": 1694,
+  "source_page_ids": [
+    1693,
+    1694
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1693",
+    "https://read.shamela.ws/book/10906/1694"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 267,
+  "printed_page_end": 268,
+  "content_hash": "01048ddf84e5e9164a7111ae955a78f992c1218c922214fb996c20f7c4f42c1e",
+  "folder": "1693_البراء_بن_معرور_بن_صخر_بن_خنساء_بن_سنان_الخزرجي"
+}

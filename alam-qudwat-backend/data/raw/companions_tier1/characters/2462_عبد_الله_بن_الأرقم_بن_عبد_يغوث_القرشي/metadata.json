@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_3b65820087ff1064_2462",
+  "sequence": 183,
+  "character_id": "siyar_3b65820087ff1064",
+  "character_name": "عبد الله بن الأرقم بن عبد يغوث القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2462,
+  "page_id_end": 2462,
+  "source_page_ids": [
+    2462
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2462"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 482,
+  "printed_page_end": 482,
+  "content_hash": "4f16ee03bb40582d9a06f7b29a7bc2030bd24ab3010c9ff9b4cafdeb52542f42",
+  "folder": "2462_عبد_الله_بن_الأرقم_بن_عبد_يغوث_القرشي"
+}

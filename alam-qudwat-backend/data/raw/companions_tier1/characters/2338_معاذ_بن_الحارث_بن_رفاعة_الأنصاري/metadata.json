@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_ed50cf673fa316b4_2338",
+  "sequence": 158,
+  "character_id": "siyar_ed50cf673fa316b4",
+  "character_name": "معاذ بن الحارث بن رفاعة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2338,
+  "page_id_end": 2338,
+  "source_page_ids": [
+    2338
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2338"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 358,
+  "printed_page_end": 358,
+  "content_hash": "b74c40e9ef0246f5c5ea8d4cd6dd8ccad2257e27519ee30dabdce6df40764fd8",
+  "folder": "2338_معاذ_بن_الحارث_بن_رفاعة_الأنصاري"
+}

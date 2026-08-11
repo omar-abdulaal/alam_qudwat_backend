@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_3865e7df1314a1ba_2303",
+  "sequence": 148,
+  "character_id": "siyar_3865e7df1314a1ba",
+  "character_name": "خباب بن الأرت بن جندلة بن سعد التميمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2303,
+  "page_id_end": 2304,
+  "source_page_ids": [
+    2303,
+    2304
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2303",
+    "https://read.shamela.ws/book/10906/2304"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 323,
+  "printed_page_end": 324,
+  "content_hash": "5d32d8d458e366ed5f68a6a17a80bf2fd841d702dedbea15329f150a41655838",
+  "folder": "2303_خباب_بن_الأرت_بن_جندلة_بن_سعد_التميمي"
+}

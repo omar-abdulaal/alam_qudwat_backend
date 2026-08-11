@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_18583cd1e71535a2_3045",
+  "sequence": 288,
+  "character_id": "siyar_18583cd1e71535a2",
+  "character_name": "السائب بن يزيد بن سعيد بن ثمامة الكندي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3045,
+  "page_id_end": 3046,
+  "source_page_ids": [
+    3045,
+    3046
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3045",
+    "https://read.shamela.ws/book/10906/3046"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 437,
+  "printed_page_end": 438,
+  "content_hash": "e1da00dfbba0d232e0228d52a0c7695fa910bc43535ffd80fe1e4dbd4dca63ab",
+  "folder": "3045_السائب_بن_يزيد_بن_سعيد_بن_ثمامة_الكندي"
+}

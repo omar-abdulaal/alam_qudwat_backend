@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_81e067c12c6f9560_2296",
+  "sequence": 143,
+  "character_id": "siyar_81e067c12c6f9560",
+  "character_name": "أم حرام بنت ملحان بن خالد الأنصارية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2296,
+  "page_id_end": 2297,
+  "source_page_ids": [
+    2296,
+    2297
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2296",
+    "https://read.shamela.ws/book/10906/2297"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 316,
+  "printed_page_end": 317,
+  "content_hash": "8cd4f4f356c4f94ad2f7e81238aa2738e178e22420c461b54daa9d06823d7ec9",
+  "folder": "2296_أم_حرام_بنت_ملحان_بن_خالد_الأنصارية"
+}

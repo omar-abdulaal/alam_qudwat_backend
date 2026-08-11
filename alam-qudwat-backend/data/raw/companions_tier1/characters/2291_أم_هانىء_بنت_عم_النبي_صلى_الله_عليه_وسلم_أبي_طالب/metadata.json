@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_00a568a8a4cd7293_2291",
+  "sequence": 141,
+  "character_id": "siyar_00a568a8a4cd7293",
+  "character_name": "أم هانىء بنت عم النبي صلى الله عليه وسلم أبي طالب",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2291,
+  "page_id_end": 2293,
+  "source_page_ids": [
+    2291,
+    2292,
+    2293
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2291",
+    "https://read.shamela.ws/book/10906/2292",
+    "https://read.shamela.ws/book/10906/2293"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 311,
+  "printed_page_end": 313,
+  "content_hash": "dd75c980ce9439dbf36b78e3d25a4d27811ca11f7609b630b0297e893b1c158f",
+  "folder": "2291_أم_هانىء_بنت_عم_النبي_صلى_الله_عليه_وسلم_أبي_طالب"
+}

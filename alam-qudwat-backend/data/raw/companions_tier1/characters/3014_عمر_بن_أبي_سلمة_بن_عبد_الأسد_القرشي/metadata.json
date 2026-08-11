@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_7f02c215fbc34890_3014",
+  "sequence": 271,
+  "character_id": "siyar_7f02c215fbc34890",
+  "character_name": "عمر بن أبي سلمة بن عبد الأسد القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3014,
+  "page_id_end": 3015,
+  "source_page_ids": [
+    3014,
+    3015
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3014",
+    "https://read.shamela.ws/book/10906/3015"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 406,
+  "printed_page_end": 407,
+  "content_hash": "6065f3aebd7ed4b3ad214f17e4c7bd9f65b88eef52c8c4f964b255212df72fd0",
+  "folder": "3014_عمر_بن_أبي_سلمة_بن_عبد_الأسد_القرشي"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_4b0ca0c5630dcc19_1754",
+  "sequence": 67,
+  "character_id": "siyar_4b0ca0c5630dcc19",
+  "character_name": "يزيد بن أبي سفيان بن حرب بن أمية الأموي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1754,
+  "page_id_end": 1755,
+  "source_page_ids": [
+    1754,
+    1755
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1754",
+    "https://read.shamela.ws/book/10906/1755"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 328,
+  "printed_page_end": 329,
+  "content_hash": "c1ac89bd926687b1ec80962d5e8412c85a63e6df7b5227a615f3dd5b7be5f16a",
+  "folder": "1754_يزيد_بن_أبي_سفيان_بن_حرب_بن_أمية_الأموي"
+}

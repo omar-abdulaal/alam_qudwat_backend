@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_b6d8633e53c4bc53_3052",
+  "sequence": 293,
+  "character_id": "siyar_b6d8633e53c4bc53",
+  "character_name": "الفضل بن العباس بن عبد المطلب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3052,
+  "page_id_end": 3052,
+  "source_page_ids": [
+    3052
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3052"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 444,
+  "printed_page_end": 444,
+  "content_hash": "1d1592cc12728a3d31f94945c34bccffdcea5e82be309ea7fe6e258a538063e8",
+  "folder": "3052_الفضل_بن_العباس_بن_عبد_المطلب_الهاشمي"
+}

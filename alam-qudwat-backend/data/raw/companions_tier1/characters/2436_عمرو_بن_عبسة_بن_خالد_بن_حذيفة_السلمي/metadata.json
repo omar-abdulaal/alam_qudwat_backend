@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_e2fe5dd2cf8a79b0_2436",
+  "sequence": 173,
+  "character_id": "siyar_e2fe5dd2cf8a79b0",
+  "character_name": "عمرو بن عبسة بن خالد بن حذيفة السلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2436,
+  "page_id_end": 2439,
+  "source_page_ids": [
+    2436,
+    2437,
+    2438,
+    2439
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2436",
+    "https://read.shamela.ws/book/10906/2437",
+    "https://read.shamela.ws/book/10906/2438",
+    "https://read.shamela.ws/book/10906/2439"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 456,
+  "printed_page_end": 459,
+  "content_hash": "c078a7646b35be063d3f9bc6e3c8737d92301cfe21c2b001e8167bbf7a78782d",
+  "folder": "2436_عمرو_بن_عبسة_بن_خالد_بن_حذيفة_السلمي"
+}

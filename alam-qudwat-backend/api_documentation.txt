@@ -1,0 +1,676 @@
+================================================================================
+ALAM QUDWAT — BACKEND API DOCUMENTATION
+================================================================================
+
+Grounded, citable storytelling chat API over the Rashidun-caliphs RAG
+knowledge base (see docs/RAG.md for the RAG pipeline itself). This backend
+is the layer the Flutter app talks to; it never talks to the RAG database
+directly from the client.
+
+--------------------------------------------------------------------------------
+1. ARCHITECTURE OVERVIEW
+--------------------------------------------------------------------------------
+
+Flutter app
+    |  HTTPS + "Authorization: Bearer <API_AUTH_TOKEN>"
+    v
+FastAPI backend (app/)
+    |  asyncio.to_thread(...) for the sync pieces below
+    v
+rag.retrieval.retriever.retrieve()   <- semantic search + metadata filter (unchanged)
+    |
+rag.generation.prompt.build_chat_messages()  <- grounded, narrator-mode prompt (unchanged core + new chat variant)
+    |
+app.services.llm.OpenAIChatLLM.stream()      <- the actual LLM call (new; rag/ deliberately has none)
+    |
+Server-Sent Events streamed back to the client, then the assistant turn +
+citations (+ suggestions, if any) are persisted to Postgres
+(app.db.models: conversations/messages)
+
+Two separate SQLAlchemy DeclarativeBases share one Postgres database:
+  - rag.db.models.Base   -> documents, chunks (RAG domain, untouched by this phase)
+  - app.db.models.AppBase -> characters, conversations, messages, story_of_day (new)
+Both are migrated through the same Alembic history (alembic/versions/0001, 0002).
+
+Voice I/O runs alongside chat, decoupled from it:
+  - POST /api/v1/stt/transcribe: audio upload -> app.services.stt.OpenAISTT
+    (OpenAI gpt-4o-mini-transcribe) -> plain transcribed text, no chat turn
+    created. The client sends that text through POST /chat/stream itself.
+  - POST /api/v1/tts/speak: text (or an existing message_id) ->
+    app.services.tts.SilmaSageMakerTTS (the org's own SILMA model on AWS
+    SageMaker, NOT OpenAI) -> streamed raw PCM audio.
+
+--------------------------------------------------------------------------------
+2. AUTHENTICATION
+--------------------------------------------------------------------------------
+
+Every /api/v1/* endpoint requires:
+
+    Authorization: Bearer <API_AUTH_TOKEN>
+
+<API_AUTH_TOKEN> is a shared secret configured via the API_AUTH_TOKEN
+environment variable. This is the ONLY access control in this MVP phase —
+there is no per-user account system yet (see Limitations, section 8).
+Missing or wrong token -> 401 Unauthorized, JSON body {"detail": "..."}.
+
+GET /health is intentionally NOT authenticated (for load balancer /
+container orchestrator health checks).
+
+The Flutter app must never embed the OpenAI key or the database
+credentials — only this single API_AUTH_TOKEN, which grants access to the
+backend's own endpoints, nothing else.
+
+--------------------------------------------------------------------------------
+3. ENDPOINTS
+--------------------------------------------------------------------------------
+
+GET /health
+    No auth required.
+    200 -> {"status": "ok"}   (also verifies DB connectivity)
+
+
+GET /api/v1/characters
+    Query params (optional): era, category
+    200 -> array of Character:
+        {
+          "slug": "abu_bakr",
+          "name_ar": "أبو بكر الصديق",
+          "era": "الخلافة الراشدة",
+          "category": "الخلفاء الراشدون",
+          "short_description": "...",
+          "avatar_url": null,
+          "sort_order": 1,
+          "created_at": "2026-08-09T19:32:17+03:00"
+        }
+    Only is_active=true characters are returned, ordered by sort_order.
+
+
+GET /api/v1/characters/{slug}
+    200 -> a single Character (same shape as above)
+    404 -> unknown or inactive slug
+
+
+GET /api/v1/story-of-day
+    Query params (optional): date (YYYY-MM-DD, defaults to today, server time)
+    200 -> StoryOfDay:
+        {
+          "story_date": "2026-08-09",
+          "character": { ...Character... },
+          "title": null,
+          "teaser": null,
+          "is_curated": false
+        }
+    Resolution: looks for a manually-curated `story_of_day` row for that
+    date first (is_curated=true, with optional title/teaser); if none
+    exists, deterministically rotates through active characters keyed by
+    a hash of the date (is_curated=false) — no write happens for the
+    default path, entirely server-computed, zero coupling to the client.
+
+
+GET /api/v1/conversations/{conversation_id}
+    200 -> Conversation with its full message history:
+        {
+          "id": "uuid",
+          "character_slug": "abu_bakr",
+          "narrator_mode": "adults",
+          "created_at": "...",
+          "updated_at": "...",
+          "messages": [
+            {
+              "id": "uuid",
+              "role": "user",
+              "content": "...",
+              "citations": null,
+              "extra": null,
+              "created_at": "..."
+            },
+            {
+              "id": "uuid",
+              "role": "assistant",
+              "content": "...",
+              "citations": [ {...Citation...}, ... ],
+              "extra": { "suggestions": ["سؤال متابعة أول؟", "..."] },  // or null
+              "created_at": "..."
+            }
+          ]
+        }
+    404 -> unknown conversation_id
+    Note: this endpoint exists so the Flutter app can resume a
+    conversation after an app restart by persisting only the
+    conversation_id locally (see section 5 — conversational continuity).
+
+
+POST /api/v1/chat/stream   <-- THE MAIN ENDPOINT
+    Content-Type: application/json
+    Request body (ChatRequest):
+        {
+          "message": "كيف تولى أبو بكر الخلافة؟",   // required, non-empty
+          "conversation_id": null,                    // omit to start a new conversation
+          "character_slug": "abu_bakr",                // required if conversation_id is omitted
+          "mode": "adults"                              // "kids" | "adults"; required if conversation_id is omitted
+        }
+
+    Continuing an existing conversation:
+        {
+          "message": "وماذا حدث بعد ذلك؟",
+          "conversation_id": "8dfaf223-4c29-4207-8810-70b12d778fcf"
+        }
+        character_slug/mode are optional here:
+          - if character_slug is provided and does NOT match the
+            conversation's character -> streamed `error` event, 400-equivalent
+          - if mode is provided and differs from what's stored, the
+            conversation's mode is updated going forward (supports a
+            kid/adult toggle mid-conversation)
+
+    Response: `Content-Type: text/event-stream`, one HTTP response per
+    call (not a WebSocket). Headers include Cache-Control: no-cache and
+    X-Accel-Buffering: no (disables proxy buffering).
+
+    See section 4 for the exact SSE event contract.
+
+
+POST /api/v1/stt/transcribe   <-- SPEECH-TO-TEXT (voice input)
+    Content-Type: multipart/form-data
+    Form field: `audio` — the audio file (allowed extensions: .mp3, .mp4,
+    .mpeg, .mpga, .m4a, .wav, .webm, .ogg; max size STT_MAX_AUDIO_BYTES,
+    default 25 MB, matching OpenAI's own limit)
+
+    200 -> {"text": "النص المفرَّغ من الصوت"}
+
+    This ONLY transcribes — it does not create/continue a conversation and
+    does not generate any answer. Send the returned text through
+    POST /api/v1/chat/stream yourself, exactly like a typed message.
+
+    400 -> unsupported file type / empty file / file too large
+
+    Example:
+        curl -X POST $BASE_URL/api/v1/stt/transcribe \
+          -H "Authorization: Bearer $API_AUTH_TOKEN" \
+          -F "audio=@recording.m4a;type=audio/m4a"
+
+
+POST /api/v1/tts/speak   <-- TEXT-TO-SPEECH (voice output, SILMA on SageMaker)
+    Content-Type: application/json
+    Request body — exactly ONE of `text` or `message_id`:
+        {"text": "النص المطلوب نطقه"}
+        {"message_id": "<uuid of an existing assistant Message>"}
+        optional in both: {"voice_id": "pixel"}   // overrides TTS_DEFAULT_VOICE_ID
+
+    Inline citation markers ([1], [٢], ...) are stripped from the text
+    before synthesis automatically (reads badly aloud otherwise) — the
+    Flutter app does not need to strip them itself before calling this.
+
+    200 -> `Content-Type: application/octet-stream`, streamed body of raw
+    PCM audio: int16 little-endian, mono, 32000 Hz — NOT a WAV/MP3
+    container, just the raw samples. Response headers describe the format:
+        X-Audio-Sample-Rate: 32000
+        X-Audio-Channels: 1
+        X-Audio-Sample-Format: pcm_s16le
+
+    400 -> validation error (both/neither of text+message_id, text too
+           long, nothing to synthesize after stripping citation markers)
+    404 -> unknown message_id, or message_id is not an assistant message
+    503 -> TTS is not configured on this deployment (SILMA_SAGEMAKER_
+           ENDPOINT_NAME unset) or the SageMaker call failed
+    502 -> the backend produced no audio at all (unexpected)
+
+    Example:
+        curl -X POST $BASE_URL/api/v1/tts/speak \
+          -H "Authorization: Bearer $API_AUTH_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d '{"message_id":"8dfaf223-4c29-4207-8810-70b12d778fcf"}' \
+          --output reply.pcm
+
+--------------------------------------------------------------------------------
+4. SERVER-SENT EVENTS (SSE) CONTRACT — POST /api/v1/chat/stream
+--------------------------------------------------------------------------------
+
+Each event is two lines followed by a blank line:
+
+    event: <name>
+    data: <JSON>
+    <blank line>
+
+Events, always in this order:
+
+  1. "conversation"  (always first, exactly once)
+        data: {"conversation_id": "<uuid>"}
+        Sent as soon as the conversation is resolved/created — capture
+        this immediately so the client has it even if something fails
+        later in the stream.
+
+  2. "delta"  (zero or more times)
+        data: {"text": "<incremental text chunk>"}
+        Concatenate all "delta" event texts in order to get the full
+        response. If the question isn't covered by the retrieved
+        sources, exactly ONE "delta" event is sent containing a fixed,
+        honest "not enough information" message (mode-appropriate) —
+        the LLM is not called in that case at all.
+
+  3. "citations"  (always exactly once, after the last "delta")
+        data: {"citations": [
+          {
+            "index": 1,
+            "book_title": "سير أعلام النبلاء - ط الرسالة",
+            "author": "شمس الدين الذهبي",
+            "character": "abu_bakr",
+            "character_name": "أبو بكر الصديق",
+            "page": "46",
+            "source_url": "https://read.shamela.ws/book/10906/1194",
+            "score": 0.457
+          },
+          ...
+        ]}
+        Empty array [] when the ungrounded fallback was used. The
+        assistant's streamed text references these by their "index"
+        inline as [1], [2], etc. (Arabic-Indic digits — ١، ٢، ٣...) —
+        the Flutter UI can render these as tappable citation markers
+        linking to source_url.
+
+  4. "suggestions"  (always exactly once, after "citations")
+        data: {"suggestions": ["سؤال متابعة أول؟", "سؤال متابعة ثانٍ؟"]}
+        0 to 3 short Arabic follow-up questions the user might want to
+        ask next — generated by the LLM itself deciding whether any
+        natural follow-up exists for this specific answer (see section 5).
+        Always present in the stream, but very often an EMPTY array —
+        that's expected/normal, not an error; only render a "suggested
+        questions" UI when the array is non-empty. Always [] for the
+        ungrounded-fallback case (no LLM call is made for that turn at
+        all, including for suggestions).
+
+  5. "done"  (always exactly once, terminal)
+        data: {}
+
+  OR, at any point instead of the above: "error" (terminal)
+        data: {"message": "<human-readable error>"}
+        Sent for validation failures (e.g. missing character_slug on a
+        new conversation, unknown character, unknown conversation_id,
+        mismatched character_slug) or unexpected failures (LLM/DB
+        errors). No further events follow an "error".
+
+Persistence timing: the user's message is saved immediately (survives
+even if generation fails); the assistant's message + citations + any
+suggestions are saved only after the stream completes successfully — a
+failed/interrupted generation never leaves a partial/bogus assistant turn
+in history. Suggestions are stored in that message's `extra` field
+(`{"suggestions": [...]}`) and returned by GET /api/v1/conversations/{id}.
+
+--------------------------------------------------------------------------------
+5. CONVERSATIONAL CONTINUITY & GROUNDING (how it actually works)
+--------------------------------------------------------------------------------
+
+- The client only needs to remember `conversation_id` (a UUID) — never the
+  full message history. On each new message, the backend loads the last
+  HISTORY_MAX_MESSAGES (default 8) turns from Postgres itself and includes
+  them as real prior turns in the LLM's message list.
+
+- Retrieval query augmentation: a short follow-up like "وماذا حدث بعد
+  ذلك؟" ("what happened next?") carries almost no topical signal on its
+  own and retrieves poorly in isolation. The backend folds the previous
+  user turn into the text used for embedding/retrieval (not into what's
+  shown to the LLM as "the question", which stays the literal current
+  message) — this measurably fixes follow-up retrieval without an extra
+  LLM call to rewrite the query.
+
+- Grounding gate: retrieval runs with RETRIEVAL_TOP_K chunks (default 5).
+  If zero chunks come back, OR the best (top) result's cosine-similarity
+  score is below RETRIEVAL_MIN_SCORE (default 0.28, calibrated against
+  real data — see Limitations), the LLM is skipped entirely and a fixed,
+  mode-appropriate "sources don't cover this" message is returned. This
+  is a hard, deterministic backstop — the system prompt sent to the LLM
+  additionally instructs it (as defense in depth) to say so itself if the
+  attached sources are insufficient, and to never invent facts, names, or
+  dates beyond them.
+
+- The narrator never speaks as the historical figure in first person —
+  the system prompt (rag/generation/prompt.py, narrator_system_prompt())
+  explicitly forbids this and requires third-person narration, in both
+  "kids" (simple, warm, values/lessons-focused Arabic) and "adults"
+  (sophisticated Arabic with historical/political/social context) modes.
+
+- Suggestions are decided by the LLM, not a heuristic: after the narrative
+  answer finishes streaming, a second, small, non-streamed LLM call
+  (rag/generation/prompt.py build_suggestions_prompt(), JSON response
+  mode) is made with the question, the answer just given, and the same
+  sources — explicitly instructed to return an empty list when no natural
+  follow-up exists rather than inventing one to fill the array. This adds
+  a small tail latency after the "delta" events stop and before "citations"/
+  "suggestions" arrive — expected and intentional (see Limitations). Any
+  failure in this step (API error, malformed JSON) silently yields no
+  suggestions; it never breaks the main answer, which is already fully
+  streamed and saved by that point.
+
+--------------------------------------------------------------------------------
+6. HOW TO RUN THE BACKEND LOCALLY
+--------------------------------------------------------------------------------
+
+Prerequisites: Postgres with the `vector` extension enabled (see
+docs/RAG.md section "Setup" — docker-compose or a native install both
+work).
+
+    pip install -r requirements.txt
+    cp .env.example .env         # fill in DATABASE_URL, OPENAI_API_KEY, API_AUTH_TOKEN
+    alembic upgrade head          # creates + seeds characters, conversations, messages, story_of_day
+    uvicorn app.main:app --reload --port 8000
+
+You do NOT need to run ingestion manually first: on every startup the
+backend automatically ingests, in a background thread, any character
+present under RAG_DATA_DIR (default data/raw/*) that isn't in the DB yet
+(see docs/RAG.md "Automatic ingestion on backend startup"). GET /health
+and every other route respond immediately regardless of how long that
+takes — the API never waits on it. Set AUTO_INGEST_ON_STARTUP=false to
+disable this (e.g. a scaled-out instance that shouldn't also ingest).
+To force a character to be re-ingested (e.g. corrected source text),
+delete it first: `python -m rag.ingestion.delete_character <character_id>`
+— the next startup (or manual ingestion run) will pick it up as missing.
+
+Interactive API docs (Swagger UI): http://127.0.0.1:8000/docs
+(the auth padlock in that UI accepts your API_AUTH_TOKEN as a Bearer token)
+
+Docker (no local Python needed): `docker compose up --build` runs both
+`db` and `api` services (see docker-compose.yml). Run `alembic upgrade
+head` once against the compose Postgres before first use.
+
+TTS is optional at boot: if SILMA_SAGEMAKER_ENDPOINT_NAME is unset, every
+endpoint except POST /api/v1/tts/speak works normally; that one endpoint
+returns a clear 503 until it's configured (see section 8).
+
+--------------------------------------------------------------------------------
+7. HOW TO TEST THE MAIN CHAT FLOW (AND VOICE I/O)
+--------------------------------------------------------------------------------
+
+Automated (no real OpenAI/AWS calls — uses tests/fake_embedder.py,
+tests/fake_llm.py, tests/fake_stt.py, tests/fake_tts.py):
+
+    pytest tests/
+    (52 tests as of this writing: RAG pipeline tests + API tests covering
+    auth, character/story listing, the grounded/ungrounded chat paths,
+    conversation persistence, follow-up context handling, LLM-decided
+    suggestions, speech-to-text, and text-to-speech.)
+
+Manual, against a real running server + real OpenAI (uses your real
+OPENAI_API_KEY and calls the actual embeddings + chat completion +
+transcription APIs):
+
+    curl -s http://127.0.0.1:8000/api/v1/characters \
+      -H "Authorization: Bearer $API_AUTH_TOKEN"
+
+    curl -N -X POST http://127.0.0.1:8000/api/v1/chat/stream \
+      -H "Authorization: Bearer $API_AUTH_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d '{"message":"كيف تولى أبو بكر الخلافة؟","character_slug":"abu_bakr","mode":"adults"}'
+
+    (-N disables curl's output buffering so you see SSE events arrive live.
+    On Windows, prefer writing the JSON body to a file and using
+    `--data-binary @file.json` — passing Arabic text through shell
+    argument quoting can silently corrupt the UTF-8 bytes and produce
+    misleadingly low retrieval scores; this bit us during development,
+    see Limitations.)
+
+    Then GET /api/v1/conversations/<conversation_id from the stream> to
+    confirm the turn (and any suggestions, in `extra`) was persisted
+    correctly.
+
+    Speech-to-text (real OpenAI call):
+        curl -X POST http://127.0.0.1:8000/api/v1/stt/transcribe \
+          -H "Authorization: Bearer $API_AUTH_TOKEN" \
+          -F "audio=@recording.wav;type=audio/wav"
+    This was verified end-to-end during development using a synthesized
+    speech WAV file — the returned text matched the spoken audio.
+
+    Text-to-speech: requires SILMA_SAGEMAKER_ENDPOINT_NAME + AWS
+    credentials to be configured (see section 8) — none were available in
+    the environment this backend was built in, so this endpoint's
+    happy path is verified only by the fake-backed automated tests plus a
+    manual check that it fails clearly (503, actionable message) when
+    unconfigured, not by a real SageMaker call. Once credentials exist:
+        curl -X POST http://127.0.0.1:8000/api/v1/tts/speak \
+          -H "Authorization: Bearer $API_AUTH_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d '{"text":"مرحبا"}' --output out.pcm
+    Play out.pcm as raw PCM (int16 LE, mono, 32000 Hz), e.g.:
+        ffplay -f s16le -ar 32000 -ac 1 out.pcm
+
+--------------------------------------------------------------------------------
+8. REQUIRED ENVIRONMENT VARIABLES / EXTERNAL SERVICES
+--------------------------------------------------------------------------------
+
+(see .env.example for the authoritative, commented list)
+
+RAG / generation (rag/config.py):
+  DATABASE_URL           postgresql+psycopg://... (Postgres 15+, `vector` extension)
+  OPENAI_API_KEY         used for embeddings, chat completions, AND transcription (STT)
+  EMBEDDING_MODEL, EMBEDDING_DIM
+  CHAT_MODEL              default gpt-4o-mini
+  CHAT_TEMPERATURE        default 0.3
+  RETRIEVAL_TOP_K         default 5
+  RETRIEVAL_MIN_SCORE     default 0.28
+  STT_MODEL               default gpt-4o-mini-transcribe
+  RAG_DATA_DIR            default data/raw — root scanned for dataset subdirectories
+                          by the startup auto-ingest sync (see section 6)
+
+Backend/API (app/core/config.py):
+  AUTO_INGEST_ON_STARTUP  default true — ingest any character missing from the DB
+                          in a background thread on every backend startup (section 6)
+  API_AUTH_TOKEN          shared-secret bearer token for the Flutter app — REQUIRED, no default
+  CORS_ALLOW_ORIGINS      default "*" (mobile clients don't send Origin; tighten for web)
+  HISTORY_MAX_MESSAGES    default 8
+  MAX_MESSAGE_LENGTH      default 2000
+  LOG_LEVEL               default INFO
+  STT_MAX_AUDIO_BYTES     default 26214400 (25 MB, matches OpenAI's own limit)
+  SILMA_SAGEMAKER_ENDPOINT_NAME   name of the deployed SILMA SageMaker endpoint —
+                          OPTIONAL: the whole app boots fine without it; only
+                          POST /api/v1/tts/speak fails (503, clear message) until set
+  AWS_REGION              default us-east-1 — region of the SageMaker endpoint
+  TTS_DEFAULT_VOICE_ID    default "pixel"
+  TTS_MAX_TEXT_LENGTH     default 1000 (characters)
+
+AWS credentials for TTS (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY, or an
+IAM role in production) are picked up by boto3's own default credential
+chain — they are NOT read by this app's Settings objects and must never be
+put in application code; set them as plain environment variables or rely
+on an attached IAM role when deployed on AWS.
+
+External services: Postgres (with pgvector), the OpenAI API (embeddings +
+chat + transcription), and — only if TTS is enabled — AWS SageMaker
+(SILMA endpoint) via boto3.
+
+Nothing above is ever returned in any API response — the only thing the
+Flutter app itself needs to know is API_AUTH_TOKEN and the backend's base URL.
+
+--------------------------------------------------------------------------------
+9. HOW FLUTTER SHOULD CONSUME THE STREAMING CHAT API
+--------------------------------------------------------------------------------
+
+This is plain HTTP with a `text/event-stream` body over a POST request —
+NOT the browser `EventSource` API (which can't do POST/custom headers
+anyway) and not a WebSocket. Use Dart's `http.Client` in streamed mode:
+
+    import 'dart:convert';
+    import 'package:http/http.dart' as http;
+
+    final client = http.Client();
+    final request = http.Request(
+      'POST',
+      Uri.parse('$baseUrl/api/v1/chat/stream'),
+    )
+      ..headers['Authorization'] = 'Bearer $apiAuthToken'
+      ..headers['Content-Type'] = 'application/json'
+      ..body = jsonEncode({
+        'message': userMessage,
+        if (conversationId != null) 'conversation_id': conversationId,
+        if (conversationId == null) 'character_slug': selectedCharacterSlug,
+        if (conversationId == null) 'mode': narratorMode, // 'kids' | 'adults'
+      });
+
+    final response = await client.send(request);
+    final stream = response.stream.transform(utf8.decoder);
+
+    String buffer = '';
+    await for (final chunk in stream) {
+      buffer += chunk;
+      // SSE events are separated by a blank line ("\n\n")
+      while (buffer.contains('\n\n')) {
+        final idx = buffer.indexOf('\n\n');
+        final rawEvent = buffer.substring(0, idx);
+        buffer = buffer.substring(idx + 2);
+
+        final lines = rawEvent.split('\n');
+        final eventName = lines[0].replaceFirst('event: ', '');
+        final data = jsonDecode(lines[1].replaceFirst('data: ', ''));
+
+        switch (eventName) {
+          case 'conversation':
+            conversationId = data['conversation_id'];
+            break;
+          case 'delta':
+            appendToNarratorBubble(data['text']);
+            break;
+          case 'citations':
+            showCitations(data['citations']); // list of {index, book_title, author, ...}
+            break;
+          case 'suggestions':
+            // data['suggestions'] is a list of 0-3 Arabic strings — only
+            // show a "suggested questions" row/chips when it's non-empty;
+            // an empty list is the normal case, not an error.
+            showSuggestedQuestions(data['suggestions']);
+            break;
+          case 'done':
+            markResponseComplete();
+            break;
+          case 'error':
+            showErrorToUser(data['message']);
+            break;
+        }
+      }
+    }
+
+Notes for the Flutter integration:
+  - Persist `conversation_id` locally (e.g. shared_preferences) per
+    character chat, and pass it on every subsequent message for that
+    conversation — no need to resend prior messages.
+  - On app restart, if you want to show prior turns, call
+    GET /api/v1/conversations/{conversation_id} once to rehydrate the UI
+    (each stored assistant message's `extra.suggestions`, if present, can
+    repopulate that turn's suggestion chips too).
+  - Render citation markers ([1], [2]...) in the streamed text as tappable
+    chips using the matching entry from the "citations" event's array
+    (open source_url in an in-app browser / external link).
+  - Tapping a suggestion chip is just a normal next chat message: send it
+    as `message` with the same `conversation_id` — no special endpoint.
+  - A package like `flutter_client_sse` can also parse this exact format
+    if preferred over hand-rolling the buffer/split logic above — the
+    event names and payloads above are what it needs to match.
+
+VOICE INPUT (speech-to-text) — plain JSON request/response, no streaming:
+
+    import 'package:http/http.dart' as http;
+
+    final request = http.MultipartRequest(
+      'POST',
+      Uri.parse('$baseUrl/api/v1/stt/transcribe'),
+    )
+      ..headers['Authorization'] = 'Bearer $apiAuthToken'
+      ..files.add(await http.MultipartFile.fromPath('audio', recordedFilePath));
+
+    final streamedResponse = await request.send();
+    final response = await http.Response.fromStream(streamedResponse);
+    final text = jsonDecode(response.body)['text'] as String;
+    // Now send `text` through POST /api/v1/chat/stream like any typed
+    // message — this endpoint does NOT generate an answer itself.
+
+VOICE OUTPUT (text-to-speech) — the response body is raw PCM audio
+(int16 little-endian, mono, 32000 Hz — NOT a WAV/MP3 file), so it needs a
+raw-PCM-capable audio player rather than just_audio's default file
+players. Read the X-Audio-Sample-Rate/X-Audio-Channels/X-Audio-Sample-
+Format response headers to confirm format if you want to be defensive
+against a future format change, rather than hardcoding 32000/mono:
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/api/v1/tts/speak'),
+      headers: {
+        'Authorization': 'Bearer $apiAuthToken',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({'message_id': assistantMessageId}),
+    );
+    final pcmBytes = response.bodyBytes;
+    // Feed pcmBytes to a raw-PCM player, e.g. the `flutter_pcm_sound`
+    // package, configured for 32000 Hz / mono / 16-bit signed samples.
+
+--------------------------------------------------------------------------------
+10. IMPORTANT DECISIONS & LIMITATIONS
+--------------------------------------------------------------------------------
+
+- No user-account system yet. A conversation is identified only by its
+  UUID; anyone holding the shared API_AUTH_TOKEN and a conversation_id can
+  read/continue it. Acceptable for an MVP single-shared-secret mobile
+  backend; should be revisited (real per-user auth + conversation
+  ownership) before wider release.
+
+- No distributed rate limiting. The bearer token plus per-message length
+  cap (MAX_MESSAGE_LENGTH) are the only abuse guards. For production,
+  add rate limiting at the AWS layer (API Gateway / ALB / WAF) rather
+  than in-process (in-process counters don't work correctly once the
+  service scales to multiple instances).
+
+- RETRIEVAL_MIN_SCORE=0.28 was calibrated empirically against this
+  dataset/embedding model: off-topic questions ("best pizza recipe",
+  "who won the 2022 World Cup") scored 0.08-0.18 top similarity; genuine
+  on-topic questions scored 0.40-0.55. 0.28 sits in the gap with margin
+  on both sides. This should be re-validated if the embedding model or
+  corpus changes materially.
+
+- Citation numbering ([1], [2]...) is per-turn, based on that turn's
+  freshly retrieved sources. If the LLM references [1] inside history
+  text from a prior turn, that number reflects the prior turn's source
+  list, not the current one — a minor, inherent limitation of any
+  inline-citation-in-text scheme combined with a sliding retrieval window.
+  The structured "citations" event for the CURRENT turn is always
+  authoritative for that turn's answer.
+
+- Dockerfile/docker-compose `api` service were written but not build-
+  tested in this environment (no Docker available here) — the image
+  layout is straightforward (single pip install + uvicorn CMD) but
+  should be verified once Docker/AWS access is available.
+
+- Story-of-day's non-curated fallback is a stateless date-hash rotation
+  (no admin UI to curate a specific date exists yet) — inserting a row
+  into `story_of_day` directly (or via a future admin endpoint) overrides
+  it for that date.
+
+- `messages.extra` (JSONB) currently holds `{"suggestions": [...]}` for
+  assistant turns that have any; it's otherwise a deliberate forward-
+  compatibility seam for future interactive story choices/branching —
+  no schema migration should be needed to start using it further.
+
+- Suggestions add one extra, non-streamed LLM call per grounded answer,
+  made AFTER the narrative text finishes streaming — so there's a small
+  extra tail latency (typically ~1 second) between the last "delta" event
+  and the "citations"/"suggestions"/"done" events. This was a deliberate
+  trade-off for correctness/simplicity (a real LLM judgment call via
+  JSON mode) over trying to parse structured suggestions out of the
+  middle of a token stream. No suggestions call happens at all for the
+  ungrounded-fallback path.
+
+- TTS (POST /api/v1/tts/speak) could not be verified against a real
+  SILMA SageMaker endpoint in the environment this backend was built in —
+  no AWS credentials or SILMA_SAGEMAKER_ENDPOINT_NAME were available.
+  It's implemented closely following the provided reference
+  (tts_silma_example.py: same request shape, same PCM chunking-for-
+  transport behavior, same module-level lock serializing calls to the
+  endpoint) and covered by fake-backed automated tests plus a manual
+  check that it fails clearly (503) when unconfigured — but the real,
+  end-to-end SageMaker call itself is unverified. Should be smoke-tested
+  once real credentials/endpoint are available; no code changes are
+  expected to be needed, just configuration.
+
+- STT (POST /api/v1/stt/transcribe) WAS verified end-to-end against the
+  real OpenAI API during development (a synthesized speech WAV file
+  transcribed correctly).
+
+- The raw-PCM audio format for TTS (no WAV/MP3 container) matches exactly
+  what the SILMA SageMaker endpoint returns per the reference
+  implementation; the Flutter app needs a raw-PCM-capable audio player
+  (see section 9) rather than a standard file-based one.
+================================================================================

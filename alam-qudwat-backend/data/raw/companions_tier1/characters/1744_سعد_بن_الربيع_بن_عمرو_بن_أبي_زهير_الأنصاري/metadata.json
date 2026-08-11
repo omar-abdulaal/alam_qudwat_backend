@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_c32a47990db598aa_1744",
+  "sequence": 62,
+  "character_id": "siyar_c32a47990db598aa",
+  "character_name": "سعد بن الربيع بن عمرو بن أبي زهير الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1744,
+  "page_id_end": 1745,
+  "source_page_ids": [
+    1744,
+    1745
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1744",
+    "https://read.shamela.ws/book/10906/1745"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 318,
+  "printed_page_end": 319,
+  "content_hash": "148710ad1b629ad0c8cc4fbd7e00273e5a061d8968afcd3f60034c9a1ee73dd6",
+  "folder": "1744_سعد_بن_الربيع_بن_عمرو_بن_أبي_زهير_الأنصاري"
+}

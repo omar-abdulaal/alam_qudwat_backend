@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_ec7f75152e748d9e_2523",
+  "sequence": 197,
+  "character_id": "siyar_ec7f75152e748d9e",
+  "character_name": "مخرمة بن نوفل بن أهيب بن عبد مناف الزهري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2523,
+  "page_id_end": 2523,
+  "source_page_ids": [
+    2523
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2523"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 543,
+  "printed_page_end": 543,
+  "content_hash": "c4c3f6b083faf1cfbb89ad47c93a2458b569f0bb33e1c977b0fe2fa852798940",
+  "folder": "2523_مخرمة_بن_نوفل_بن_أهيب_بن_عبد_مناف_الزهري"
+}

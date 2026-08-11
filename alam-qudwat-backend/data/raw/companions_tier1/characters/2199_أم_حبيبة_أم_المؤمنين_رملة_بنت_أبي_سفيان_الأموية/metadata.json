@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_1dabf0e3f6bae7e2_2199",
+  "sequence": 113,
+  "character_id": "siyar_1dabf0e3f6bae7e2",
+  "character_name": "أم حبيبة أم المؤمنين رملة بنت أبي سفيان الأموية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2199,
+  "page_id_end": 2202,
+  "source_page_ids": [
+    2199,
+    2200,
+    2201,
+    2202
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2199",
+    "https://read.shamela.ws/book/10906/2200",
+    "https://read.shamela.ws/book/10906/2201",
+    "https://read.shamela.ws/book/10906/2202"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 219,
+  "printed_page_end": 222,
+  "content_hash": "f6c9225e2720b10f1b03cce7ed4a95c5e023d1de376802509bb240cebc69a707",
+  "folder": "2199_أم_حبيبة_أم_المؤمنين_رملة_بنت_أبي_سفيان_الأموية"
+}

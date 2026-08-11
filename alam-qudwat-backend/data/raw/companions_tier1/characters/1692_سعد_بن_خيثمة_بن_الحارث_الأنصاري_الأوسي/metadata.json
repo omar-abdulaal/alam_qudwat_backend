@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_772b06d6adc1c1b9_1692",
+  "sequence": 50,
+  "character_id": "siyar_772b06d6adc1c1b9",
+  "character_name": "سعد بن خيثمة بن الحارث الأنصاري الأوسي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1692,
+  "page_id_end": 1692,
+  "source_page_ids": [
+    1692
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1692"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 266,
+  "printed_page_end": 266,
+  "content_hash": "07e89e4f7ed647687d5f6675316059c11642be5a3b3b7249ba8d384d731e3329",
+  "folder": "1692_سعد_بن_خيثمة_بن_الحارث_الأنصاري_الأوسي"
+}

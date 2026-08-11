@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_b9aa85c79feb2afe_1688",
+  "sequence": 49,
+  "character_id": "siyar_b9aa85c79feb2afe",
+  "character_name": "العلاء بن الحضرمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1688,
+  "page_id_end": 1691,
+  "source_page_ids": [
+    1688,
+    1689,
+    1690,
+    1691
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1688",
+    "https://read.shamela.ws/book/10906/1689",
+    "https://read.shamela.ws/book/10906/1690",
+    "https://read.shamela.ws/book/10906/1691"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 262,
+  "printed_page_end": 265,
+  "content_hash": "9063e724d4a26e399e2c492b44295262f411b57306f5b6055b1022269e3a90cf",
+  "folder": "1688_العلاء_بن_الحضرمي"
+}

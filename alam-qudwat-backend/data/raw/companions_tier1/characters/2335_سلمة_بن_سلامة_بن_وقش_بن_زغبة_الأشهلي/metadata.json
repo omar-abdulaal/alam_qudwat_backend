@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_103c81f462864d6d_2335",
+  "sequence": 156,
+  "character_id": "siyar_103c81f462864d6d",
+  "character_name": "سلمة بن سلامة بن وقش بن زغبة الأشهلي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2335,
+  "page_id_end": 2335,
+  "source_page_ids": [
+    2335
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2335"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 355,
+  "printed_page_end": 355,
+  "content_hash": "fb85f7cc31cd7c8d44126ce945186f2ea24dcc55fa6f0a3cedbb9052424be1b7",
+  "folder": "2335_سلمة_بن_سلامة_بن_وقش_بن_زغبة_الأشهلي"
+}

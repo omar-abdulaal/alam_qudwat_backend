@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_550a6b0cec967ab8_2488",
+  "sequence": 189,
+  "character_id": "siyar_550a6b0cec967ab8",
+  "character_name": "عمران بن حصين بن عبيد بن خلف الخزاعي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2488,
+  "page_id_end": 2491,
+  "source_page_ids": [
+    2488,
+    2489,
+    2490,
+    2491
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2488",
+    "https://read.shamela.ws/book/10906/2489",
+    "https://read.shamela.ws/book/10906/2490",
+    "https://read.shamela.ws/book/10906/2491"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 508,
+  "printed_page_end": 511,
+  "content_hash": "14e005040c0b83dab4edfc881c09006e628c0e8828e693989bb70189b2aee76a",
+  "folder": "2488_عمران_بن_حصين_بن_عبيد_بن_خلف_الخزاعي"
+}

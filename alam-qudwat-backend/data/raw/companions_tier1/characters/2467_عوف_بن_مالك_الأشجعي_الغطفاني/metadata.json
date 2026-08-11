@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_5a6f9fe54538aa86_2467",
+  "sequence": 186,
+  "character_id": "siyar_5a6f9fe54538aa86",
+  "character_name": "عوف بن مالك الأشجعي الغطفاني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2467,
+  "page_id_end": 2470,
+  "source_page_ids": [
+    2467,
+    2468,
+    2469,
+    2470
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2467",
+    "https://read.shamela.ws/book/10906/2468",
+    "https://read.shamela.ws/book/10906/2469",
+    "https://read.shamela.ws/book/10906/2470"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 487,
+  "printed_page_end": 490,
+  "content_hash": "2056f1c48386f82c3df0b30001d57bebf5d407dbcb723b70ca593ce4e39b039e",
+  "folder": "2467_عوف_بن_مالك_الأشجعي_الغطفاني"
+}

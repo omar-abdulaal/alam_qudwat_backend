@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_41d679245bed0353_1929",
+  "sequence": 88,
+  "character_id": "siyar_41d679245bed0353",
+  "character_name": "عويم بن ساعدة بن عائش بن قيس الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1929,
+  "page_id_end": 1930,
+  "source_page_ids": [
+    1929,
+    1930
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1929",
+    "https://read.shamela.ws/book/10906/1930"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 503,
+  "printed_page_end": 504,
+  "content_hash": "22808afbb2b8780bef464cb21606ad010ca3a6d2a64f0fd3326ef9c70798d21e",
+  "folder": "1929_عويم_بن_ساعدة_بن_عائش_بن_قيس_الأنصاري"
+}

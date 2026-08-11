@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_5202eb21087e2b4d_3076",
+  "sequence": 303,
+  "character_id": "siyar_5202eb21087e2b4d",
+  "character_name": "أبو الطفيل عامر بن واثلة الليثي الكناني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3076,
+  "page_id_end": 3077,
+  "source_page_ids": [
+    3076,
+    3077
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3076",
+    "https://read.shamela.ws/book/10906/3077"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 468,
+  "printed_page_end": 469,
+  "content_hash": "f30ec173ef5bdd34ff76054c8da5a9be5e2b01c2d63a29f2b8453d3491725277",
+  "folder": "3076_أبو_الطفيل_عامر_بن_واثلة_الليثي_الكناني"
+}

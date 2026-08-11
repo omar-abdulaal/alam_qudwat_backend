@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_b5509964b2d4c95f_3048",
+  "sequence": 290,
+  "character_id": "siyar_b5509964b2d4c95f",
+  "character_name": "قثم بن العباس بن عبد المطلب بن هاشم الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3048,
+  "page_id_end": 3049,
+  "source_page_ids": [
+    3048,
+    3049
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3048",
+    "https://read.shamela.ws/book/10906/3049"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 440,
+  "printed_page_end": 441,
+  "content_hash": "3438c80cd7d33a8ae4dede62a0ead911a5e039ffb1e5ad2ba4190c0d1f698fac",
+  "folder": "3048_قثم_بن_العباس_بن_عبد_المطلب_بن_هاشم_الهاشمي"
+}

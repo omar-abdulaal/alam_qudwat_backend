@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_fe91f42d9d7666c3_3047",
+  "sequence": 289,
+  "character_id": "siyar_fe91f42d9d7666c3",
+  "character_name": "جبير بن الحويرث بن نقيد بن بجير بن عبد بن قصي بن كلاب القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3047,
+  "page_id_end": 3047,
+  "source_page_ids": [
+    3047
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3047"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 439,
+  "printed_page_end": 439,
+  "content_hash": "a9481c4cbf7277a842a7de33b4f0fcd78c5cf6002db5bc2c2b194898a0ff3005",
+  "folder": "3047_جبير_بن_الحويرث_بن_نقيد_بن_بجير_بن_عبد_بن_قصي_بن_كلاب_القرشي"
+}

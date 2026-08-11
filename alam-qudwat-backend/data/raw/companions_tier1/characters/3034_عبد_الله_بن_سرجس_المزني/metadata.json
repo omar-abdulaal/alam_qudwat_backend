@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_f9a2253c80cf93dd_3034",
+  "sequence": 282,
+  "character_id": "siyar_f9a2253c80cf93dd",
+  "character_name": "عبد الله بن سرجس المزني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3034,
+  "page_id_end": 3034,
+  "source_page_ids": [
+    3034
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3034"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 426,
+  "printed_page_end": 426,
+  "content_hash": "be6cbbd77dc98517464d55c8c446204971150b18d009ef82613bfba9b6c5f532",
+  "folder": "3034_عبد_الله_بن_سرجس_المزني"
+}

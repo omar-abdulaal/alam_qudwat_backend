@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_732836f2f1c27338_2203",
+  "sequence": 114,
+  "character_id": "siyar_732836f2f1c27338",
+  "character_name": "أم أيمن الحبشية بركة مولاة رسول الله صلى الله عليه وسلم وحاضنته",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2203,
+  "page_id_end": 2206,
+  "source_page_ids": [
+    2203,
+    2204,
+    2205,
+    2206
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2203",
+    "https://read.shamela.ws/book/10906/2204",
+    "https://read.shamela.ws/book/10906/2205",
+    "https://read.shamela.ws/book/10906/2206"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 223,
+  "printed_page_end": 226,
+  "content_hash": "fed4a47da07c5837ea4757cde37916b295a31bb2dd8408e364790cd85f2d5f13",
+  "folder": "2203_أم_أيمن_الحبشية_بركة_مولاة_رسول_الله_صلى_الله_عليه_وسلم_وحاضنته"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_8770c7a98a6ab4e8_2354",
+  "sequence": 163,
+  "character_id": "siyar_8770c7a98a6ab4e8",
+  "character_name": "عثمان بن أبي العاص أبو عبد الله الثقفي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2354,
+  "page_id_end": 2354,
+  "source_page_ids": [
+    2354
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2354"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 374,
+  "printed_page_end": 374,
+  "content_hash": "9b14891b50a9793404284fb449049bc8c66b1c892254aabf92337a22f1e15ad1",
+  "folder": "2354_عثمان_بن_أبي_العاص_أبو_عبد_الله_الثقفي"
+}

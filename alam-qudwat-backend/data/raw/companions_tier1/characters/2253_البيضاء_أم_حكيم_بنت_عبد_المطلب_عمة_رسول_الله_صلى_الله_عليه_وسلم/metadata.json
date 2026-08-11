@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_6eeb5418ec6de961_2253",
+  "sequence": 131,
+  "character_id": "siyar_6eeb5418ec6de961",
+  "character_name": "البيضاء أم حكيم بنت عبد المطلب عمة رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2253,
+  "page_id_end": 2253,
+  "source_page_ids": [
+    2253
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2253"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 273,
+  "printed_page_end": 273,
+  "content_hash": "60fa3e3027d15bc80a35cbc4e98f3b3e2df05e245f9b1a324d63eabd901a1e53",
+  "folder": "2253_البيضاء_أم_حكيم_بنت_عبد_المطلب_عمة_رسول_الله_صلى_الله_عليه_وسلم"
+}

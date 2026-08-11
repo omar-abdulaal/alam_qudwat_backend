@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_84b2ea2fd60d5016_1615",
+  "sequence": 20,
+  "character_id": "siyar_84b2ea2fd60d5016",
+  "character_name": "ابن التيهان أبو الهيثم مالك بن التيهان الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 1615,
+  "page_id_end": 1617,
+  "source_page_ids": [
+    1615,
+    1616,
+    1617
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1615",
+    "https://read.shamela.ws/book/10906/1616",
+    "https://read.shamela.ws/book/10906/1617"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 189,
+  "printed_page_end": 191,
+  "content_hash": "e2bf8d5df14a160c1f3b11bfd4f672a19b7cfaa079eceefbcbdbe6d3b18f69f7",
+  "folder": "1615_ابن_التيهان_أبو_الهيثم_مالك_بن_التيهان_الأنصاري"
+}

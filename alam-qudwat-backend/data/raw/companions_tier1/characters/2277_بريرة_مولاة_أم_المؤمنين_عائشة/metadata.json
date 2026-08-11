@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_05c647c2a4282afd_2277",
+  "sequence": 139,
+  "character_id": "siyar_05c647c2a4282afd",
+  "character_name": "بريرة مولاة أم المؤمنين عائشة",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2277,
+  "page_id_end": 2283,
+  "source_page_ids": [
+    2277,
+    2278,
+    2279,
+    2280,
+    2281,
+    2282,
+    2283
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2277",
+    "https://read.shamela.ws/book/10906/2278",
+    "https://read.shamela.ws/book/10906/2279",
+    "https://read.shamela.ws/book/10906/2280",
+    "https://read.shamela.ws/book/10906/2281",
+    "https://read.shamela.ws/book/10906/2282",
+    "https://read.shamela.ws/book/10906/2283"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 297,
+  "printed_page_end": 303,
+  "content_hash": "e252d94960d6aafe2108622990ddf260dc725fb23d17c0aaa49c636b46fef260",
+  "folder": "2277_بريرة_مولاة_أم_المؤمنين_عائشة"
+}

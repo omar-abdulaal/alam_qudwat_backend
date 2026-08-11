@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_4cc38dc05a5317bf_2336",
+  "sequence": 157,
+  "character_id": "siyar_4cc38dc05a5317bf",
+  "character_name": "النعمان بن مقرن أبو حكيم المزني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2336,
+  "page_id_end": 2337,
+  "source_page_ids": [
+    2336,
+    2337
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2336",
+    "https://read.shamela.ws/book/10906/2337"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 356,
+  "printed_page_end": 357,
+  "content_hash": "fe2826d6f59e9bc33fd05382b5e3998c2c6cec127cd02714f40a730f957467f3",
+  "folder": "2336_النعمان_بن_مقرن_أبو_حكيم_المزني"
+}

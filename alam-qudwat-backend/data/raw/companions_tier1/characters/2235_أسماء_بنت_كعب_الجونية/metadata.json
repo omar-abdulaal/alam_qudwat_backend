@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_5cb0f0b7c241138d_2235",
+  "sequence": 123,
+  "character_id": "siyar_5cb0f0b7c241138d",
+  "character_name": "أسماء بنت كعب الجونية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2235,
+  "page_id_end": 2235,
+  "source_page_ids": [
+    2235
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2235"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 255,
+  "printed_page_end": 255,
+  "content_hash": "3056ce6b1ef22e5c4b00aca036bc756fa9f4b55e398cf8d265fac8370d548b3a",
+  "folder": "2235_أسماء_بنت_كعب_الجونية"
+}

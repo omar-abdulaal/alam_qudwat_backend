@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_58525d752d6fc466_1991",
+  "sequence": 92,
+  "character_id": "siyar_58525d752d6fc466",
+  "character_name": "أبو حذافة السهمي عبد الله بن حذافة بن قيس",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 1991,
+  "page_id_end": 1995,
+  "source_page_ids": [
+    1991,
+    1992,
+    1993,
+    1994,
+    1995
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1991",
+    "https://read.shamela.ws/book/10906/1992",
+    "https://read.shamela.ws/book/10906/1993",
+    "https://read.shamela.ws/book/10906/1994",
+    "https://read.shamela.ws/book/10906/1995"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 11,
+  "printed_page_end": 15,
+  "content_hash": "851c6e68d22493382236dc31735679ecab1738865939fe7ea504c148a67c0015",
+  "folder": "1991_أبو_حذافة_السهمي_عبد_الله_بن_حذافة_بن_قيس"
+}

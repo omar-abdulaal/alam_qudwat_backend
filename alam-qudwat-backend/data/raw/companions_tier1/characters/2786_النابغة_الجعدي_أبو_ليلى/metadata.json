@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_92a19ff21c93d033_2786",
+  "sequence": 242,
+  "character_id": "siyar_92a19ff21c93d033",
+  "character_name": "النابغة الجعدي أبو ليلى",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2786,
+  "page_id_end": 2787,
+  "source_page_ids": [
+    2786,
+    2787
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2786",
+    "https://read.shamela.ws/book/10906/2787"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 177,
+  "printed_page_end": 178,
+  "content_hash": "a0e0b2066a5571b1a817abff094d7af7662b38163e94a4052dfe4e8992997911",
+  "folder": "2786_النابغة_الجعدي_أبو_ليلى"
+}

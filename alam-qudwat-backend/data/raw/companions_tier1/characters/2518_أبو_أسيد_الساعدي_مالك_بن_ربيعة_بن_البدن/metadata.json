@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_d582b48353777cad_2518",
+  "sequence": 194,
+  "character_id": "siyar_d582b48353777cad",
+  "character_name": "أبو أسيد الساعدي مالك بن ربيعة بن البدن",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2518,
+  "page_id_end": 2519,
+  "source_page_ids": [
+    2518,
+    2519
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2518",
+    "https://read.shamela.ws/book/10906/2519"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 538,
+  "printed_page_end": 539,
+  "content_hash": "2cc6871a2d86874cd7620145066e58b13b25f5891e51dc31f392e3294090142a",
+  "folder": "2518_أبو_أسيد_الساعدي_مالك_بن_ربيعة_بن_البدن"
+}

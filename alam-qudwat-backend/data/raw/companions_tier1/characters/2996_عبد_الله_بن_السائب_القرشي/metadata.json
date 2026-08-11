@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_a68cefbb202199b8_2996",
+  "sequence": 267,
+  "character_id": "siyar_a68cefbb202199b8",
+  "character_name": "عبد الله بن السائب القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2996,
+  "page_id_end": 2997,
+  "source_page_ids": [
+    2996,
+    2997
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2996",
+    "https://read.shamela.ws/book/10906/2997"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 388,
+  "printed_page_end": 389,
+  "content_hash": "d1051c8a50c703909cb9113c9a2ddbbc59f5b909b513750caf8fb0c912cbfb43",
+  "folder": "2996_عبد_الله_بن_السائب_القرشي"
+}

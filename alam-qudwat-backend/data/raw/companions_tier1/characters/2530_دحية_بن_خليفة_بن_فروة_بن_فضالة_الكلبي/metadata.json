@@ -1,0 +1,40 @@
+{
+  "biography_id": "siyar_5cc0eaa1eb774849_2530",
+  "sequence": 200,
+  "character_id": "siyar_5cc0eaa1eb774849",
+  "character_name": "دحية بن خليفة بن فروة بن فضالة الكلبي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 6,
+  "page_id_start": 2530,
+  "page_id_end": 2535,
+  "source_page_ids": [
+    2530,
+    2531,
+    2532,
+    2533,
+    2534,
+    2535
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2530",
+    "https://read.shamela.ws/book/10906/2531",
+    "https://read.shamela.ws/book/10906/2532",
+    "https://read.shamela.ws/book/10906/2533",
+    "https://read.shamela.ws/book/10906/2534",
+    "https://read.shamela.ws/book/10906/2535"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 550,
+  "printed_page_end": 555,
+  "content_hash": "df61c7adf2436e66c6848ac312fce2d97d912af72d7733e0f20ecaeba7fe5ae4",
+  "folder": "2530_دحية_بن_خليفة_بن_فروة_بن_فضالة_الكلبي"
+}

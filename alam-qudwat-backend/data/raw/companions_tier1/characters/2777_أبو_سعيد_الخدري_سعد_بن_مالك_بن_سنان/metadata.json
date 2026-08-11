@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_629978ddb46cd5b2_2777",
+  "sequence": 238,
+  "character_id": "siyar_629978ddb46cd5b2",
+  "character_name": "أبو سعيد الخدري سعد بن مالك بن سنان",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2777,
+  "page_id_end": 2780,
+  "source_page_ids": [
+    2777,
+    2778,
+    2779,
+    2780
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2777",
+    "https://read.shamela.ws/book/10906/2778",
+    "https://read.shamela.ws/book/10906/2779",
+    "https://read.shamela.ws/book/10906/2780"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 168,
+  "printed_page_end": 171,
+  "content_hash": "49259ceb9f498e5dd9fc5837552e4e1d0005893aae8f14396733334e58e70317",
+  "folder": "2777_أبو_سعيد_الخدري_سعد_بن_مالك_بن_سنان"
+}

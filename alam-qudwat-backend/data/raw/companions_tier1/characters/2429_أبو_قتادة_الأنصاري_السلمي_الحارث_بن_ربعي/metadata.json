@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_c6c63edfd27dc862_2429",
+  "sequence": 172,
+  "character_id": "siyar_c6c63edfd27dc862",
+  "character_name": "أبو قتادة الأنصاري السلمي الحارث بن ربعي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2429,
+  "page_id_end": 2435,
+  "source_page_ids": [
+    2429,
+    2430,
+    2431,
+    2432,
+    2433,
+    2434,
+    2435
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2429",
+    "https://read.shamela.ws/book/10906/2430",
+    "https://read.shamela.ws/book/10906/2431",
+    "https://read.shamela.ws/book/10906/2432",
+    "https://read.shamela.ws/book/10906/2433",
+    "https://read.shamela.ws/book/10906/2434",
+    "https://read.shamela.ws/book/10906/2435"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 449,
+  "printed_page_end": 455,
+  "content_hash": "77f7708529605298549cc9fe8d8f2bdd41c19520150c2528566333f22669c09e",
+  "folder": "2429_أبو_قتادة_الأنصاري_السلمي_الحارث_بن_ربعي"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_1aaed6dee880976f_2795",
+  "sequence": 246,
+  "character_id": "siyar_1aaed6dee880976f",
+  "character_name": "جابر بن سمرة بن جنادة بن جندب السوائي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2795,
+  "page_id_end": 2796,
+  "source_page_ids": [
+    2795,
+    2796
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2795",
+    "https://read.shamela.ws/book/10906/2796"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 186,
+  "printed_page_end": 187,
+  "content_hash": "0d227c61b069cfe580312d24dae33c85ff5585aca1ab73df9a1e7e10fcbf6d92",
+  "folder": "2795_جابر_بن_سمرة_بن_جنادة_بن_جندب_السوائي"
+}

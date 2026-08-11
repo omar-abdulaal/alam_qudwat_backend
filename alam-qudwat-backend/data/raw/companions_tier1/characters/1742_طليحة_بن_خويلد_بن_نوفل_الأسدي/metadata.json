@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_98d8a483bee0d43b_1742",
+  "sequence": 61,
+  "character_id": "siyar_98d8a483bee0d43b",
+  "character_name": "طليحة بن خويلد بن نوفل الأسدي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1742,
+  "page_id_end": 1743,
+  "source_page_ids": [
+    1742,
+    1743
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1742",
+    "https://read.shamela.ws/book/10906/1743"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 316,
+  "printed_page_end": 317,
+  "content_hash": "0288a05448684847439f15ed00918a6c2cd5fe8bb1222fcd960b63f6b0e22377",
+  "folder": "1742_طليحة_بن_خويلد_بن_نوفل_الأسدي"
+}

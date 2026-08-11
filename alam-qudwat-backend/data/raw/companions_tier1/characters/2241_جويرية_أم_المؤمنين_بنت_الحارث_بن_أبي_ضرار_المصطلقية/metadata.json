@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_17f6568aadac75db_2241",
+  "sequence": 127,
+  "character_id": "siyar_17f6568aadac75db",
+  "character_name": "جويرية أم المؤمنين بنت الحارث بن أبي ضرار المصطلقية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2241,
+  "page_id_end": 2244,
+  "source_page_ids": [
+    2241,
+    2242,
+    2243,
+    2244
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2241",
+    "https://read.shamela.ws/book/10906/2242",
+    "https://read.shamela.ws/book/10906/2243",
+    "https://read.shamela.ws/book/10906/2244"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 261,
+  "printed_page_end": 264,
+  "content_hash": "942c107a48562df2bfb3c69552180b0a2b459e8d3d240e2790287b928cba4cf6",
+  "folder": "2241_جويرية_أم_المؤمنين_بنت_الحارث_بن_أبي_ضرار_المصطلقية"
+}

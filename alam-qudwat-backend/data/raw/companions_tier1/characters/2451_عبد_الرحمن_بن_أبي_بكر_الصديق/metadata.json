@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_e1fa582d583e17a5_2451",
+  "sequence": 177,
+  "character_id": "siyar_e1fa582d583e17a5",
+  "character_name": "عبد الرحمن بن أبي بكر الصديق",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2451,
+  "page_id_end": 2453,
+  "source_page_ids": [
+    2451,
+    2452,
+    2453
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2451",
+    "https://read.shamela.ws/book/10906/2452",
+    "https://read.shamela.ws/book/10906/2453"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 471,
+  "printed_page_end": 473,
+  "content_hash": "b8d716bf94e38242e80b549babaa25b514b7ab55bf3d787cca96b25a4cb0604e",
+  "folder": "2451_عبد_الرحمن_بن_أبي_بكر_الصديق"
+}

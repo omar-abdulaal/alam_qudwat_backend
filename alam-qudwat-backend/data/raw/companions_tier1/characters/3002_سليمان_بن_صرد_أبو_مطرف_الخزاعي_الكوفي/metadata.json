@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_17ec6f84c7bbdeef_3002",
+  "sequence": 269,
+  "character_id": "siyar_17ec6f84c7bbdeef",
+  "character_name": "سليمان بن صرد أبو مطرف الخزاعي الكوفي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3002,
+  "page_id_end": 3002,
+  "source_page_ids": [
+    3002
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3002"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 394,
+  "printed_page_end": 394,
+  "content_hash": "40b41e2a082d42407ab54b1c1dceecd10396b6c2784ce0d5a1abd6a52e1079b8",
+  "folder": "3002_سليمان_بن_صرد_أبو_مطرف_الخزاعي_الكوفي"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_000f5a586963e31a_1629",
+  "sequence": 29,
+  "character_id": "siyar_000f5a586963e31a",
+  "character_name": "أبو سفيان بن الحارث المغيرة بن الحارث الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1629,
+  "page_id_end": 1630,
+  "source_page_ids": [
+    1629,
+    1630
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1629",
+    "https://read.shamela.ws/book/10906/1630"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 203,
+  "printed_page_end": 204,
+  "content_hash": "5ce9729a566d8d3a4170429b7ea8478a9068316cbdf9056ae0c5c5c263e8fb75",
+  "folder": "1629_أبو_سفيان_بن_الحارث_المغيرة_بن_الحارث_الهاشمي"
+}

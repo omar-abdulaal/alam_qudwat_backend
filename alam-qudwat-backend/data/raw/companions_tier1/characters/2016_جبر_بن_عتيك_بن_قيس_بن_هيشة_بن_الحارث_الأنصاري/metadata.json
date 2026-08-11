@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_f25a536a4f11e903_2016",
+  "sequence": 97,
+  "character_id": "siyar_f25a536a4f11e903",
+  "character_name": "جبر بن عتيك بن قيس بن هيشة بن الحارث الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2016,
+  "page_id_end": 2016,
+  "source_page_ids": [
+    2016
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2016"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 36,
+  "printed_page_end": 36,
+  "content_hash": "78bd3dd1092d727305e2c814e5a857b301f7669e79b7ab8b24d5ea99dafd2c53",
+  "folder": "2016_جبر_بن_عتيك_بن_قيس_بن_هيشة_بن_الحارث_الأنصاري"
+}

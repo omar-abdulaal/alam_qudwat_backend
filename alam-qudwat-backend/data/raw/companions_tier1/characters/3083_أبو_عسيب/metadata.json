@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_df738d475d22de29_3083",
+  "sequence": 307,
+  "character_id": "siyar_df738d475d22de29",
+  "character_name": "أبو عسيب",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3083,
+  "page_id_end": 3083,
+  "source_page_ids": [
+    3083
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3083"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 475,
+  "printed_page_end": 475,
+  "content_hash": "a8d40cdf10912ddc29ba67113c276f5f51dd0059cc5de3e1f437b92c93f54371",
+  "folder": "3083_أبو_عسيب"
+}

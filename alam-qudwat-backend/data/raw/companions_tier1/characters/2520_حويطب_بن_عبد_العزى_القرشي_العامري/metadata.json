@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_83ee5a70b83c8f9c_2520",
+  "sequence": 195,
+  "character_id": "siyar_83ee5a70b83c8f9c",
+  "character_name": "حويطب بن عبد العزى القرشي العامري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2520,
+  "page_id_end": 2521,
+  "source_page_ids": [
+    2520,
+    2521
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2520",
+    "https://read.shamela.ws/book/10906/2521"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 540,
+  "printed_page_end": 541,
+  "content_hash": "d4e01d2d41892036cbe05fb6d583ac9f364710e63e4c72470d104918277a6e5a",
+  "folder": "2520_حويطب_بن_عبد_العزى_القرشي_العامري"
+}

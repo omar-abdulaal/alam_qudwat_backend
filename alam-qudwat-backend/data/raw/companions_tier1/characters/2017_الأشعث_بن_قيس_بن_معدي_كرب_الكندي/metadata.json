@@ -1,0 +1,40 @@
+{
+  "biography_id": "siyar_d2742d9f546e143c_2017",
+  "sequence": 98,
+  "character_id": "siyar_d2742d9f546e143c",
+  "character_name": "الأشعث بن قيس بن معدي كرب الكندي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 6,
+  "page_id_start": 2017,
+  "page_id_end": 2022,
+  "source_page_ids": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2017",
+    "https://read.shamela.ws/book/10906/2018",
+    "https://read.shamela.ws/book/10906/2019",
+    "https://read.shamela.ws/book/10906/2020",
+    "https://read.shamela.ws/book/10906/2021",
+    "https://read.shamela.ws/book/10906/2022"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 37,
+  "printed_page_end": 42,
+  "content_hash": "2fb82e2f8e27e4a5429f4db569e3f3282d2ed1788341966561f5c7223e9702e1",
+  "folder": "2017_الأشعث_بن_قيس_بن_معدي_كرب_الكندي"
+}

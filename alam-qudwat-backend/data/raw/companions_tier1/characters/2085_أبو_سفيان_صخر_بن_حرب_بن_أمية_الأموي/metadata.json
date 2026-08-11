@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_0f6ce15b9e5bf331_2085",
+  "sequence": 103,
+  "character_id": "siyar_0f6ce15b9e5bf331",
+  "character_name": "أبو سفيان صخر بن حرب بن أمية الأموي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2085,
+  "page_id_end": 2086,
+  "source_page_ids": [
+    2085,
+    2086
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2085",
+    "https://read.shamela.ws/book/10906/2086"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 105,
+  "printed_page_end": 106,
+  "content_hash": "82dcefdfeaca03405b758625edeb34565b38d62bbc08c201d7fbe5038573d666",
+  "folder": "2085_أبو_سفيان_صخر_بن_حرب_بن_أمية_الأموي"
+}

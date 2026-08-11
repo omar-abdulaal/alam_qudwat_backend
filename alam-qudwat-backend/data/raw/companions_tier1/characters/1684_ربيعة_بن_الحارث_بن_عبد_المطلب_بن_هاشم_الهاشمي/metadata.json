@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_bae7719ca5ae8d0f_1684",
+  "sequence": 45,
+  "character_id": "siyar_bae7719ca5ae8d0f",
+  "character_name": "ربيعة بن الحارث بن عبد المطلب بن هاشم الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1684,
+  "page_id_end": 1684,
+  "source_page_ids": [
+    1684
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1684"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 258,
+  "printed_page_end": 258,
+  "content_hash": "0156bd60acb5ea47bb31ebff23d5fcd8e86f81c9b10bc9cb9be5ec44b0280631",
+  "folder": "1684_ربيعة_بن_الحارث_بن_عبد_المطلب_بن_هاشم_الهاشمي"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_fc6ac756307a3039_2339",
+  "sequence": 159,
+  "character_id": "siyar_fc6ac756307a3039",
+  "character_name": "معوذ بن الحارث بن رفاعة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2339,
+  "page_id_end": 2339,
+  "source_page_ids": [
+    2339
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2339"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 359,
+  "printed_page_end": 359,
+  "content_hash": "0b516f693f004f6bdcc8514dcf9fa89bc882dbad34e0234cb896091446ea50e0",
+  "folder": "2339_معوذ_بن_الحارث_بن_رفاعة_الأنصاري"
+}

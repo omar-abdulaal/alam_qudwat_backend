@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_42e833287c12914d_2557",
+  "sequence": 209,
+  "character_id": "siyar_42e833287c12914d",
+  "character_name": "معقل بن سنان الأشجعي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2557,
+  "page_id_end": 2557,
+  "source_page_ids": [
+    2557
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2557"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 577,
+  "printed_page_end": 577,
+  "content_hash": "0158b0554cb91a2aa3c26b69e75831a55672f3eaa0676e964d45312905076465",
+  "folder": "2557_معقل_بن_سنان_الأشجعي"
+}

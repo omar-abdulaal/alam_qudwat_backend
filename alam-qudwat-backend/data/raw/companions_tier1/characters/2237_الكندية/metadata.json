@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_2c565289d22a7290_2237",
+  "sequence": 125,
+  "character_id": "siyar_2c565289d22a7290",
+  "character_name": "الكندية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2237,
+  "page_id_end": 2239,
+  "source_page_ids": [
+    2237,
+    2238,
+    2239
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2237",
+    "https://read.shamela.ws/book/10906/2238",
+    "https://read.shamela.ws/book/10906/2239"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 257,
+  "printed_page_end": 259,
+  "content_hash": "ccdb0a9d7163b6a0e64af8c648f52c6a05c608470985d9e699143fb261e99b20",
+  "folder": "2237_الكندية"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_74ac945d771fb482_2990",
+  "sequence": 264,
+  "character_id": "siyar_74ac945d771fb482",
+  "character_name": "عبد الله بن الزبير بن عبد المطلب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2990,
+  "page_id_end": 2990,
+  "source_page_ids": [
+    2990
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2990"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 382,
+  "printed_page_end": 382,
+  "content_hash": "ea21d7648be953edfee035537868bb26781e282c50007f5c658024f50a5e0fe8",
+  "folder": "2990_عبد_الله_بن_الزبير_بن_عبد_المطلب_الهاشمي"
+}

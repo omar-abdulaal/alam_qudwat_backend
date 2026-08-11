@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_c386713fb64252e7_2556",
+  "sequence": 208,
+  "character_id": "siyar_c386713fb64252e7",
+  "character_name": "معقل بن يسار المزني البصري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2556,
+  "page_id_end": 2556,
+  "source_page_ids": [
+    2556
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2556"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 576,
+  "printed_page_end": 576,
+  "content_hash": "ce22a5b4fe8d8ee7da20d602c984f37bef5c9c18786886713065b4c8852548cc",
+  "folder": "2556_معقل_بن_يسار_المزني_البصري"
+}

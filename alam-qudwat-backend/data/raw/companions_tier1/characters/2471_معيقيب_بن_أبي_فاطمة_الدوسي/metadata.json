@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_9416345875cff40a_2471",
+  "sequence": 187,
+  "character_id": "siyar_9416345875cff40a",
+  "character_name": "معيقيب بن أبي فاطمة الدوسي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2471,
+  "page_id_end": 2475,
+  "source_page_ids": [
+    2471,
+    2472,
+    2473,
+    2474,
+    2475
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2471",
+    "https://read.shamela.ws/book/10906/2472",
+    "https://read.shamela.ws/book/10906/2473",
+    "https://read.shamela.ws/book/10906/2474",
+    "https://read.shamela.ws/book/10906/2475"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 491,
+  "printed_page_end": 495,
+  "content_hash": "d7b700d1fcbaecd0928563b05970596ed0fe5ae52991213e77a51c1e20bf6c04",
+  "folder": "2471_معيقيب_بن_أبي_فاطمة_الدوسي"
+}

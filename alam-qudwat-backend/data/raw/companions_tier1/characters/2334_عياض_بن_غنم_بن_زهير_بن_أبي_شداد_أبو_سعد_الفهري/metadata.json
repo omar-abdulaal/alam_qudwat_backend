@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_3c7059707e2b5330_2334",
+  "sequence": 155,
+  "character_id": "siyar_3c7059707e2b5330",
+  "character_name": "عياض بن غنم بن زهير بن أبي شداد أبو سعد الفهري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2334,
+  "page_id_end": 2334,
+  "source_page_ids": [
+    2334
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2334"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 354,
+  "printed_page_end": 354,
+  "content_hash": "6573282e722966d5ca09f6a38bdc91d1753ec0547840b499f623199bcc1eb7b0",
+  "folder": "2334_عياض_بن_غنم_بن_زهير_بن_أبي_شداد_أبو_سعد_الفهري"
+}

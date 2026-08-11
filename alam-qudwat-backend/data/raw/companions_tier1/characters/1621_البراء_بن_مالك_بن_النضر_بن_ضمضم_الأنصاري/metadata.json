@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_f928cf6e569c06b7_1621",
+  "sequence": 24,
+  "character_id": "siyar_f928cf6e569c06b7",
+  "character_name": "البراء بن مالك بن النضر بن ضمضم الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1621,
+  "page_id_end": 1624,
+  "source_page_ids": [
+    1621,
+    1622,
+    1623,
+    1624
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1621",
+    "https://read.shamela.ws/book/10906/1622",
+    "https://read.shamela.ws/book/10906/1623",
+    "https://read.shamela.ws/book/10906/1624"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 195,
+  "printed_page_end": 198,
+  "content_hash": "21fa4c0a578e1eeccc0eb42a90c4af7b8b4a0fef9df7c42678e8953c26b816c5",
+  "folder": "1621_البراء_بن_مالك_بن_النضر_بن_ضمضم_الأنصاري"
+}

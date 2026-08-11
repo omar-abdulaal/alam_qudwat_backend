@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_bee76aa81b96b32b_3030",
+  "sequence": 280,
+  "character_id": "siyar_bee76aa81b96b32b",
+  "character_name": "سهل بن سعد بن سعد بن مالك الخزرجي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3030,
+  "page_id_end": 3031,
+  "source_page_ids": [
+    3030,
+    3031
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3030",
+    "https://read.shamela.ws/book/10906/3031"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 422,
+  "printed_page_end": 423,
+  "content_hash": "6f71a7e243437b19704acef7616331e0530962bc8d171fd93fc360788d772b4d",
+  "folder": "3030_سهل_بن_سعد_بن_سعد_بن_مالك_الخزرجي"
+}

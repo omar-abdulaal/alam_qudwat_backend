@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_5bbe4bf633351fb5_1926",
+  "sequence": 86,
+  "character_id": "siyar_5bbe4bf633351fb5",
+  "character_name": "عتبة بن مسعود الهذلي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1926,
+  "page_id_end": 1926,
+  "source_page_ids": [
+    1926
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1926"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 500,
+  "printed_page_end": 500,
+  "content_hash": "82c59b99a3bcf8b9ea13236a0f4344fcd71a9d0a99dd7f1f2ffb60d8bda6e666",
+  "folder": "1926_عتبة_بن_مسعود_الهذلي"
+}

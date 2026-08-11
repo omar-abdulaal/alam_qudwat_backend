@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_bddafbc912d9d1bf_3050",
+  "sequence": 291,
+  "character_id": "siyar_bddafbc912d9d1bf",
+  "character_name": "معبد بن عباس بن عبد المطلب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3050,
+  "page_id_end": 3050,
+  "source_page_ids": [
+    3050
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3050"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 442,
+  "printed_page_end": 442,
+  "content_hash": "55db43fd03d9b1c00f5f9b211150171268fadaf2da383fd3967f7f71a153d1ed",
+  "folder": "3050_معبد_بن_عباس_بن_عبد_المطلب_الهاشمي"
+}

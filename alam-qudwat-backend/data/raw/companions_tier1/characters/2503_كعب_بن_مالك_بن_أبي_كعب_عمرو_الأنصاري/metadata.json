@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_be8cb90f8451d782_2503",
+  "sequence": 191,
+  "character_id": "siyar_be8cb90f8451d782",
+  "character_name": "كعب بن مالك بن أبي كعب عمرو الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2503,
+  "page_id_end": 2509,
+  "source_page_ids": [
+    2503,
+    2504,
+    2505,
+    2506,
+    2507,
+    2508,
+    2509
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2503",
+    "https://read.shamela.ws/book/10906/2504",
+    "https://read.shamela.ws/book/10906/2505",
+    "https://read.shamela.ws/book/10906/2506",
+    "https://read.shamela.ws/book/10906/2507",
+    "https://read.shamela.ws/book/10906/2508",
+    "https://read.shamela.ws/book/10906/2509"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 523,
+  "printed_page_end": 529,
+  "content_hash": "6d555715475f3b05605b3577cfc848047e8e67735f984d5fe0099dbdc5aacb60",
+  "folder": "2503_كعب_بن_مالك_بن_أبي_كعب_عمرو_الأنصاري"
+}

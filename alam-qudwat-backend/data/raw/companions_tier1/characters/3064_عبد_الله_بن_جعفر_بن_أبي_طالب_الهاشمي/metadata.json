@@ -1,0 +1,40 @@
+{
+  "biography_id": "siyar_daf8b0fd5724ff33_3064",
+  "sequence": 299,
+  "character_id": "siyar_daf8b0fd5724ff33",
+  "character_name": "عبد الله بن جعفر بن أبي طالب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 6,
+  "page_id_start": 3064,
+  "page_id_end": 3069,
+  "source_page_ids": [
+    3064,
+    3065,
+    3066,
+    3067,
+    3068,
+    3069
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3064",
+    "https://read.shamela.ws/book/10906/3065",
+    "https://read.shamela.ws/book/10906/3066",
+    "https://read.shamela.ws/book/10906/3067",
+    "https://read.shamela.ws/book/10906/3068",
+    "https://read.shamela.ws/book/10906/3069"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 456,
+  "printed_page_end": 461,
+  "content_hash": "861e8c6e4ce2f5a0947888ff843bfb5dde82552ee52bd21098853ab87fc644f1",
+  "folder": "3064_عبد_الله_بن_جعفر_بن_أبي_طالب_الهاشمي"
+}

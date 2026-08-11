@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_5328cbe3458129f7_3075",
+  "sequence": 302,
+  "character_id": "siyar_5328cbe3458129f7",
+  "character_name": "حجر الشر حجر بن يزيد بن سلمة الكندي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3075,
+  "page_id_end": 3075,
+  "source_page_ids": [
+    3075
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3075"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 467,
+  "printed_page_end": 467,
+  "content_hash": "03513008b80652db887a6c483a6878221dfec4c1e338c5d904defcb76d0f773a",
+  "folder": "3075_حجر_الشر_حجر_بن_يزيد_بن_سلمة_الكندي"
+}

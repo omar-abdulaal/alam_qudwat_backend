@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_b7ed1d648a47930e_2284",
+  "sequence": 140,
+  "character_id": "siyar_b7ed1d648a47930e",
+  "character_name": "أم سليم الغميصاء بنت ملحان الأنصارية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2284,
+  "page_id_end": 2290,
+  "source_page_ids": [
+    2284,
+    2285,
+    2286,
+    2287,
+    2288,
+    2289,
+    2290
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2284",
+    "https://read.shamela.ws/book/10906/2285",
+    "https://read.shamela.ws/book/10906/2286",
+    "https://read.shamela.ws/book/10906/2287",
+    "https://read.shamela.ws/book/10906/2288",
+    "https://read.shamela.ws/book/10906/2289",
+    "https://read.shamela.ws/book/10906/2290"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 304,
+  "printed_page_end": 310,
+  "content_hash": "130082ef2d2b39eefc2799f3255fad3718de7b5b115c6ee15afdcbb39d1d8061",
+  "folder": "2284_أم_سليم_الغميصاء_بنت_ملحان_الأنصارية"
+}

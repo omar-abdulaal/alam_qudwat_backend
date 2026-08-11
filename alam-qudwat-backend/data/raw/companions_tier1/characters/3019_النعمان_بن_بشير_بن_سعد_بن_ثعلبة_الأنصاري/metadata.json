@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_e2f7579b975a721c_3019",
+  "sequence": 274,
+  "character_id": "siyar_e2f7579b975a721c",
+  "character_name": "النعمان بن بشير بن سعد بن ثعلبة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3019,
+  "page_id_end": 3019,
+  "source_page_ids": [
+    3019
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3019"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 411,
+  "printed_page_end": 411,
+  "content_hash": "817b6ae9d7f989ee22292e22712318daa1c9138b85f0795b1e60b06a24a49406",
+  "folder": "3019_النعمان_بن_بشير_بن_سعد_بن_ثعلبة_الأنصاري"
+}

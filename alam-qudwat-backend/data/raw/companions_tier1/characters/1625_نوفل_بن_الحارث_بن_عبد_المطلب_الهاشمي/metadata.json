@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_a917e7303405c1d7_1625",
+  "sequence": 25,
+  "character_id": "siyar_a917e7303405c1d7",
+  "character_name": "نوفل بن الحارث بن عبد المطلب الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1625,
+  "page_id_end": 1625,
+  "source_page_ids": [
+    1625
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1625"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 199,
+  "printed_page_end": 199,
+  "content_hash": "7c4f71276ff4cb0ae962d8c5822220a0f8930ba7756d53ea5c4caeeb60957f67",
+  "folder": "1625_نوفل_بن_الحارث_بن_عبد_المطلب_الهاشمي"
+}

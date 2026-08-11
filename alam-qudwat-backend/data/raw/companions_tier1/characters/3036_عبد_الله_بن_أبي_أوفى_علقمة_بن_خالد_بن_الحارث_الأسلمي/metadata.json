@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_59e221753c6529f7_3036",
+  "sequence": 284,
+  "character_id": "siyar_59e221753c6529f7",
+  "character_name": "عبد الله بن أبي أوفى علقمة بن خالد بن الحارث الأسلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3036,
+  "page_id_end": 3037,
+  "source_page_ids": [
+    3036,
+    3037
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3036",
+    "https://read.shamela.ws/book/10906/3037"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 428,
+  "printed_page_end": 429,
+  "content_hash": "7cf23bdc5f264a5f5a84220e779db381d2a4c9870d1c71fbce905d8dfe8a5e72",
+  "folder": "3036_عبد_الله_بن_أبي_أوفى_علقمة_بن_خالد_بن_الحارث_الأسلمي"
+}

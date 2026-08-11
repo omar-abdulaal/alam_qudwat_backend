@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_d7d7028fe0a6e1a6_2256",
+  "sequence": 134,
+  "character_id": "siyar_d7d7028fe0a6e1a6",
+  "character_name": "أم كلثوم بنت عقبة الأموية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2256,
+  "page_id_end": 2257,
+  "source_page_ids": [
+    2256,
+    2257
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2256",
+    "https://read.shamela.ws/book/10906/2257"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 276,
+  "printed_page_end": 277,
+  "content_hash": "106c226fc07455a1df2d8a854afad0dd48cf756af16ba26b4215db098e5d9b5d",
+  "folder": "2256_أم_كلثوم_بنت_عقبة_الأموية"
+}

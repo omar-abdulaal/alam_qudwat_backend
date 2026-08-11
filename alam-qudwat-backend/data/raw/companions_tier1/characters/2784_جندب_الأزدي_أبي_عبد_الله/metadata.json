@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_9ec2c4410488361f_2784",
+  "sequence": 241,
+  "character_id": "siyar_9ec2c4410488361f",
+  "character_name": "جندب الأزدي أبي عبد الله",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2784,
+  "page_id_end": 2785,
+  "source_page_ids": [
+    2784,
+    2785
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2784",
+    "https://read.shamela.ws/book/10906/2785"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 175,
+  "printed_page_end": 176,
+  "content_hash": "74e2e5f6ee9cccaf056aeba867544885fff38465e48dca2bc6b7d1ceb2e0eb1a",
+  "folder": "2784_جندب_الأزدي_أبي_عبد_الله"
+}

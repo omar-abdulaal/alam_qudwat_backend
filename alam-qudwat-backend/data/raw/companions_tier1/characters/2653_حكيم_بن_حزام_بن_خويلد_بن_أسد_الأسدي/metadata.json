@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_905e92f8ac6723d2_2653",
+  "sequence": 222,
+  "character_id": "siyar_905e92f8ac6723d2",
+  "character_name": "حكيم بن حزام بن خويلد بن أسد الأسدي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2653,
+  "page_id_end": 2659,
+  "source_page_ids": [
+    2653,
+    2654,
+    2655,
+    2656,
+    2657,
+    2658,
+    2659
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2653",
+    "https://read.shamela.ws/book/10906/2654",
+    "https://read.shamela.ws/book/10906/2655",
+    "https://read.shamela.ws/book/10906/2656",
+    "https://read.shamela.ws/book/10906/2657",
+    "https://read.shamela.ws/book/10906/2658",
+    "https://read.shamela.ws/book/10906/2659"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 44,
+  "printed_page_end": 50,
+  "content_hash": "c8c9ad2a0fe9004a05867bde69ed209b4ecfdcf73d7ee4960347017f4bed59f1",
+  "folder": "2653_حكيم_بن_حزام_بن_خويلد_بن_أسد_الأسدي"
+}

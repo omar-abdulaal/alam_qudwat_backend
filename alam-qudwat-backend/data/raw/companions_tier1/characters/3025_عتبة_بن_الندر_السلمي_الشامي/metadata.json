@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_b3bf1dc1f0528ef3_3025",
+  "sequence": 277,
+  "character_id": "siyar_b3bf1dc1f0528ef3",
+  "character_name": "عتبة بن الندر السلمي الشامي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3025,
+  "page_id_end": 3025,
+  "source_page_ids": [
+    3025
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3025"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 417,
+  "printed_page_end": 417,
+  "content_hash": "94fc60407c630256bfa62af19e779843ca987ebb188274c3ebfe97172eb05495",
+  "folder": "3025_عتبة_بن_الندر_السلمي_الشامي"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_6412ecdc917e999e_2089",
+  "sequence": 105,
+  "character_id": "siyar_6412ecdc917e999e",
+  "character_name": "كسرى يزدجرد بن شهريار بن برويز",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2089,
+  "page_id_end": 2089,
+  "source_page_ids": [
+    2089
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2089"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 109,
+  "printed_page_end": 109,
+  "content_hash": "9b0121cef751dce929acb67b13ec017415e4355ff1c69015ee856de9d0c0e909",
+  "folder": "2089_كسرى_يزدجرد_بن_شهريار_بن_برويز"
+}

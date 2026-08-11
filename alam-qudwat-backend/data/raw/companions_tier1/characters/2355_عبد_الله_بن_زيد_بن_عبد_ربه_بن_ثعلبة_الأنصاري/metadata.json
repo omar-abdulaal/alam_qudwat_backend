@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_8c776862c0b7da54_2355",
+  "sequence": 164,
+  "character_id": "siyar_8c776862c0b7da54",
+  "character_name": "عبد الله بن زيد بن عبد ربه بن ثعلبة الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2355,
+  "page_id_end": 2356,
+  "source_page_ids": [
+    2355,
+    2356
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2355",
+    "https://read.shamela.ws/book/10906/2356"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 375,
+  "printed_page_end": 376,
+  "content_hash": "9c1fe2bbb5b406800d8ddf152a945afbca6870593acc9eb7f6eb97cdf510d664",
+  "folder": "2355_عبد_الله_بن_زيد_بن_عبد_ربه_بن_ثعلبة_الأنصاري"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_95acd24fbd039180_2554",
+  "sequence": 207,
+  "character_id": "siyar_95acd24fbd039180",
+  "character_name": "أبو واقد الليثي الحارث بن عوف",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2554,
+  "page_id_end": 2555,
+  "source_page_ids": [
+    2554,
+    2555
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2554",
+    "https://read.shamela.ws/book/10906/2555"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 574,
+  "printed_page_end": 575,
+  "content_hash": "498592a9b591c97fa2faac5215f454d560db8c048b424416980f616a9a875ef7",
+  "folder": "2554_أبو_واقد_الليثي_الحارث_بن_عوف"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_678b09fd34ef7b7d_2301",
+  "sequence": 147,
+  "character_id": "siyar_678b09fd34ef7b7d",
+  "character_name": "عثمان بن حنيف بن واهب الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2301,
+  "page_id_end": 2302,
+  "source_page_ids": [
+    2301,
+    2302
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2301",
+    "https://read.shamela.ws/book/10906/2302"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 321,
+  "printed_page_end": 322,
+  "content_hash": "52293ab7561e31164e4165de3a776f2058f9f949edd5eebf24c84c8efcbafd55",
+  "folder": "2301_عثمان_بن_حنيف_بن_واهب_الأنصاري"
+}

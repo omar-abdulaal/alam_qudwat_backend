@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_edcfcc2f47c5fc9d_2357",
+  "sequence": 165,
+  "character_id": "siyar_edcfcc2f47c5fc9d",
+  "character_name": "عبد الله بن زيد بن عاصم بن كعب المازني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2357,
+  "page_id_end": 2357,
+  "source_page_ids": [
+    2357
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2357"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 377,
+  "printed_page_end": 377,
+  "content_hash": "b82b9b7ce1e701bfd3782f00c0710d6851aaec77f34782123bb62cf907acbcbf",
+  "folder": "2357_عبد_الله_بن_زيد_بن_عاصم_بن_كعب_المازني"
+}

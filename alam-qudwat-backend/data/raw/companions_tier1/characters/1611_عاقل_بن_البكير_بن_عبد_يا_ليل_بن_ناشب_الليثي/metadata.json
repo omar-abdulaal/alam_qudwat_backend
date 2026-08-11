@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_d7a97afb5a0abe17_1611",
+  "sequence": 16,
+  "character_id": "siyar_d7a97afb5a0abe17",
+  "character_name": "عاقل بن البكير بن عبد يا ليل بن ناشب الليثي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1611,
+  "page_id_end": 1611,
+  "source_page_ids": [
+    1611
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1611"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 185,
+  "printed_page_end": 185,
+  "content_hash": "0311827e3956acd1c79b25fe0f35887f5b6426cb73c145006951a22e0b5876a0",
+  "folder": "1611_عاقل_بن_البكير_بن_عبد_يا_ليل_بن_ناشب_الليثي"
+}

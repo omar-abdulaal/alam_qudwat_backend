@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_9cbaf42303ba2c0b_2449",
+  "sequence": 176,
+  "character_id": "siyar_9cbaf42303ba2c0b",
+  "character_name": "بريدة بن الحصيب بن عبد الله الأسلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2449,
+  "page_id_end": 2450,
+  "source_page_ids": [
+    2449,
+    2450
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2449",
+    "https://read.shamela.ws/book/10906/2450"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 469,
+  "printed_page_end": 470,
+  "content_hash": "b1bd0b5e0df5302d8705f502332a7c58d02b8bede7135ecc2026e0219725adf7",
+  "folder": "2449_بريدة_بن_الحصيب_بن_عبد_الله_الأسلمي"
+}

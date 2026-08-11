@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_5a3c287a901a0dae_2686",
+  "sequence": 226,
+  "character_id": "siyar_5a3c287a901a0dae",
+  "character_name": "هشام بن العاص السهمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2686,
+  "page_id_end": 2687,
+  "source_page_ids": [
+    2686,
+    2687
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2686",
+    "https://read.shamela.ws/book/10906/2687"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 77,
+  "printed_page_end": 78,
+  "content_hash": "2fbbffebd0ccfe8b1ce36c8d6a0403a3e18495119036109ca19e516ff2d4f7e3",
+  "folder": "2686_هشام_بن_العاص_السهمي"
+}

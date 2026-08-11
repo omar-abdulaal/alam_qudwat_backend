@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_ede226e7f72a9977_3071",
+  "sequence": 301,
+  "character_id": "siyar_ede226e7f72a9977",
+  "character_name": "حجر بن عدي بن جبلة بن عدي بن ربيعة الكندي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 3071,
+  "page_id_end": 3074,
+  "source_page_ids": [
+    3071,
+    3072,
+    3073,
+    3074
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3071",
+    "https://read.shamela.ws/book/10906/3072",
+    "https://read.shamela.ws/book/10906/3073",
+    "https://read.shamela.ws/book/10906/3074"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 463,
+  "printed_page_end": 466,
+  "content_hash": "aa682264a3ebe81e9bad0d4206fb777c35e66b37dd046ce287d8ee0a6876b904",
+  "folder": "3071_حجر_بن_عدي_بن_جبلة_بن_عدي_بن_ربيعة_الكندي"
+}

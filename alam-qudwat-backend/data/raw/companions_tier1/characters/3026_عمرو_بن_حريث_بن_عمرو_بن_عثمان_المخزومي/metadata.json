@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_e3438c92a9b515a5_3026",
+  "sequence": 278,
+  "character_id": "siyar_e3438c92a9b515a5",
+  "character_name": "عمرو بن حريث بن عمرو بن عثمان المخزومي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3026,
+  "page_id_end": 3026,
+  "source_page_ids": [
+    3026
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3026"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 418,
+  "printed_page_end": 418,
+  "content_hash": "0a312e284564bc4442082f1536d917aa1059dedf4541ab4792c7240f601e24fe",
+  "folder": "3026_عمرو_بن_حريث_بن_عمرو_بن_عثمان_المخزومي"
+}

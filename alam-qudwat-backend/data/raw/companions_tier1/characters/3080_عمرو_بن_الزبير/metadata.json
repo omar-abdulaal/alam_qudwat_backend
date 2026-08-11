@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_a1af0636deeb699d_3080",
+  "sequence": 305,
+  "character_id": "siyar_a1af0636deeb699d",
+  "character_name": "عمرو بن الزبير",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3080,
+  "page_id_end": 3080,
+  "source_page_ids": [
+    3080
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3080"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 472,
+  "printed_page_end": 472,
+  "content_hash": "7d2faf4c4c47b437f4d07143066a14475418c7d1eab82e228aa688832f149c9d",
+  "folder": "3080_عمرو_بن_الزبير"
+}

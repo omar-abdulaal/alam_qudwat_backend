@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_440447f9088636fa_2262",
+  "sequence": 136,
+  "character_id": "siyar_440447f9088636fa",
+  "character_name": "أسماء بنت عميس بن معبد بن الحارث الخثعمية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2262,
+  "page_id_end": 2266,
+  "source_page_ids": [
+    2262,
+    2263,
+    2264,
+    2265,
+    2266
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2262",
+    "https://read.shamela.ws/book/10906/2263",
+    "https://read.shamela.ws/book/10906/2264",
+    "https://read.shamela.ws/book/10906/2265",
+    "https://read.shamela.ws/book/10906/2266"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 282,
+  "printed_page_end": 286,
+  "content_hash": "c06868a96f79651a61d220e1a0eae7f395e88191b87457b6ffe392f715f8489e",
+  "folder": "2262_أسماء_بنت_عميس_بن_معبد_بن_الحارث_الخثعمية"
+}

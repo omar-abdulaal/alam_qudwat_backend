@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_834e06462bd4020f_1614",
+  "sequence": 19,
+  "character_id": "siyar_834e06462bd4020f",
+  "character_name": "أبو عبس بن جبر بن عمرو الأوسي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1614,
+  "page_id_end": 1614,
+  "source_page_ids": [
+    1614
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1614"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 188,
+  "printed_page_end": 188,
+  "content_hash": "067166b835332688217b975aaa4230b658d364124b48627bbcdd56a45e0380da",
+  "folder": "1614_أبو_عبس_بن_جبر_بن_عمرو_الأوسي"
+}

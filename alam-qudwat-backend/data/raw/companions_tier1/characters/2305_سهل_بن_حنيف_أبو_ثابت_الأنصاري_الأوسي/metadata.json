@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_eeb1a68c70e2017f_2305",
+  "sequence": 149,
+  "character_id": "siyar_eeb1a68c70e2017f",
+  "character_name": "سهل بن حنيف أبو ثابت الأنصاري الأوسي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2305,
+  "page_id_end": 2308,
+  "source_page_ids": [
+    2305,
+    2306,
+    2307,
+    2308
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2305",
+    "https://read.shamela.ws/book/10906/2306",
+    "https://read.shamela.ws/book/10906/2307",
+    "https://read.shamela.ws/book/10906/2308"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 325,
+  "printed_page_end": 328,
+  "content_hash": "ac669d126685a7094561a9db9a1626ee4fdcf45ceea5f75eb7937a6adbcd2f0d",
+  "folder": "2305_سهل_بن_حنيف_أبو_ثابت_الأنصاري_الأوسي"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_837bebf4a04e0eb5_2459",
+  "sequence": 181,
+  "character_id": "siyar_837bebf4a04e0eb5",
+  "character_name": "الأرقم بن أبي الأرقم بن أسد بن عبد الله المخزومي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2459,
+  "page_id_end": 2460,
+  "source_page_ids": [
+    2459,
+    2460
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2459",
+    "https://read.shamela.ws/book/10906/2460"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 479,
+  "printed_page_end": 480,
+  "content_hash": "9915b30ac80c2bd8b3eaf8ae3f4f86b9b6bc16d5deae9d70051a9942389b7a17",
+  "folder": "2459_الأرقم_بن_أبي_الأرقم_بن_أسد_بن_عبد_الله_المخزومي"
+}

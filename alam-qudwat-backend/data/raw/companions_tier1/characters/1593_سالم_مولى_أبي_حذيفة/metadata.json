@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_474abfcbea9ebfa1_1593",
+  "sequence": 14,
+  "character_id": "siyar_474abfcbea9ebfa1",
+  "character_name": "سالم مولى أبي حذيفة",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1593,
+  "page_id_end": 1596,
+  "source_page_ids": [
+    1593,
+    1594,
+    1595,
+    1596
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1593",
+    "https://read.shamela.ws/book/10906/1594",
+    "https://read.shamela.ws/book/10906/1595",
+    "https://read.shamela.ws/book/10906/1596"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 167,
+  "printed_page_end": 170,
+  "content_hash": "ef83574f12f7d04e93974d19a526ce4d6651ce4e072e7ff6f76cec415b2e558f",
+  "folder": "1593_سالم_مولى_أبي_حذيفة"
+}

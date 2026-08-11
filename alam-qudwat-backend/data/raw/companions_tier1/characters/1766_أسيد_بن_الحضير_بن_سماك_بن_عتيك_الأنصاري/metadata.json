@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_705d2e4c7f64cfcf_1766",
+  "sequence": 73,
+  "character_id": "siyar_705d2e4c7f64cfcf",
+  "character_name": "أسيد بن الحضير بن سماك بن عتيك الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1766,
+  "page_id_end": 1769,
+  "source_page_ids": [
+    1766,
+    1767,
+    1768,
+    1769
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1766",
+    "https://read.shamela.ws/book/10906/1767",
+    "https://read.shamela.ws/book/10906/1768",
+    "https://read.shamela.ws/book/10906/1769"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 340,
+  "printed_page_end": 343,
+  "content_hash": "32228eb4298e3ad94563d79ba29170e5f67197b3a73b71943a653c0fe9183347",
+  "folder": "1766_أسيد_بن_الحضير_بن_سماك_بن_عتيك_الأنصاري"
+}

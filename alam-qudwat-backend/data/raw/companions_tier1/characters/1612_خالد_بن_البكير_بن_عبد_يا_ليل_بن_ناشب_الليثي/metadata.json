@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_28afb020b55dc83b_1612",
+  "sequence": 17,
+  "character_id": "siyar_28afb020b55dc83b",
+  "character_name": "خالد بن البكير بن عبد يا ليل بن ناشب الليثي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1612,
+  "page_id_end": 1612,
+  "source_page_ids": [
+    1612
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1612"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 186,
+  "printed_page_end": 186,
+  "content_hash": "f58217c897322ebd40fd235b891cdd12601c1b1a896376aa1f138c9ce097523d",
+  "folder": "1612_خالد_بن_البكير_بن_عبد_يا_ليل_بن_ناشب_الليثي"
+}

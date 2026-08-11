@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_651ef438d3accec3_2245",
+  "sequence": 128,
+  "character_id": "siyar_651ef438d3accec3",
+  "character_name": "سودة أم المؤمنين بنت زمعة بن قيس العامرية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2245,
+  "page_id_end": 2248,
+  "source_page_ids": [
+    2245,
+    2246,
+    2247,
+    2248
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2245",
+    "https://read.shamela.ws/book/10906/2246",
+    "https://read.shamela.ws/book/10906/2247",
+    "https://read.shamela.ws/book/10906/2248"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 265,
+  "printed_page_end": 268,
+  "content_hash": "b9545bfa3c5a42f75feb0d7143e4874195c704c71b0d90de41fec88df2ba3f2d",
+  "folder": "2245_سودة_أم_المؤمنين_بنت_زمعة_بن_قيس_العامرية"
+}

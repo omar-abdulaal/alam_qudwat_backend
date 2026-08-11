@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_5c25c4c18531aecc_3017",
+  "sequence": 273,
+  "character_id": "siyar_5c25c4c18531aecc",
+  "character_name": "بسر بن أرطاة القرشي العامري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3017,
+  "page_id_end": 3018,
+  "source_page_ids": [
+    3017,
+    3018
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3017",
+    "https://read.shamela.ws/book/10906/3018"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 409,
+  "printed_page_end": 410,
+  "content_hash": "b00720ea418024d4b122ae52d8cdb2e2b075d2003df0ae5c1392b42dbc4dce84",
+  "folder": "3017_بسر_بن_أرطاة_القرشي_العامري"
+}

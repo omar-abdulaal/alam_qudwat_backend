@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_3c822dcdcf2dd1ab_2536",
+  "sequence": 201,
+  "character_id": "siyar_3c822dcdcf2dd1ab",
+  "character_name": "أبو جهم بن حذيفة القرشي العدوي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2536,
+  "page_id_end": 2536,
+  "source_page_ids": [
+    2536
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2536"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 556,
+  "printed_page_end": 556,
+  "content_hash": "f41ea3d4dc9b3475be8b83c8b4a0a9ce5e75d25aef724748a089d69a44c33147",
+  "folder": "2536_أبو_جهم_بن_حذيفة_القرشي_العدوي"
+}

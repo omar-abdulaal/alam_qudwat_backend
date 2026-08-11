@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_7fa0c082527a7f54_1927",
+  "sequence": 87,
+  "character_id": "siyar_7fa0c082527a7f54",
+  "character_name": "خبيب بن يساف بن عنبة بن عمرو الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1927,
+  "page_id_end": 1928,
+  "source_page_ids": [
+    1927,
+    1928
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1927",
+    "https://read.shamela.ws/book/10906/1928"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 501,
+  "printed_page_end": 502,
+  "content_hash": "21cc013334e87d5f0397ecf2e8bb130199af935f3e97e81357757f921306cc1c",
+  "folder": "1927_خبيب_بن_يساف_بن_عنبة_بن_عمرو_الأنصاري"
+}

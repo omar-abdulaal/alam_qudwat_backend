@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_73e759f2ae41d2f9_2440",
+  "sequence": 174,
+  "character_id": "siyar_73e759f2ae41d2f9",
+  "character_name": "شداد بن أوس بن ثابت بن المنذر بن حرام الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2440,
+  "page_id_end": 2446,
+  "source_page_ids": [
+    2440,
+    2441,
+    2442,
+    2443,
+    2444,
+    2445,
+    2446
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2440",
+    "https://read.shamela.ws/book/10906/2441",
+    "https://read.shamela.ws/book/10906/2442",
+    "https://read.shamela.ws/book/10906/2443",
+    "https://read.shamela.ws/book/10906/2444",
+    "https://read.shamela.ws/book/10906/2445",
+    "https://read.shamela.ws/book/10906/2446"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 460,
+  "printed_page_end": 466,
+  "content_hash": "30969504bfca4da51f6b0f77a3a0f84ab8396193aa8872eb93ebcf982406e75c",
+  "folder": "2440_شداد_بن_أوس_بن_ثابت_بن_المنذر_بن_حرام_الأنصاري"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_fe2ae173bccbc76e_1628",
+  "sequence": 28,
+  "character_id": "siyar_fe2ae173bccbc76e",
+  "character_name": "سعيد بن الحارث بن عبد المطلب",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1628,
+  "page_id_end": 1628,
+  "source_page_ids": [
+    1628
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1628"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 202,
+  "printed_page_end": 202,
+  "content_hash": "125049339dbf03961f53b7bfda94224b173b6c1163fe5c6cec6a7ed81b26da03",
+  "folder": "1628_سعيد_بن_الحارث_بن_عبد_المطلب"
+}

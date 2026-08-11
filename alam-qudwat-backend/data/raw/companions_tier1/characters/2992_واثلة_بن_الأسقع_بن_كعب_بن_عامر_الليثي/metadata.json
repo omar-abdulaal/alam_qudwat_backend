@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_272e6c80398297d1_2992",
+  "sequence": 266,
+  "character_id": "siyar_272e6c80398297d1",
+  "character_name": "واثلة بن الأسقع بن كعب بن عامر الليثي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2992,
+  "page_id_end": 2995,
+  "source_page_ids": [
+    2992,
+    2993,
+    2994,
+    2995
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2992",
+    "https://read.shamela.ws/book/10906/2993",
+    "https://read.shamela.ws/book/10906/2994",
+    "https://read.shamela.ws/book/10906/2995"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 384,
+  "printed_page_end": 387,
+  "content_hash": "8f2f894ccc2c6a85dad5ea722fa11e61cde12b2bcb37426ad2a2986eb82cedf1",
+  "folder": "2992_واثلة_بن_الأسقع_بن_كعب_بن_عامر_الليثي"
+}

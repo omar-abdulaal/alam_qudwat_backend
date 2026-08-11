@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_09f26ab390ab199d_1749",
+  "sequence": 65,
+  "character_id": "siyar_09f26ab390ab199d",
+  "character_name": "عكرمة بن أبي جهل عمرو بن هشام المخزومي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1749,
+  "page_id_end": 1749,
+  "source_page_ids": [
+    1749
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1749"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 323,
+  "printed_page_end": 323,
+  "content_hash": "82ef9f7393820ac33c8f562961126b89031a8015c073449ba0c505edfefe88f6",
+  "folder": "1749_عكرمة_بن_أبي_جهل_عمرو_بن_هشام_المخزومي"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_d2016c7fa716cfc0_2233",
+  "sequence": 121,
+  "character_id": "siyar_d2016c7fa716cfc0",
+  "character_name": "زوجاته صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2233,
+  "page_id_end": 2233,
+  "source_page_ids": [
+    2233
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2233"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 253,
+  "printed_page_end": 253,
+  "content_hash": "530a95e9d0183dc6317beb388060703a03086945073f347c249161992274f64a",
+  "folder": "2233_زوجاته_صلى_الله_عليه_وسلم"
+}

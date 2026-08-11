@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_b0a1957c0dd5f02a_2087",
+  "sequence": 104,
+  "character_id": "siyar_b0a1957c0dd5f02a",
+  "character_name": "الحكم بن أبي العاص بن أمية الأموي أبو مروان",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2087,
+  "page_id_end": 2088,
+  "source_page_ids": [
+    2087,
+    2088
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2087",
+    "https://read.shamela.ws/book/10906/2088"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 107,
+  "printed_page_end": 108,
+  "content_hash": "8dc8aff63ef41cf72e0ad348459fdf79da89d4f73564d7cba7c2aff7f6a39cb4",
+  "folder": "2087_الحكم_بن_أبي_العاص_بن_أمية_الأموي_أبو_مروان"
+}

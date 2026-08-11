@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_77432a99f7f08437_2234",
+  "sequence": 122,
+  "character_id": "siyar_77432a99f7f08437",
+  "character_name": "العالية امرأة من بني بكر بن كلاب",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2234,
+  "page_id_end": 2234,
+  "source_page_ids": [
+    2234
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2234"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 254,
+  "printed_page_end": 254,
+  "content_hash": "bf449b832bb3c4fe07fd07aab1b5e9f55f952f7db49f9258cd1bcb50369ad6ff",
+  "folder": "2234_العالية_امرأة_من_بني_بكر_بن_كلاب"
+}

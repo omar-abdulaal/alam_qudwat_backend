@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_326bcc8be80dcb59_3035",
+  "sequence": 283,
+  "character_id": "siyar_326bcc8be80dcb59",
+  "character_name": "المقدام بن معد يكرب بن عمرو بن يزيد",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3035,
+  "page_id_end": 3035,
+  "source_page_ids": [
+    3035
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3035"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 427,
+  "printed_page_end": 427,
+  "content_hash": "d86aec623f360678071de7379161ac0b6852474ffc5d3665955213222d68cfd2",
+  "folder": "3035_المقدام_بن_معد_يكرب_بن_عمرو_بن_يزيد"
+}

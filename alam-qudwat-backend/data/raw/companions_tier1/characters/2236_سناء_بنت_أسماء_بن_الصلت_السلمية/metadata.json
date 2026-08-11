@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_44cd2e6a5f004aca_2236",
+  "sequence": 124,
+  "character_id": "siyar_44cd2e6a5f004aca",
+  "character_name": "سناء بنت أسماء بن الصلت السلمية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2236,
+  "page_id_end": 2236,
+  "source_page_ids": [
+    2236
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2236"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 256,
+  "printed_page_end": 256,
+  "content_hash": "646ad070084bf1d8714595b599ef0486831eaff32722a74bb38eb63482236e2a",
+  "folder": "2236_سناء_بنت_أسماء_بن_الصلت_السلمية"
+}

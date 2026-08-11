@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_d0ee3e411f417eca_1695",
+  "sequence": 52,
+  "character_id": "siyar_d0ee3e411f417eca",
+  "character_name": "بشر بن البراء بن معرور الخزرجي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1695,
+  "page_id_end": 1695,
+  "source_page_ids": [
+    1695
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1695"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 269,
+  "printed_page_end": 269,
+  "content_hash": "98e80781ba61afc8b997bf46be474d23b0f300c68828e21468bede97ff59b79b",
+  "folder": "1695_بشر_بن_البراء_بن_معرور_الخزرجي"
+}

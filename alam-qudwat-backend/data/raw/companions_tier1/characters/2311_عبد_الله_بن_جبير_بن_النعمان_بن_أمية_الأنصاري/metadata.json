@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_9be362f7627d8f73_2311",
+  "sequence": 151,
+  "character_id": "siyar_9be362f7627d8f73",
+  "character_name": "عبد الله بن جبير بن النعمان بن أمية الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2311,
+  "page_id_end": 2311,
+  "source_page_ids": [
+    2311
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2311"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 331,
+  "printed_page_end": 331,
+  "content_hash": "e8597953ded1f6dced522950354395e1645a26800687c57949c6753d949b56e2",
+  "folder": "2311_عبد_الله_بن_جبير_بن_النعمان_بن_أمية_الأنصاري"
+}

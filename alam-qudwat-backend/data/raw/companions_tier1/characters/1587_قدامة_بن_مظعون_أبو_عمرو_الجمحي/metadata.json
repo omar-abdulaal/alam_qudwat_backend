@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_f29329cf86f2a5b8_1587",
+  "sequence": 11,
+  "character_id": "siyar_f29329cf86f2a5b8",
+  "character_name": "قدامة بن مظعون أبو عمرو الجمحي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 1587,
+  "page_id_end": 1588,
+  "source_page_ids": [
+    1587,
+    1588
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1587",
+    "https://read.shamela.ws/book/10906/1588"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 161,
+  "printed_page_end": 162,
+  "content_hash": "873b23d92730cdb634cc56225b0fc617e3e7ac73df4d31f83f044c539d63136c",
+  "folder": "1587_قدامة_بن_مظعون_أبو_عمرو_الجمحي"
+}

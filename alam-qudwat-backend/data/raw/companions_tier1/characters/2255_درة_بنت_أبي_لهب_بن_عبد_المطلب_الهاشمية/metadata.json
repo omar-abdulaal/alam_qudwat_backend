@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_ac35c6071359dad5_2255",
+  "sequence": 133,
+  "character_id": "siyar_ac35c6071359dad5",
+  "character_name": "درة بنت أبي لهب بن عبد المطلب الهاشمية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2255,
+  "page_id_end": 2255,
+  "source_page_ids": [
+    2255
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2255"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 275,
+  "printed_page_end": 275,
+  "content_hash": "6e64d11aff366f541c433cfa0fab88bdfbec582c10e760ace7e7bddb904d4517",
+  "folder": "2255_درة_بنت_أبي_لهب_بن_عبد_المطلب_الهاشمية"
+}

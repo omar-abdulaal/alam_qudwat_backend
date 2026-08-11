@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_6165ff7231a14552_1724",
+  "sequence": 56,
+  "character_id": "siyar_6165ff7231a14552",
+  "character_name": "من شهداء اليمامة",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1724,
+  "page_id_end": 1724,
+  "source_page_ids": [
+    1724
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1724"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 298,
+  "printed_page_end": 298,
+  "content_hash": "2ffa0ebba1ca43a79d94b4938dd112790dfc9bcb621251c0e39936c1987ad67f",
+  "folder": "1724_من_شهداء_اليمامة"
+}

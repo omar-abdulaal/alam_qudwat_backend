@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_96e8f5c5584d8f53_1986",
+  "sequence": 91,
+  "character_id": "siyar_96e8f5c5584d8f53",
+  "character_name": "عبادة بن الصامت بن قيس بن أصرم الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 1986,
+  "page_id_end": 1990,
+  "source_page_ids": [
+    1986,
+    1987,
+    1988,
+    1989,
+    1990
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1986",
+    "https://read.shamela.ws/book/10906/1987",
+    "https://read.shamela.ws/book/10906/1988",
+    "https://read.shamela.ws/book/10906/1989",
+    "https://read.shamela.ws/book/10906/1990"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 6,
+  "printed_page_end": 10,
+  "content_hash": "3ce31000c2d57a27ddcbd380e353d7f163d76d3ddc5e8d61028b3e27b2468a0f",
+  "folder": "1986_عبادة_بن_الصامت_بن_قيس_بن_أصرم_الأنصاري"
+}

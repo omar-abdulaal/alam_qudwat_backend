@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_bc51a21c81ec62c2_1686",
+  "sequence": 47,
+  "character_id": "siyar_bc51a21c81ec62c2",
+  "character_name": "خالد بن سعيد بن العاص بن أمية الأموي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1686,
+  "page_id_end": 1686,
+  "source_page_ids": [
+    1686
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1686"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 260,
+  "printed_page_end": 260,
+  "content_hash": "93193fdd455d5c3b19a60e0be1f189b7b1b49cdaa82fe65ae047f84974471bda",
+  "folder": "1686_خالد_بن_سعيد_بن_العاص_بن_أمية_الأموي"
+}

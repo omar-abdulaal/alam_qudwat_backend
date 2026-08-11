@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_780bb847eae76183_1760",
+  "sequence": 69,
+  "character_id": "siyar_780bb847eae76183",
+  "character_name": "زينب بنت محمد بن عبد الله رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1760,
+  "page_id_end": 1760,
+  "source_page_ids": [
+    1760
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1760"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 334,
+  "printed_page_end": 334,
+  "content_hash": "eedf9bef6d258b1dd3e7f956624a4105d42c648120dc2513cbf039f0d2c1eb58",
+  "folder": "1760_زينب_بنت_محمد_بن_عبد_الله_رسول_الله_صلى_الله_عليه_وسلم"
+}

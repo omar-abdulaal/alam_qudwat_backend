@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_667ef049dd5f5ca5_2313",
+  "sequence": 153,
+  "character_id": "siyar_667ef049dd5f5ca5",
+  "character_name": "عامر بن ربيعة بن كعب بن مالك أبو عبد الله العنزي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2313,
+  "page_id_end": 2314,
+  "source_page_ids": [
+    2313,
+    2314
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2313",
+    "https://read.shamela.ws/book/10906/2314"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 333,
+  "printed_page_end": 334,
+  "content_hash": "5e45290a87a15744c3747e301a33962d21b4b4dd2920fad163fd382209163b77",
+  "folder": "2313_عامر_بن_ربيعة_بن_كعب_بن_مالك_أبو_عبد_الله_العنزي"
+}

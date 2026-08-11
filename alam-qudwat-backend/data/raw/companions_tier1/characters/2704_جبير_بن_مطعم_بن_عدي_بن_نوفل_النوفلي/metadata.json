@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_d363d714e6d3a7b0_2704",
+  "sequence": 228,
+  "character_id": "siyar_d363d714e6d3a7b0",
+  "character_name": "جبير بن مطعم بن عدي بن نوفل النوفلي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2704,
+  "page_id_end": 2707,
+  "source_page_ids": [
+    2704,
+    2705,
+    2706,
+    2707
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2704",
+    "https://read.shamela.ws/book/10906/2705",
+    "https://read.shamela.ws/book/10906/2706",
+    "https://read.shamela.ws/book/10906/2707"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 95,
+  "printed_page_end": 98,
+  "content_hash": "ab5dd4f2dc4ffa99d463436d9ec93abb58f68fd84854b38dee3f902a25b1b966",
+  "folder": "2704_جبير_بن_مطعم_بن_عدي_بن_نوفل_النوفلي"
+}

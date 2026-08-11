@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_7bf4c0176fc2b76f_1746",
+  "sequence": 63,
+  "character_id": "siyar_7bf4c0176fc2b76f",
+  "character_name": "معن بن عدي بن الجد بن العجلان الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1746,
+  "page_id_end": 1746,
+  "source_page_ids": [
+    1746
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1746"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 320,
+  "printed_page_end": 320,
+  "content_hash": "f8d7f4023bd649608ebf581704ae706e016d9578db74ad4f0acc9ae01ca03978",
+  "folder": "1746_معن_بن_عدي_بن_الجد_بن_العجلان_الأنصاري"
+}

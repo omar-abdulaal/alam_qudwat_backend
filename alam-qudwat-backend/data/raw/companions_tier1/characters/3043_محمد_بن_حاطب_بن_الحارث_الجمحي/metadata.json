@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_b3e56ae35ea2b7bd_3043",
+  "sequence": 287,
+  "character_id": "siyar_b3e56ae35ea2b7bd",
+  "character_name": "محمد بن حاطب بن الحارث الجمحي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3043,
+  "page_id_end": 3044,
+  "source_page_ids": [
+    3043,
+    3044
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3043",
+    "https://read.shamela.ws/book/10906/3044"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 435,
+  "printed_page_end": 436,
+  "content_hash": "a5b08adfb4c9b1f2f03006e654208a748fa5db47fa6ca28cdd87db9e3b602bcb",
+  "folder": "3043_محمد_بن_حاطب_بن_الحارث_الجمحي"
+}

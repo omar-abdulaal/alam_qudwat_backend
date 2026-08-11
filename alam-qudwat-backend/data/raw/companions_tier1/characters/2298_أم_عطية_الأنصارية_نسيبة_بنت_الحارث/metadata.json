@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_91b999006545387b_2298",
+  "sequence": 144,
+  "character_id": "siyar_91b999006545387b",
+  "character_name": "أم عطية الأنصارية نسيبة بنت الحارث",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2298,
+  "page_id_end": 2298,
+  "source_page_ids": [
+    2298
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2298"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 318,
+  "printed_page_end": 318,
+  "content_hash": "d4aa52f9b96e810fe72c6691a4ccafdd93c7ed0cd5fc935c4e403a0d31814d55",
+  "folder": "2298_أم_عطية_الأنصارية_نسيبة_بنت_الحارث"
+}

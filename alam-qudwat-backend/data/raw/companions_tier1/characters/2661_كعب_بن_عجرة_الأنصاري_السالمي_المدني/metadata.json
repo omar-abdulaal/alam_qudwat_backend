@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_f760060d437276c4_2661",
+  "sequence": 224,
+  "character_id": "siyar_f760060d437276c4",
+  "character_name": "كعب بن عجرة الأنصاري السالمي المدني",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2661,
+  "page_id_end": 2662,
+  "source_page_ids": [
+    2661,
+    2662
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2661",
+    "https://read.shamela.ws/book/10906/2662"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 52,
+  "printed_page_end": 53,
+  "content_hash": "86994bf3409be66fb9e451d9256de4767e6f43dfefc2d3823b62c59eb5f270d7",
+  "folder": "2661_كعب_بن_عجرة_الأنصاري_السالمي_المدني"
+}

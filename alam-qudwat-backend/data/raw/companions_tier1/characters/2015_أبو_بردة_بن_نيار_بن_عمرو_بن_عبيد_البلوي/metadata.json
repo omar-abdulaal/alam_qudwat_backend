@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_56312b043e655813_2015",
+  "sequence": 96,
+  "character_id": "siyar_56312b043e655813",
+  "character_name": "أبو بردة بن نيار بن عمرو بن عبيد البلوي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2015,
+  "page_id_end": 2015,
+  "source_page_ids": [
+    2015
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2015"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 35,
+  "printed_page_end": 35,
+  "content_hash": "cc972b2192798f5a9b858ba4a89058bbc8edb5f6d482857599de721e1344685f",
+  "folder": "2015_أبو_بردة_بن_نيار_بن_عمرو_بن_عبيد_البلوي"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_28f1da2dc4afbe0d_2783",
+  "sequence": 240,
+  "character_id": "siyar_28f1da2dc4afbe0d",
+  "character_name": "جندب بن عبد الله بن سفيان البجلي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2783,
+  "page_id_end": 2783,
+  "source_page_ids": [
+    2783
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2783"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 174,
+  "printed_page_end": 174,
+  "content_hash": "e9143a2712406240822e4949efee07b7d5c9caf0d902850cdecb8687923ec25f",
+  "folder": "2783_جندب_بن_عبد_الله_بن_سفيان_البجلي"
+}

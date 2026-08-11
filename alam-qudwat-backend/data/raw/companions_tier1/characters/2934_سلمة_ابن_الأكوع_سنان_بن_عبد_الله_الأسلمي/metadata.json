@@ -1,0 +1,38 @@
+{
+  "biography_id": "siyar_88fd9134bcdbf970_2934",
+  "sequence": 259,
+  "character_id": "siyar_88fd9134bcdbf970",
+  "character_name": "سلمة ابن الأكوع سنان بن عبد الله الأسلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 5,
+  "page_id_start": 2934,
+  "page_id_end": 2938,
+  "source_page_ids": [
+    2934,
+    2935,
+    2936,
+    2937,
+    2938
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2934",
+    "https://read.shamela.ws/book/10906/2935",
+    "https://read.shamela.ws/book/10906/2936",
+    "https://read.shamela.ws/book/10906/2937",
+    "https://read.shamela.ws/book/10906/2938"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 326,
+  "printed_page_end": 330,
+  "content_hash": "dc04fa8aad791f510479f31290b72341a264e9bb6b1c486e1822582b88f5de83",
+  "folder": "2934_سلمة_ابن_الأكوع_سنان_بن_عبد_الله_الأسلمي"
+}

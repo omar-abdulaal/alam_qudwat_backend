@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_e449b7038cdded26_2722",
+  "sequence": 233,
+  "character_id": "siyar_e449b7038cdded26",
+  "character_name": "فضالة بن عبيد بن نافذ بن قيس الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2722,
+  "page_id_end": 2725,
+  "source_page_ids": [
+    2722,
+    2723,
+    2724,
+    2725
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2722",
+    "https://read.shamela.ws/book/10906/2723",
+    "https://read.shamela.ws/book/10906/2724",
+    "https://read.shamela.ws/book/10906/2725"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 113,
+  "printed_page_end": 116,
+  "content_hash": "1fd871524025fa30c6122a68e76e153120bb863d069ecbc2f7f9be7d60a6ba3b",
+  "folder": "2722_فضالة_بن_عبيد_بن_نافذ_بن_قيس_الأنصاري"
+}

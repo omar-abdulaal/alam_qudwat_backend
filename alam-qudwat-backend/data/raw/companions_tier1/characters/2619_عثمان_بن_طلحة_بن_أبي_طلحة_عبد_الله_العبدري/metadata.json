@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_ad3b0293a92696e1_2619",
+  "sequence": 213,
+  "character_id": "siyar_ad3b0293a92696e1",
+  "character_name": "عثمان بن طلحة بن أبي طلحة عبد الله العبدري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2619,
+  "page_id_end": 2620,
+  "source_page_ids": [
+    2619,
+    2620
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2619",
+    "https://read.shamela.ws/book/10906/2620"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 10,
+  "printed_page_end": 11,
+  "content_hash": "0f0811d58e829a38bb7245461ed2a4cdda5cec75582caf7c23842da96c7c1174",
+  "folder": "2619_عثمان_بن_طلحة_بن_أبي_طلحة_عبد_الله_العبدري"
+}

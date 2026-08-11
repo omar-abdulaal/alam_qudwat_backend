@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_3231b3ba45f3baea_2721",
+  "sequence": 232,
+  "character_id": "siyar_3231b3ba45f3baea",
+  "character_name": "عبد المطلب بن ربيعة بن الحارث الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2721,
+  "page_id_end": 2721,
+  "source_page_ids": [
+    2721
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2721"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 112,
+  "printed_page_end": 112,
+  "content_hash": "9e1ab0e9edc40b52344244f17e744b2d8a88240ded0599e91dc330b5ab06d76c",
+  "folder": "2721_عبد_المطلب_بن_ربيعة_بن_الحارث_الهاشمي"
+}

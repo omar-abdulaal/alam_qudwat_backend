@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_d76b1cc0080fe5a0_2294",
+  "sequence": 142,
+  "character_id": "siyar_d76b1cc0080fe5a0",
+  "character_name": "أم الفضل لبابة بنت الحارث بن حزن بن بجير الهلالية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2294,
+  "page_id_end": 2295,
+  "source_page_ids": [
+    2294,
+    2295
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2294",
+    "https://read.shamela.ws/book/10906/2295"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 314,
+  "printed_page_end": 315,
+  "content_hash": "e8041e361e115bc4330739f140bea3b3398ed2f76f84e4d35717c754423919a2",
+  "folder": "2294_أم_الفضل_لبابة_بنت_الحارث_بن_حزن_بن_بجير_الهلالية"
+}

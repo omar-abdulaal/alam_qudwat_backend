@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_c2a85b05edab951a_1678",
+  "sequence": 41,
+  "character_id": "siyar_c2a85b05edab951a",
+  "character_name": "معوذ بن عمرو بن الجموح الأنصاري السلمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1678,
+  "page_id_end": 1678,
+  "source_page_ids": [
+    1678
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1678"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 252,
+  "printed_page_end": 252,
+  "content_hash": "72379e0c7a6f117576889c3b45b037034cd8ae0a63b83716226f5e4b6e735b55",
+  "folder": "1678_معوذ_بن_عمرو_بن_الجموح_الأنصاري_السلمي"
+}

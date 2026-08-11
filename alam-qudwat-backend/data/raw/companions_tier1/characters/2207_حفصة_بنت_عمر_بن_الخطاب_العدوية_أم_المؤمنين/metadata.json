@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_fdb0bde82e4f4339_2207",
+  "sequence": 115,
+  "character_id": "siyar_fdb0bde82e4f4339",
+  "character_name": "حفصة بنت عمر بن الخطاب العدوية أم المؤمنين",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2207,
+  "page_id_end": 2210,
+  "source_page_ids": [
+    2207,
+    2208,
+    2209,
+    2210
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2207",
+    "https://read.shamela.ws/book/10906/2208",
+    "https://read.shamela.ws/book/10906/2209",
+    "https://read.shamela.ws/book/10906/2210"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 227,
+  "printed_page_end": 230,
+  "content_hash": "6112bbf22c6c62bc523c57699082565c8fb6a6ba61514de79b57124d7ac7b8e8",
+  "folder": "2207_حفصة_بنت_عمر_بن_الخطاب_العدوية_أم_المؤمنين"
+}

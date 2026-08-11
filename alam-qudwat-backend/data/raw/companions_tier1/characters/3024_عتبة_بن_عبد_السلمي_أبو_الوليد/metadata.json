@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_66da05a169feafaa_3024",
+  "sequence": 276,
+  "character_id": "siyar_66da05a169feafaa",
+  "character_name": "عتبة بن عبد السلمي أبو الوليد",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3024,
+  "page_id_end": 3024,
+  "source_page_ids": [
+    3024
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3024"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 416,
+  "printed_page_end": 416,
+  "content_hash": "49998444d6e4d143a9ad10fe56a3a3373c6e4e4a2af9709932c368e3cf465a3b",
+  "folder": "3024_عتبة_بن_عبد_السلمي_أبو_الوليد"
+}

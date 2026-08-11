@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_4f2465ee2a57909e_1613",
+  "sequence": 18,
+  "character_id": "siyar_4f2465ee2a57909e",
+  "character_name": "عامر بن أبي البكير الليثي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1613,
+  "page_id_end": 1613,
+  "source_page_ids": [
+    1613
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1613"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 187,
+  "printed_page_end": 187,
+  "content_hash": "5981d82fe5c21edd7bfebdae3a3d7f98f8efcbdceb904774cf9ad24395b53063",
+  "folder": "1613_عامر_بن_أبي_البكير_الليثي"
+}

@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_e963851b0044becb_2258",
+  "sequence": 135,
+  "character_id": "siyar_e963851b0044becb",
+  "character_name": "أم عمارة نسيبة بنت كعب بن عمرو الأنصارية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2258,
+  "page_id_end": 2261,
+  "source_page_ids": [
+    2258,
+    2259,
+    2260,
+    2261
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2258",
+    "https://read.shamela.ws/book/10906/2259",
+    "https://read.shamela.ws/book/10906/2260",
+    "https://read.shamela.ws/book/10906/2261"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 278,
+  "printed_page_end": 281,
+  "content_hash": "f978cebda2c5eb3ecc830c607f049bdbc135bc9bfc4139c69b9f9ccb33761e01",
+  "folder": "2258_أم_عمارة_نسيبة_بنت_كعب_بن_عمرو_الأنصارية"
+}

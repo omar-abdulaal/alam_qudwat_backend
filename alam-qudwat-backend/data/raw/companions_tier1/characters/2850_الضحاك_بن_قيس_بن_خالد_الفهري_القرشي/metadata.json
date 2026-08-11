@@ -1,0 +1,34 @@
+{
+  "biography_id": "siyar_03d81db7c0f44ca3_2850",
+  "sequence": 255,
+  "character_id": "siyar_03d81db7c0f44ca3",
+  "character_name": "الضحاك بن قيس بن خالد الفهري القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 3,
+  "page_id_start": 2850,
+  "page_id_end": 2852,
+  "source_page_ids": [
+    2850,
+    2851,
+    2852
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2850",
+    "https://read.shamela.ws/book/10906/2851",
+    "https://read.shamela.ws/book/10906/2852"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 242,
+  "printed_page_end": 244,
+  "content_hash": "c1d21117eaa44aa2b8b77beb8773de42eb0b2c8ac5311c75380f0c07459921af",
+  "folder": "2850_الضحاك_بن_قيس_بن_خالد_الفهري_القرشي"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_dea6a42f72ddb2cc_2809",
+  "sequence": 251,
+  "character_id": "siyar_dea6a42f72ddb2cc",
+  "character_name": "زينب بنت أبي سلمة بن عبد الأسد بن هلال المخزومية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2809,
+  "page_id_end": 2809,
+  "source_page_ids": [
+    2809
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2809"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 200,
+  "printed_page_end": 200,
+  "content_hash": "d4959edd0aef1f681aba5745f2ba33a56496dd33298e2cb88faf81332e4343a9",
+  "folder": "2809_زينب_بنت_أبي_سلمة_بن_عبد_الأسد_بن_هلال_المخزومية"
+}

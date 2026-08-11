@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_6c07f8ec4db550b2_1668",
+  "sequence": 37,
+  "character_id": "siyar_6c07f8ec4db550b2",
+  "character_name": "كلثوم بن الهدم بن امرئ القيس بن الحارث الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1668,
+  "page_id_end": 1668,
+  "source_page_ids": [
+    1668
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1668"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 242,
+  "printed_page_end": 242,
+  "content_hash": "61ce532a791f8e6be943668bd5222273be594adc3180a3fce9a5147241260950",
+  "folder": "1668_كلثوم_بن_الهدم_بن_امرئ_القيس_بن_الحارث_الأنصاري"
+}

@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_b3cbfd9a443a2303_2252",
+  "sequence": 130,
+  "character_id": "siyar_b3cbfd9a443a2303",
+  "character_name": "أروى عمة رسول الله صلى الله عليه وسلم",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2252,
+  "page_id_end": 2252,
+  "source_page_ids": [
+    2252
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2252"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 272,
+  "printed_page_end": 272,
+  "content_hash": "4d8f5af412d5e777b214bab4e60c44b205d655a55f386f918a48fb7163f8b585",
+  "folder": "2252_أروى_عمة_رسول_الله_صلى_الله_عليه_وسلم"
+}

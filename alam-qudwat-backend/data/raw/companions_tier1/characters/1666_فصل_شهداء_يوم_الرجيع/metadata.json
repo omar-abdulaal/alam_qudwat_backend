@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_c01480d7f2a5b849_1666",
+  "sequence": 35,
+  "character_id": "siyar_c01480d7f2a5b849",
+  "character_name": "فصل شهداء يوم الرجيع",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1666,
+  "page_id_end": 1666,
+  "source_page_ids": [
+    1666
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1666"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 240,
+  "printed_page_end": 240,
+  "content_hash": "895428c14733da90ac4f93578186cc773b99cfa73b96cbbe614227128ef59bdf",
+  "folder": "1666_فصل_شهداء_يوم_الرجيع"
+}

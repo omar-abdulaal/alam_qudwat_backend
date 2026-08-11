@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_c1c905e6f46752a3_2312",
+  "sequence": 152,
+  "character_id": "siyar_c1c905e6f46752a3",
+  "character_name": "قتادة بن النعمان بن زيد بن عامر الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 2312,
+  "page_id_end": 2312,
+  "source_page_ids": [
+    2312
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2312"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 332,
+  "printed_page_end": 332,
+  "content_hash": "5dbd01699b4c17fd9e29ca218e646446f322912fef9bdbcda5392211208fd75a",
+  "folder": "2312_قتادة_بن_النعمان_بن_زيد_بن_عامر_الأنصاري"
+}

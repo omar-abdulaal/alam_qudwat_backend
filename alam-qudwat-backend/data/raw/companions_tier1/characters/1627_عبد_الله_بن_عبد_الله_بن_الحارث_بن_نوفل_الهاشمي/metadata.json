@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_b9c8fa6f20abd333_1627",
+  "sequence": 27,
+  "character_id": "siyar_b9c8fa6f20abd333",
+  "character_name": "عبد الله بن عبد الله بن الحارث بن نوفل الهاشمي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1627,
+  "page_id_end": 1627,
+  "source_page_ids": [
+    1627
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1627"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 201,
+  "printed_page_end": 201,
+  "content_hash": "387be595ff8f94d9a5a7b3ee70135ba0bf0ccf60debb0e67edbd8b14e3cb98b9",
+  "folder": "1627_عبد_الله_بن_عبد_الله_بن_الحارث_بن_نوفل_الهاشمي"
+}

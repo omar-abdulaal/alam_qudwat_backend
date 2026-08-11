@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_bcffd72dfeaac316_1756",
+  "sequence": 68,
+  "character_id": "siyar_bcffd72dfeaac316",
+  "character_name": "أبو العاص بن الربيع بن عبد العزى القرشي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 1756,
+  "page_id_end": 1759,
+  "source_page_ids": [
+    1756,
+    1757,
+    1758,
+    1759
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1756",
+    "https://read.shamela.ws/book/10906/1757",
+    "https://read.shamela.ws/book/10906/1758",
+    "https://read.shamela.ws/book/10906/1759"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 330,
+  "printed_page_end": 333,
+  "content_hash": "00784dd4418ee052c80ec03c2a0f7b828e1898b85d98c243139faba9d70d1293",
+  "folder": "1756_أبو_العاص_بن_الربيع_بن_عبد_العزى_القرشي"
+}

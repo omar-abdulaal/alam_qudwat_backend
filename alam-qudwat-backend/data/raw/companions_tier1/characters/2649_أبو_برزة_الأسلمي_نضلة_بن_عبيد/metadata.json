@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_b521e1c0ae892693_2649",
+  "sequence": 221,
+  "character_id": "siyar_b521e1c0ae892693",
+  "character_name": "أبو برزة الأسلمي نضلة بن عبيد",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2649,
+  "page_id_end": 2652,
+  "source_page_ids": [
+    2649,
+    2650,
+    2651,
+    2652
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2649",
+    "https://read.shamela.ws/book/10906/2650",
+    "https://read.shamela.ws/book/10906/2651",
+    "https://read.shamela.ws/book/10906/2652"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 40,
+  "printed_page_end": 43,
+  "content_hash": "cd323a0d50b95bc0e9a2deeac55f2c7ded76abfba2965d6360ab061d078dceeb",
+  "folder": "2649_أبو_برزة_الأسلمي_نضلة_بن_عبيد"
+}

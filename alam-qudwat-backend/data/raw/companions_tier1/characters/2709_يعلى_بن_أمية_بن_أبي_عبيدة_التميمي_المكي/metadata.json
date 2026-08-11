@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_5b933f905d2126d4_2709",
+  "sequence": 230,
+  "character_id": "siyar_5b933f905d2126d4",
+  "character_name": "يعلى بن أمية بن أبي عبيدة التميمي المكي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2709,
+  "page_id_end": 2710,
+  "source_page_ids": [
+    2709,
+    2710
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2709",
+    "https://read.shamela.ws/book/10906/2710"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 100,
+  "printed_page_end": 101,
+  "content_hash": "074ffc14a28cc126fe2e5a747f6ec9bd2e96705d6b7c9ec5b02da2ef9d6ad6ce",
+  "folder": "2709_يعلى_بن_أمية_بن_أبي_عبيدة_التميمي_المكي"
+}

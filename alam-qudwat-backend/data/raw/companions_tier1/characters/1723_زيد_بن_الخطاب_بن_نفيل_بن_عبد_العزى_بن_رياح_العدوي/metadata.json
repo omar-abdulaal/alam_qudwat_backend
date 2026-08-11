@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_55951580bddb1478_1723",
+  "sequence": 55,
+  "character_id": "siyar_55951580bddb1478",
+  "character_name": "زيد بن الخطاب بن نفيل بن عبد العزى بن رياح العدوي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1723,
+  "page_id_end": 1723,
+  "source_page_ids": [
+    1723
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1723"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 297,
+  "printed_page_end": 297,
+  "content_hash": "3517dfd3d5bf7d6fb1472ca03d72e9de2b07d631a34c5fe6448317301ffd5912",
+  "folder": "1723_زيد_بن_الخطاب_بن_نفيل_بن_عبد_العزى_بن_رياح_العدوي"
+}

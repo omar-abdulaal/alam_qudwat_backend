@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_6a9edbf50cec108b_1619",
+  "sequence": 22,
+  "character_id": "siyar_6a9edbf50cec108b",
+  "character_name": "عبد الله بن سهيل بن عمرو العامري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1619,
+  "page_id_end": 1619,
+  "source_page_ids": [
+    1619
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1619"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 193,
+  "printed_page_end": 193,
+  "content_hash": "ca9e9062c5659b97b6c1642a92c674d0dca319cb8df24233c8e8ddc8eea2cebc",
+  "folder": "1619_عبد_الله_بن_سهيل_بن_عمرو_العامري"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_cfe9676863f348db_3078",
+  "sequence": 304,
+  "character_id": "siyar_cfe9676863f348db",
+  "character_name": "أم خالد أمة بنت خالد الأموية",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 3078,
+  "page_id_end": 3079,
+  "source_page_ids": [
+    3078,
+    3079
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3078",
+    "https://read.shamela.ws/book/10906/3079"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 470,
+  "printed_page_end": 471,
+  "content_hash": "b3d9e8944bf9541213ef5c9f4839067f0211ab28091cccd233bd09936d8cb762",
+  "folder": "3078_أم_خالد_أمة_بنت_خالد_الأموية"
+}

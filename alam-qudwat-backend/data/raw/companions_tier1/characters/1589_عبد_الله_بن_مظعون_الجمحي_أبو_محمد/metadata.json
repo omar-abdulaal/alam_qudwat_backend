@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_9536c7d98165bc1c_1589",
+  "sequence": 12,
+  "character_id": "siyar_9536c7d98165bc1c",
+  "character_name": "عبد الله بن مظعون الجمحي أبو محمد",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 1589,
+  "page_id_end": 1589,
+  "source_page_ids": [
+    1589
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/1589"
+  ],
+  "printed_volume_start": 1,
+  "printed_volume_end": 1,
+  "printed_page_start": 163,
+  "printed_page_end": 163,
+  "content_hash": "7ab7f30da5431a2e1ea86d0a8875374243039abb5571fa8e198bd044a1e6acdb",
+  "folder": "1589_عبد_الله_بن_مظعون_الجمحي_أبو_محمد"
+}

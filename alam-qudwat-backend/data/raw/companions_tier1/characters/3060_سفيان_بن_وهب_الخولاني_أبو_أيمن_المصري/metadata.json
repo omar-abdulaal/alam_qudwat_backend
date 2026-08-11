@@ -1,0 +1,30 @@
+{
+  "biography_id": "siyar_fabdb7913db7529f_3060",
+  "sequence": 297,
+  "character_id": "siyar_fabdb7913db7529f",
+  "character_name": "سفيان بن وهب الخولاني أبو أيمن المصري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 1,
+  "page_id_start": 3060,
+  "page_id_end": 3060,
+  "source_page_ids": [
+    3060
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/3060"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 452,
+  "printed_page_end": 452,
+  "content_hash": "6722f8042ed09fb011221a5783efe4c2156501e814e230b366a179b1473ca728",
+  "folder": "3060_سفيان_بن_وهب_الخولاني_أبو_أيمن_المصري"
+}

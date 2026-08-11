@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_6ec097b95a769a3c_2465",
+  "sequence": 185,
+  "character_id": "siyar_6ec097b95a769a3c",
+  "character_name": "خزيمة بن ثابت بن الفاكه الأنصاري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2465,
+  "page_id_end": 2466,
+  "source_page_ids": [
+    2465,
+    2466
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2465",
+    "https://read.shamela.ws/book/10906/2466"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 485,
+  "printed_page_end": 486,
+  "content_hash": "5cb85b95d4cc90f1bf4093b144b067ae2d8b269f8cbbe22a937fe910fd2aa338",
+  "folder": "2465_خزيمة_بن_ثابت_بن_الفاكه_الأنصاري"
+}

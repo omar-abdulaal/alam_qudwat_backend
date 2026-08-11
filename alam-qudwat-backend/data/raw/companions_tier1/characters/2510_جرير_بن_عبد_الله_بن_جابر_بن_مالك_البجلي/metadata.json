@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_65b51a41f7dc5e9c_2510",
+  "sequence": 192,
+  "character_id": "siyar_65b51a41f7dc5e9c",
+  "character_name": "جرير بن عبد الله بن جابر بن مالك البجلي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2510,
+  "page_id_end": 2516,
+  "source_page_ids": [
+    2510,
+    2511,
+    2512,
+    2513,
+    2514,
+    2515,
+    2516
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2510",
+    "https://read.shamela.ws/book/10906/2511",
+    "https://read.shamela.ws/book/10906/2512",
+    "https://read.shamela.ws/book/10906/2513",
+    "https://read.shamela.ws/book/10906/2514",
+    "https://read.shamela.ws/book/10906/2515",
+    "https://read.shamela.ws/book/10906/2516"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 530,
+  "printed_page_end": 536,
+  "content_hash": "5f1f11e7f1ea66a93a269adc80218bacdb25e59bdac43c1337e4472f46b4b38f",
+  "folder": "2510_جرير_بن_عبد_الله_بن_جابر_بن_مالك_البجلي"
+}

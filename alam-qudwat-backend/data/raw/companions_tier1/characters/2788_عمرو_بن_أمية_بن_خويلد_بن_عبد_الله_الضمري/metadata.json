@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_04d118d46ae68921_2788",
+  "sequence": 243,
+  "character_id": "siyar_04d118d46ae68921",
+  "character_name": "عمرو بن أمية بن خويلد بن عبد الله الضمري",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2788,
+  "page_id_end": 2789,
+  "source_page_ids": [
+    2788,
+    2789
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2788",
+    "https://read.shamela.ws/book/10906/2789"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 179,
+  "printed_page_end": 180,
+  "content_hash": "ec403b980b97cf1171317f02d4f98fa2cd793761c1ea4f70fa2e6a9db02b09c8",
+  "folder": "2788_عمرو_بن_أمية_بن_خويلد_بن_عبد_الله_الضمري"
+}

@@ -1,0 +1,42 @@
+{
+  "biography_id": "siyar_08655b4c1b4e0d88_2191",
+  "sequence": 111,
+  "character_id": "siyar_08655b4c1b4e0d88",
+  "character_name": "زينب بنت جحش بن رياب أم المؤمنين",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 7,
+  "page_id_start": 2191,
+  "page_id_end": 2197,
+  "source_page_ids": [
+    2191,
+    2192,
+    2193,
+    2194,
+    2195,
+    2196,
+    2197
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2191",
+    "https://read.shamela.ws/book/10906/2192",
+    "https://read.shamela.ws/book/10906/2193",
+    "https://read.shamela.ws/book/10906/2194",
+    "https://read.shamela.ws/book/10906/2195",
+    "https://read.shamela.ws/book/10906/2196",
+    "https://read.shamela.ws/book/10906/2197"
+  ],
+  "printed_volume_start": 2,
+  "printed_volume_end": 2,
+  "printed_page_start": 211,
+  "printed_page_end": 217,
+  "content_hash": "54206966df10f434d0796ea46bb91041bbe2a839e7321b54ad4ec90ff85aadb4",
+  "folder": "2191_زينب_بنت_جحش_بن_رياب_أم_المؤمنين"
+}

@@ -1,0 +1,32 @@
+{
+  "biography_id": "siyar_88c9fd84d3097d10_2726",
+  "sequence": 234,
+  "character_id": "siyar_88c9fd84d3097d10",
+  "character_name": "أبو محذورة الجمحي أوس بن معير",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 2,
+  "page_id_start": 2726,
+  "page_id_end": 2727,
+  "source_page_ids": [
+    2726,
+    2727
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2726",
+    "https://read.shamela.ws/book/10906/2727"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 117,
+  "printed_page_end": 118,
+  "content_hash": "f9ded39b93671737d64f0bd41e3661285c32a389dbcaf32b364562e065b82f07",
+  "folder": "2726_أبو_محذورة_الجمحي_أوس_بن_معير"
+}

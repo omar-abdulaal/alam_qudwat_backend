@@ -1,0 +1,36 @@
+{
+  "biography_id": "siyar_cd3dbb1d6a7bf8f6_2967",
+  "sequence": 261,
+  "character_id": "siyar_cd3dbb1d6a7bf8f6",
+  "character_name": "أبو أمامة الباهلي",
+  "book_id": 10906,
+  "book_title": "سير أعلام النبلاء - ط الرسالة",
+  "author": "شمس الدين الذهبي",
+  "dataset_id": "siyar_companions_tier1",
+  "dataset_name": "الطبقة الأولى - قسم الصحابة",
+  "layer": 1,
+  "source_group": "الصحابة",
+  "person_category": null,
+  "source_section": "-",
+  "page_count": 4,
+  "page_id_start": 2967,
+  "page_id_end": 2970,
+  "source_page_ids": [
+    2967,
+    2968,
+    2969,
+    2970
+  ],
+  "source_urls": [
+    "https://read.shamela.ws/book/10906/2967",
+    "https://read.shamela.ws/book/10906/2968",
+    "https://read.shamela.ws/book/10906/2969",
+    "https://read.shamela.ws/book/10906/2970"
+  ],
+  "printed_volume_start": 3,
+  "printed_volume_end": 3,
+  "printed_page_start": 359,
+  "printed_page_end": 362,
+  "content_hash": "3efef5aba9ec630de2083e564b778f6471b54a3e34309ac5a6b4fac45bdc9b6c",
+  "folder": "2967_أبو_أمامة_الباهلي"
+}
