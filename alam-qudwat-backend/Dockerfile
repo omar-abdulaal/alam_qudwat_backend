@@ -9,6 +9,9 @@ COPY rag/ ./rag/
 COPY app/ ./app/
 COPY alembic/ ./alembic/
 COPY alembic.ini .
+# alembic/versions/0004_seed_companions_tier1_characters.py reads this
+# directory from disk at migration time (not from the DB).
+COPY data/ ./data/
 
 EXPOSE 8000
 
