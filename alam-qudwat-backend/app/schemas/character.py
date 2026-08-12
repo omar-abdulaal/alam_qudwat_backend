@@ -11,7 +11,8 @@ class CharacterOut(BaseModel):
     slug: str
     name_ar: str
     era: str
-    category: str
+    group: str
+    categories: list[str]
     short_description: str
     avatar_url: str | None
     sort_order: int

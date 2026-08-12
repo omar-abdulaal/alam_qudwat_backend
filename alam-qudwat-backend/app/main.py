@@ -17,6 +17,7 @@ from app.api.routes import chat, characters, conversations, health, stt, story, 
 from app.core.config import get_app_settings
 from app.core.logging import RequestLoggingMiddleware, configure_logging
 from app.core.security import require_api_token
+from app.services.character_classification_sync import sync_character_classifications
 from app.services.rag_sync import run_background_rag_sync
 
 configure_logging()
@@ -27,6 +28,14 @@ app_settings = get_app_settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    if app_settings.auto_sync_classifications_on_startup:
+        # No network calls (just a local file + a few hundred small DB
+        # upserts), so run it synchronously — by the time the app starts
+        # serving, `categories`/`short_description` are already current.
+        sync_character_classifications()
+    else:
+        logger.info("AUTO_SYNC_CLASSIFICATIONS_ON_STARTUP is disabled; skipping startup classification sync")
+
     if app_settings.auto_ingest_on_startup:
         # A plain OS thread, not an asyncio task: ingest_missing_characters()
         # is fully synchronous (DB + OpenAI HTTP calls), so running it

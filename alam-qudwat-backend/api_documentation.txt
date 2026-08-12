@@ -29,8 +29,9 @@ citations (+ suggestions, if any) are persisted to Postgres
 
 Two separate SQLAlchemy DeclarativeBases share one Postgres database:
   - rag.db.models.Base   -> documents, chunks (RAG domain, untouched by this phase)
-  - app.db.models.AppBase -> characters, conversations, messages, story_of_day (new)
-Both are migrated through the same Alembic history (alembic/versions/0001, 0002).
+  - app.db.models.AppBase -> characters, categories, character_categories,
+    conversations, messages, story_of_day
+Both are migrated through the same Alembic history (alembic/versions/).
 
 Voice I/O runs alongside chat, decoupled from it:
   - POST /api/v1/stt/transcribe: audio upload -> app.services.stt.OpenAISTT
@@ -70,18 +71,34 @@ GET /health
 
 
 GET /api/v1/characters
-    Query params (optional): era, category
+    Query params (optional):
+      era       exact match on the historical period, e.g. "الخلافة الراشدة"
+      group     exact match on the broad historical grouping, e.g. "الصحابة"
+                or "الخلفاء الراشدون" (see the field notes below — distinct
+                from "category")
+      category  matches characters that have this one specific role among
+                their (possibly several) roles, e.g. "خليفة" or "فقيه"
     200 -> array of Character:
         {
           "slug": "abu_bakr",
           "name_ar": "أبو بكر الصديق",
           "era": "الخلافة الراشدة",
-          "category": "الخلفاء الراشدون",
+          "group": "الخلفاء الراشدون",
+          "categories": ["خليفة"],
           "short_description": "...",
           "avatar_url": null,
           "sort_order": 1,
           "created_at": "2026-08-09T19:32:17+03:00"
         }
+    "era"/"group" are broad historical classification, set only by data
+    seeding/migrations — never written by the AI classification script.
+    "categories" is a controlled, multi-valued list of specific roles
+    (from a fixed taxonomy: "خليفة", "أمير", "قائد عسكري", "فقيه", "محدث",
+    "عالم", "طبيب", ... — see scripts/generate_character_classification.py
+    for the full list) assigned by that script; a character can have zero,
+    one, or several. Expect an empty array until that script has run for
+    a given character — treat it as optional/progressively-populated data,
+    not as always present.
     Only is_active=true characters are returned, ordered by sort_order.
 
 
@@ -350,7 +367,8 @@ work).
 
     pip install -r requirements.txt
     cp .env.example .env         # fill in DATABASE_URL, OPENAI_API_KEY, API_AUTH_TOKEN
-    alembic upgrade head          # creates + seeds characters, conversations, messages, story_of_day
+    alembic upgrade head          # creates + seeds characters (+ categories taxonomy),
+                                   # conversations, messages, story_of_day
     uvicorn app.main:app --reload --port 8000
 
 You do NOT need to run ingestion manually first: on every startup the
@@ -363,6 +381,28 @@ disable this (e.g. a scaled-out instance that shouldn't also ingest).
 To force a character to be re-ingested (e.g. corrected source text),
 delete it first: `python -m rag.ingestion.delete_character <character_id>`
 — the next startup (or manual ingestion run) will pick it up as missing.
+
+A character's `categories` (role taxonomy) and `short_description` are NOT
+part of this automatic ingestion/seeding — they go through a separate,
+three-step pipeline, and only the last step runs on a server:
+
+  1. Locally, with OPENAI_API_KEY set: `scripts/generate_character_
+     classification.py submit`, then once the OpenAI Batch job completes,
+     `... apply --batch-id <id>` — writes categories/short_description
+     into YOUR local DB and an audit JSONL, same as before.
+  2. Locally: `python -m scripts.export_character_classifications` —
+     snapshots every character's current categories/short_description
+     from that DB into data/generated/character_classifications.json.
+     Commit this file.
+  3. On a server (or anywhere else): nothing to run manually. On every
+     backend startup, app.services.character_classification_sync reads
+     that committed file and applies it to whatever DB it's running
+     against (only the rows that actually differ) — see AUTO_SYNC_
+     CLASSIFICATIONS_ON_STARTUP below. No OPENAI_API_KEY, no Batch job,
+     and no scripts/ directory are needed on a server for this.
+
+`era`/`group` are unaffected by any of this and are only ever set by data
+seeding/migrations.
 
 Interactive API docs (Swagger UI): http://127.0.0.1:8000/docs
 (the auth padlock in that UI accepts your API_AUTH_TOKEN as a Bearer token)
@@ -452,6 +492,10 @@ RAG / generation (rag/config.py):
 Backend/API (app/core/config.py):
   AUTO_INGEST_ON_STARTUP  default true — ingest any character missing from the DB
                           in a background thread on every backend startup (section 6)
+  AUTO_SYNC_CLASSIFICATIONS_ON_STARTUP   default true — apply data/generated/
+                          character_classifications.json to characters.categories/
+                          short_description synchronously on every backend startup
+                          (section 6). No external API calls; safe to leave on.
   API_AUTH_TOKEN          shared-secret bearer token for the Flutter app — REQUIRED, no default
   CORS_ALLOW_ORIGINS      default "*" (mobile clients don't send Origin; tighten for web)
   HISTORY_MAX_MESSAGES    default 8

@@ -9,8 +9,10 @@ COPY rag/ ./rag/
 COPY app/ ./app/
 COPY alembic/ ./alembic/
 COPY alembic.ini .
-# alembic/versions/0004_seed_companions_tier1_characters.py reads this
-# directory from disk at migration time (not from the DB).
+# Needed at runtime, not just migration time: alembic/versions/0004_seed_
+# companions_tier1_characters.py reads data/raw/ during migration, and
+# app/services/character_classification_sync.py reads data/generated/
+# character_classifications.json on every backend startup.
 COPY data/ ./data/
 
 EXPOSE 8000

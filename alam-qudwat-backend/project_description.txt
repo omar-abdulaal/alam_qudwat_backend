@@ -59,8 +59,12 @@ updating an existing conversation's mode).
 
 a) Browse characters
    - List available historical figures (name, short description, era,
-     category, avatar if set) and let the user pick one to start a chat
-     with. GET /api/v1/characters (optionally filtered by era/category).
+     group, role categories, avatar if set) and let the user pick one to
+     start a chat with. GET /api/v1/characters (optionally filtered by
+     era/group/category). Note "group" (broad historical grouping, e.g.
+     "الصحابة") and "categories" (a list of zero or more specific roles,
+     e.g. "خليفة", "فقيه") are two distinct fields, not one — see
+     api_documentation.txt section 3 for the exact shape.
 
 b) "Story of the day"
    - A home-screen feature highlighting one character/story for the
@@ -133,9 +137,12 @@ e) Starting a new topic/character
   the UI. The Flutter app only ever needs the backend's base URL and the
   shared API_AUTH_TOKEN to call the API — it never talks to Postgres or
   OpenAI directly.
-- Do not assume a fixed, small set of characters/eras — build character
-  browsing/filtering (era, category) generically since the roster is
-  expected to grow.
+- Do not assume a fixed, small set of characters/eras/roles — build
+  character browsing/filtering (era, group, category) generically since
+  the roster is expected to grow. A character can have zero, one, or
+  several role categories (e.g. "خليفة", "فقيه") — render "categories" as
+  a list/set of chips, not a single value, and don't assume it's always
+  non-empty (it's populated by a separate offline classification step).
 - Do not treat voice input as "record and get an answer" in one step —
   it is transcribe-then-send: the transcription endpoint only returns
   text, and that text becomes a normal chat message. Don't auto-send it

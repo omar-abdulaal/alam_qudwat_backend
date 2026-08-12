@@ -51,6 +51,17 @@ class AppSettings(BaseSettings):
     # wanted.
     auto_ingest_on_startup: bool = Field(default=True, alias="AUTO_INGEST_ON_STARTUP")
 
+    # --- Startup character-classification sync (app/services/character_classification_sync.py) ---
+    # Applies data/generated/character_classifications.json (produced
+    # locally by scripts/export_character_classifications.py, committed to
+    # the repo) to `characters.categories`/`short_description` on every
+    # startup. Unlike auto_ingest_on_startup, this makes no external API
+    # calls — a server never needs OPENAI_API_KEY or the Batch pipeline for
+    # this, just the committed snapshot file.
+    auto_sync_classifications_on_startup: bool = Field(
+        default=True, alias="AUTO_SYNC_CLASSIFICATIONS_ON_STARTUP"
+    )
+
     @property
     def cors_origins_list(self) -> list[str]:
         if self.cors_allow_origins.strip() == "*":

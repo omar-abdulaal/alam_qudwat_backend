@@ -11,9 +11,10 @@ router = APIRouter(prefix="/api/v1/characters", tags=["characters"])
 def list_characters_endpoint(
     session: DbSession,
     era: str | None = Query(default=None, description="Filter by era, e.g. الخلافة الراشدة"),
-    category: str | None = Query(default=None, description="Filter by category"),
+    group: str | None = Query(default=None, description="Filter by broad group, e.g. الصحابة"),
+    category: str | None = Query(default=None, description="Filter by specific category, e.g. خليفة"),
 ):
-    return character_service.list_characters(session, era=era, category=category)
+    return character_service.list_characters(session, era=era, group=group, category=category)
 
 
 @router.get("/{slug}", response_model=CharacterOut)
