@@ -6,7 +6,6 @@ __pycache__/
 .idea/
 .pytest_cache/
 .pytest_tmp/
-data/
 docs/
 tests/
 scraper/
