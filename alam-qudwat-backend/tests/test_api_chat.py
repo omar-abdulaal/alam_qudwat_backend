@@ -16,8 +16,9 @@ from __future__ import annotations
 import uuid
 
 from app.api.deps import get_chat_llm, get_embedder
-from app.db.models import Conversation, Message
+from app.db.models import Character, Conversation, Message
 from app.main import app
+from app.services.suggestions import ADULTS_FIRST_SUGGESTION
 from rag.config import get_settings
 from tests.fake_embedder import FakeEmbeddingProvider
 from tests.fake_llm import FakeChatLLM
@@ -76,6 +77,17 @@ def test_off_topic_message_gets_fallback_without_calling_llm(client, db_session)
     assert llm.calls == []  # the LLM must never be called for an ungrounded turn
     assert llm.json_calls == []  # nor the suggestions call
 
+    import json
+
+    from rag.generation.prompt import CLOSING_QUESTION
+
+    # The fallback is a plain "sources don't cover this" statement -- no
+    # invitation to keep exploring right after telling the user we don't
+    # know, and (separately) not something that should get echoed as a
+    # pattern into the LLM's own history on a later turn.
+    fallback_delta = json.loads(dict(events)["delta"])["text"]
+    assert CLOSING_QUESTION not in fallback_delta
+
 
 def test_grounded_message_streams_llm_response_with_citations_and_persists(client, db_session):
     llm = FakeChatLLM("هذا رد تجريبي يعتمد على المصادر [1].")
@@ -107,8 +119,138 @@ def test_grounded_message_streams_llm_response_with_citations_and_persists(clien
     assert messages[1].citations  # structured citations were persisted
 
 
-def test_suggestions_are_streamed_and_persisted_when_llm_provides_them(client, db_session):
-    llm = FakeChatLLM("رد [1].", suggestions=["سؤال متابعة أول؟", "سؤال متابعة ثانٍ؟"])
+def test_answer_ends_with_the_fixed_closing_question(client, db_session):
+    from rag.generation.prompt import CLOSING_QUESTION
+
+    llm = FakeChatLLM("هذا رد تجريبي يعتمد على المصادر [1].")
+    _install_fakes(llm, lenient=True)
+
+    resp = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    events = _parse_sse(resp.text)
+
+    import json
+
+    conv_id = uuid.UUID(json.loads(dict(events)["conversation"])["conversation_id"])
+    assistant_message = db_session.query(Message).filter_by(conversation_id=conv_id, role="assistant").one()
+    assert assistant_message.content.endswith(CLOSING_QUESTION)
+
+    # ...and it must have actually streamed as (part of) a delta event too,
+    # not just been silently persisted.
+    all_delta_text = "".join(json.loads(d)["text"] for k, d in events if k == "delta")
+    assert all_delta_text.endswith(CLOSING_QUESTION)
+
+
+def test_streamed_and_stored_text_never_contains_diacritics(client, db_session):
+    """DIACRITIZATION_RULE has the LLM write its answer with tashkeel —
+    the fake LLM here simulates that by actually returning diacritized
+    text, so this proves stripping genuinely happens rather than passing
+    vacuously because the fake never emits diacritics."""
+    diacritized_answer = "هَذَا رَدٌّ مُشَكَّلٌ يَعْتَمِدُ عَلَى الْمَصَادِرِ [1]."
+    llm = FakeChatLLM(diacritized_answer)
+    _install_fakes(llm, lenient=True)
+
+    resp = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    events = _parse_sse(resp.text)
+
+    import json
+
+    all_delta_text = "".join(json.loads(d)["text"] for k, d in events if k == "delta")
+    assert "هَذَا" not in all_delta_text  # diacritized form of the LLM's word must not leak through
+    assert "هذا" in all_delta_text  # the plain word is still there, just undiacritized
+
+    conv_id = uuid.UUID(json.loads(dict(events)["conversation"])["conversation_id"])
+    assistant_message = db_session.query(Message).filter_by(conversation_id=conv_id, role="assistant").one()
+    assert "هَذَا" not in assistant_message.content
+    assert "هذا" in assistant_message.content
+
+
+def test_diacritized_content_is_stored_for_tts_and_strips_back_to_the_plain_answer(client, db_session):
+    """The LLM's raw diacritized portion must round-trip back to the plain
+    text via strip_diacritics(); the appended closing question is checked
+    separately (test_answer_ends_with_the_fixed_closing_question) since
+    CLOSING_QUESTION/CLOSING_QUESTION_DIACRITIZED are independent fixed
+    strings by design, not round-trip-derived from one another (see
+    app/api/routes/chat.py)."""
+    from app.services.diacritization import strip_diacritics
+
+    diacritized_answer = "هَذَا رَدٌّ مُشَكَّلٌ [1]."
+    llm = FakeChatLLM(diacritized_answer)
+    _install_fakes(llm, lenient=True)
+
+    resp = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    events = _parse_sse(resp.text)
+
+    import json
+
+    conv_id = uuid.UUID(json.loads(dict(events)["conversation"])["conversation_id"])
+    assistant_message = db_session.query(Message).filter_by(conversation_id=conv_id, role="assistant").one()
+
+    diacritized_content = assistant_message.extra["diacritized_content"]
+    assert diacritized_answer in diacritized_content  # the LLM's raw (diacritized) output, untouched
+    assert strip_diacritics(diacritized_answer) in assistant_message.content
+
+
+def test_first_message_in_conversation_gets_the_conciseness_instruction(client, db_session):
+    llm = FakeChatLLM("رد أول [1].")
+    _install_fakes(llm, lenient=True)
+
+    first = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    import json
+
+    conv_id = json.loads(dict(_parse_sse(first.text))["conversation"])["conversation_id"]
+    first_system_prompt = llm.calls[0][0]["content"]
+    assert "أول إجابة" in first_system_prompt
+
+    llm.response_text = "رد ثانٍ [1]."
+    client.post(
+        "/api/v1/chat/stream",
+        json={"message": "وماذا حدث بعد ذلك؟", "conversation_id": conv_id},
+    )
+    second_system_prompt = llm.calls[1][0]["content"]
+    assert "أول إجابة" not in second_system_prompt
+
+
+def test_kids_predefined_suggestions_ignore_character_categories(client, db_session):
+    from app.services.suggestions import KIDS_PREDEFINED_SUGGESTIONS
+
+    character = db_session.get(Character, "abu_bakr")
+    character.categories = ["قائد عسكري"]  # must not leak an adult-role question into kids mode
+    db_session.commit()
+
+    llm = FakeChatLLM("رد [1].", suggestions=[])
+    _install_fakes(llm, lenient=True)
+
+    resp = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "kids"},
+    )
+    events = _parse_sse(resp.text)
+
+    import json
+
+    assert json.loads(dict(events)["suggestions"])["suggestions"] == list(KIDS_PREDEFINED_SUGGESTIONS)
+
+
+def test_suggestions_combine_predefined_and_llm_generated(client, db_session):
+    """No role match (categories=[]) leaves 1 predefined + 2 open slots,
+    which the LLM's suggestions fill, in order: predefined first."""
+    character = db_session.get(Character, "abu_bakr")
+    character.categories = []
+    db_session.commit()
+
+    llm = FakeChatLLM("رد [1].", suggestions=["سؤال إضافي من الذكاء الاصطناعي؟"])
     _install_fakes(llm, lenient=True)
 
     resp = client.post(
@@ -120,16 +262,23 @@ def test_suggestions_are_streamed_and_persisted_when_llm_provides_them(client, d
     import json
 
     suggestions_payload = json.loads(dict(events)["suggestions"])
-    assert suggestions_payload["suggestions"] == ["سؤال متابعة أول؟", "سؤال متابعة ثانٍ؟"]
+    expected = [ADULTS_FIRST_SUGGESTION, "سؤال إضافي من الذكاء الاصطناعي؟"]
+    assert suggestions_payload["suggestions"] == expected
 
     conv_id = uuid.UUID(json.loads(dict(events)["conversation"])["conversation_id"])
     assistant_message = (
         db_session.query(Message).filter_by(conversation_id=conv_id, role="assistant").one()
     )
-    assert assistant_message.extra == {"suggestions": ["سؤال متابعة أول؟", "سؤال متابعة ثانٍ؟"]}
+    assert assistant_message.extra["suggestions"] == expected
 
 
-def test_no_suggestions_when_llm_decides_against_it(client, db_session):
+def test_predefined_suggestions_still_shown_when_llm_declines(client, db_session):
+    """Predefined suggestions never depend on the LLM's suggestions call —
+    they're shown regardless of whether it offers anything extra."""
+    character = db_session.get(Character, "abu_bakr")
+    character.categories = ["قائد عسكري"]
+    db_session.commit()
+
     llm = FakeChatLLM("رد [1].", suggestions=[])
     _install_fakes(llm, lenient=True)
 
@@ -141,13 +290,37 @@ def test_no_suggestions_when_llm_decides_against_it(client, db_session):
 
     import json
 
-    assert json.loads(dict(events)["suggestions"])["suggestions"] == []
+    expected = [ADULTS_FIRST_SUGGESTION, "كيف تعامل مع تحديات المعارك والقيادة؟"]
+    assert json.loads(dict(events)["suggestions"])["suggestions"] == expected
 
     conv_id = uuid.UUID(json.loads(dict(events)["conversation"])["conversation_id"])
     assistant_message = (
         db_session.query(Message).filter_by(conversation_id=conv_id, role="assistant").one()
     )
-    assert assistant_message.extra is None
+    assert assistant_message.extra["suggestions"] == expected
+
+
+def test_used_predefined_suggestion_never_reappears(client, db_session):
+    llm = FakeChatLLM("رد [1].", suggestions=[])
+    _install_fakes(llm, lenient=True)
+
+    import json
+
+    first = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    conv_id = json.loads(dict(_parse_sse(first.text))["conversation"])["conversation_id"]
+
+    # The user "selects" the fixed first suggestion by sending its exact text.
+    second = client.post(
+        "/api/v1/chat/stream",
+        json={"message": ADULTS_FIRST_SUGGESTION, "conversation_id": conv_id},
+    )
+    events = _parse_sse(second.text)
+    suggestions_payload = json.loads(dict(events)["suggestions"])["suggestions"]
+
+    assert ADULTS_FIRST_SUGGESTION not in suggestions_payload
 
 
 def test_followup_reuses_conversation_and_loads_history(client, db_session):
@@ -176,6 +349,41 @@ def test_followup_reuses_conversation_and_loads_history(client, db_session):
     roles = [m["role"] for m in second_call_messages]
     assert roles.count("user") >= 2  # prior user turn (history) + current turn
     assert any("من هو أبو بكر" in m["content"] for m in second_call_messages)
+
+
+def test_closing_question_is_not_fed_back_to_the_llm_as_history(client, db_session):
+    """The stored first answer ends with CLOSING_QUESTION, but the second
+    call's history must not contain it -- otherwise the model picks up the
+    pattern from its own "prior turn" and starts echoing/repeating it."""
+    from rag.generation.prompt import CLOSING_QUESTION
+
+    llm = FakeChatLLM("رد أول [1].")
+    _install_fakes(llm, lenient=True)
+
+    first = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "من هو أبو بكر؟", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    import json
+
+    conv_id = json.loads(dict(_parse_sse(first.text))["conversation"])["conversation_id"]
+
+    # Confirm the premise: what's actually stored does end with it.
+    assistant_message = (
+        db_session.query(Message)
+        .filter_by(conversation_id=uuid.UUID(conv_id), role="assistant")
+        .one()
+    )
+    assert assistant_message.content.endswith(CLOSING_QUESTION)
+
+    llm.response_text = "رد ثانٍ [1]."
+    client.post(
+        "/api/v1/chat/stream",
+        json={"message": "وماذا حدث بعد ذلك؟", "conversation_id": conv_id},
+    )
+
+    second_call_messages = llm.calls[1]
+    assert not any(CLOSING_QUESTION in m["content"] for m in second_call_messages)
 
 
 def test_mismatched_character_slug_for_existing_conversation_is_rejected(client):

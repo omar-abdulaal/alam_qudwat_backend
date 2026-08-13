@@ -146,11 +146,20 @@ GET /api/v1/conversations/{conversation_id}
               "role": "assistant",
               "content": "...",
               "citations": [ {...Citation...}, ... ],
-              "extra": { "suggestions": ["سؤال متابعة أول؟", "..."] },  // or null
+              "extra": {
+                "suggestions": ["سؤال متابعة أول؟", "..."],   // omitted if none
+                "diacritized_content": "..."                    // see below; internal use, ignore in the UI
+              },  // or null
               "created_at": "..."
             }
           ]
         }
+        `extra.diacritized_content`, when present, is the same answer
+        with full Arabic tashkeel — kept only so POST /api/v1/tts/speak
+        can synthesize speech for this exact message without a second LLM
+        call (section 3, TTS). It is NOT meant to be rendered — `content`
+        (no diacritics) is what the UI should always display; there is no
+        reason for the Flutter app to read this field at all.
     404 -> unknown conversation_id
     Note: this endpoint exists so the Flutter app can resume a
     conversation after an app restart by persisting only the
@@ -217,19 +226,43 @@ POST /api/v1/tts/speak   <-- TEXT-TO-SPEECH (voice output, SILMA on SageMaker)
     before synthesis automatically (reads badly aloud otherwise) — the
     Flutter app does not need to strip them itself before calling this.
 
+Synthesis always uses fully-diacritized (tashkeel) Arabic text internally
+    to improve SILMA's pronunciation — this never changes `messages.content`
+    or what any other endpoint returns; the client never sees diacritics.
+    How that diacritized text is obtained depends on the source:
+      - `message_id` pointing at an answer POST /api/v1/chat/stream
+        generated after this feature shipped: the exact diacritized text
+        the chat LLM already produced (`extra.diacritized_content`, see
+        GET /api/v1/conversations/{id} above) is used verbatim — no
+        second LLM call, so no added latency here.
+      - `text`, or a `message_id` with no stored diacritized version
+        (older messages, or the ungrounded-fallback answer): run through
+        a small on-demand LLM-based diacritizer (app/services/
+        diacritization.py) instead. If that fails for any reason,
+        synthesis proceeds with the plain text rather than failing the
+        request — it's a pronunciation enhancement, not a correctness
+        requirement (same posture as chat's follow-up suggestions).
+
     200 -> `Content-Type: application/octet-stream`, streamed body of raw
-    PCM audio: int16 little-endian, mono, 32000 Hz — NOT a WAV/MP3
-    container, just the raw samples. Response headers describe the format:
-        X-Audio-Sample-Rate: 32000
+    PCM audio: int16 little-endian, mono — NOT a WAV/MP3 container, just
+    the raw samples (the backend receives a complete WAV file from
+    SageMaker and strips its header before streaming). Response headers
+    describe the actual format of THIS response — always read
+    X-Audio-Sample-Rate rather than assuming a fixed value, since it
+    reflects whatever rate SILMA actually produced for this call, e.g.:
+        X-Audio-Sample-Rate: 24000
         X-Audio-Channels: 1
         X-Audio-Sample-Format: pcm_s16le
 
     400 -> validation error (both/neither of text+message_id, text too
            long, nothing to synthesize after stripping citation markers)
     404 -> unknown message_id, or message_id is not an assistant message
+    502 -> SageMaker responded but its audio was unusable (empty, not
+           16-bit mono, or not parsable as WAV) — an upstream data
+           problem, distinct from 503 below
     503 -> TTS is not configured on this deployment (SILMA_SAGEMAKER_
-           ENDPOINT_NAME unset) or the SageMaker call failed
-    502 -> the backend produced no audio at all (unexpected)
+           ENDPOINT_NAME unset) or the SageMaker call itself failed
+           (network/auth/endpoint error)
 
     Example:
         curl -X POST $BASE_URL/api/v1/tts/speak \
@@ -264,6 +297,22 @@ Events, always in this order:
         honest "not enough information" message (mode-appropriate) —
         the LLM is not called in that case at all.
 
+        Every GROUNDED answer (not the ungrounded-fallback message above,
+        which stays a plain "sources don't cover this" statement with no
+        invitation to keep going) ends with exactly this question,
+        appended as one final "delta":
+            ماذا تريد أن تعرف أيضاً عن هذه الشخصية العظيمة؟
+        The client doesn't need to do anything special for this — it's
+        just more streamed text — but it's always there, and it's the
+        same sentence every time (guaranteed in code, not left to the
+        LLM). It is deliberately excluded from what the LLM sees as its
+        own prior turns in later messages (section 5) so it never gets
+        echoed into the middle of a new answer. A conversation's very
+        first grounded answer is also kept concise (roughly two
+        paragraphs at most), and any answer to a broad, unspecific
+        "tell me about this person"-style question stays brief by
+        default too — see section 5.
+
   3. "citations"  (always exactly once, after the last "delta")
         data: {"citations": [
           {
@@ -286,14 +335,17 @@ Events, always in this order:
 
   4. "suggestions"  (always exactly once, after "citations")
         data: {"suggestions": ["سؤال متابعة أول؟", "سؤال متابعة ثانٍ؟"]}
-        0 to 3 short Arabic follow-up questions the user might want to
-        ask next — generated by the LLM itself deciding whether any
-        natural follow-up exists for this specific answer (see section 5).
-        Always present in the stream, but very often an EMPTY array —
-        that's expected/normal, not an error; only render a "suggested
-        questions" UI when the array is non-empty. Always [] for the
-        ungrounded-fallback case (no LLM call is made for that turn at
-        all, including for suggestions).
+        0 to 3 short Arabic follow-up questions. Up to 2 are predefined
+        (fixed, chosen deterministically by NarratorMode and, for
+        "adults", the character's role — see section 5) and cost no LLM
+        call; any remaining slot (0 or 1 in practice) is filled by the
+        LLM deciding whether a natural follow-up exists, same as before.
+        A suggestion the user has already sent as a message earlier in
+        this same conversation is never shown again — predefined or
+        LLM-generated — for the rest of that conversation. Always [] for
+        the ungrounded-fallback case (no LLM call is made for that turn
+        at all, including for suggestions — this is unchanged; predefined
+        suggestions are currently only shown for grounded answers).
 
   5. "done"  (always exactly once, terminal)
         data: {}
@@ -345,17 +397,45 @@ in history. Suggestions are stored in that message's `extra` field
   "kids" (simple, warm, values/lessons-focused Arabic) and "adults"
   (sophisticated Arabic with historical/political/social context) modes.
 
-- Suggestions are decided by the LLM, not a heuristic: after the narrative
-  answer finishes streaming, a second, small, non-streamed LLM call
-  (rag/generation/prompt.py build_suggestions_prompt(), JSON response
-  mode) is made with the question, the answer just given, and the same
-  sources — explicitly instructed to return an empty list when no natural
-  follow-up exists rather than inventing one to fill the array. This adds
-  a small tail latency after the "delta" events stop and before "citations"/
-  "suggestions" arrive — expected and intentional (see Limitations). Any
-  failure in this step (API error, malformed JSON) silently yields no
-  suggestions; it never breaks the main answer, which is already fully
-  streamed and saved by that point.
+- A conversation's very first grounded answer is instructed to stay
+  concise (roughly two paragraphs at most) — later answers go back to the
+  normal question-driven length (a simple factual question still gets a
+  short answer; an explicit request for a detailed story can be longer).
+  Every answer, first or not, ends with the exact same fixed closing
+  question (see the "delta" event above) — appended in code after the
+  LLM's own text finishes streaming, not left to the LLM to phrase.
+
+- Suggestions (app/services/suggestions.py) are up to 2 predefined + LLM
+  top-up, not 100% LLM-decided like before:
+    - Predefined suggestions are chosen purely by NarratorMode (never raw
+      age — the Flutter app already converts age to "kids"/"adults",
+      which is the only signal used here) and cost no LLM call:
+        - "kids": always the same fixed 2 questions.
+        - "adults": always the same fixed first question, plus a second
+          question fixed per the character's role/category (e.g. "قائد
+          عسكري" gets a different fixed question than "عالم") — chosen
+          deterministically when a character has more than one category
+          by a fixed priority order over the whole role taxonomy. If the
+          character has no matching role (e.g. not yet classified — see
+          docs/RAG.md or scripts/generate_character_classification.py),
+          only the first fixed question is shown.
+    - Once a suggestion (predefined or not) has been sent by the user as
+      an actual message anywhere earlier in the SAME conversation, it is
+      permanently excluded from that conversation's future suggestion
+      lists — this is checked against every user message ever sent in
+      the conversation, not just the recent history window.
+    - Any slot left after predefined suggestions (0, 1, or up to all 3 if
+      predefined ones were already used) is filled by the same
+      LLM-decides-whether-it's-useful call as before (rag/generation/
+      prompt.py build_suggestions_prompt(), JSON response mode, explicitly
+      told which questions are already used so it doesn't repeat them,
+      even paraphrased) — it can still return fewer than the available
+      slots, or none. This adds a small tail latency after the "delta"
+      events stop and before "citations"/"suggestions" arrive — expected
+      and intentional (see Limitations). Any failure in this step (API
+      error, malformed JSON) falls back to the predefined suggestions
+      alone; it never breaks the main answer, which is already fully
+      streamed and saved by that point.
 
 --------------------------------------------------------------------------------
 6. HOW TO RUN THE BACKEND LOCALLY
@@ -486,6 +566,8 @@ RAG / generation (rag/config.py):
   RETRIEVAL_TOP_K         default 5
   RETRIEVAL_MIN_SCORE     default 0.28
   STT_MODEL               default gpt-4o-mini-transcribe
+  DIACRITIZATION_MODEL    default gpt-4o-mini — adds tashkeel to text right before
+                          TTS synthesis only (app/services/diacritization.py)
   RAG_DATA_DIR            default data/raw — root scanned for dataset subdirectories
                           by the startup auto-ingest sync (see section 6)
 
@@ -683,10 +765,11 @@ against a future format change, rather than hardcoding 32000/mono:
   into `story_of_day` directly (or via a future admin endpoint) overrides
   it for that date.
 
-- `messages.extra` (JSONB) currently holds `{"suggestions": [...]}` for
-  assistant turns that have any; it's otherwise a deliberate forward-
-  compatibility seam for future interactive story choices/branching —
-  no schema migration should be needed to start using it further.
+- `messages.extra` (JSONB) currently holds `suggestions` (if any) and, for
+  grounded answers, `diacritized_content` (the same answer with tashkeel,
+  used only by POST /api/v1/tts/speak — see section 3); otherwise it's a
+  deliberate forward-compatibility seam for future interactive story
+  choices/branching — no schema migration should be needed to add more.
 
 - Suggestions add one extra, non-streamed LLM call per grounded answer,
   made AFTER the narrative text finishes streaming — so there's a small
@@ -697,24 +780,29 @@ against a future format change, rather than hardcoding 32000/mono:
   middle of a token stream. No suggestions call happens at all for the
   ungrounded-fallback path.
 
-- TTS (POST /api/v1/tts/speak) could not be verified against a real
-  SILMA SageMaker endpoint in the environment this backend was built in —
-  no AWS credentials or SILMA_SAGEMAKER_ENDPOINT_NAME were available.
-  It's implemented closely following the provided reference
-  (tts_silma_example.py: same request shape, same PCM chunking-for-
-  transport behavior, same module-level lock serializing calls to the
-  endpoint) and covered by fake-backed automated tests plus a manual
-  check that it fails clearly (503) when unconfigured — but the real,
-  end-to-end SageMaker call itself is unverified. Should be smoke-tested
-  once real credentials/endpoint are available; no code changes are
-  expected to be needed, just configuration.
+- TTS (POST /api/v1/tts/speak) is now deployed and live against a real
+  SILMA SageMaker endpoint. Its actual inference.py returns JSON —
+  {"audio_base64": <a complete WAV file>, "format": "wav", "sample_rate":
+  <int>} — regardless of any Accept header sent, not headerless raw PCM
+  at a fixed rate as an earlier reference implementation assumed.
+  app/services/tts.py decodes that WAV file and strips its header before
+  streaming, and reads sample_rate/channels/sample_width from the WAV's
+  own fmt chunk (authoritative over the JSON's sample_rate field) rather
+  than assuming any fixed value — 16-bit mono is required; anything else
+  fails clearly with 502 rather than being mislabeled and streamed
+  anyway. Getting this wrong (streaming the WAV file's header, or the raw
+  JSON bytes, straight through as if already headerless PCM) is what
+  previously produced static/noise instead of speech on the client.
 
 - STT (POST /api/v1/stt/transcribe) WAS verified end-to-end against the
   real OpenAI API during development (a synthesized speech WAV file
   transcribed correctly).
 
-- The raw-PCM audio format for TTS (no WAV/MP3 container) matches exactly
-  what the SILMA SageMaker endpoint returns per the reference
-  implementation; the Flutter app needs a raw-PCM-capable audio player
-  (see section 9) rather than a standard file-based one.
+- The raw-PCM audio format for TTS (no WAV/MP3 container) is a contract
+  this backend enforces itself — SageMaker's actual response is a
+  complete WAV file; the backend strips its header so downstream clients
+  never need to (see above). The Flutter app needs a raw-PCM-capable
+  audio player (see section 9) rather than a standard file-based one, and
+  should read X-Audio-Sample-Rate per response rather than hardcoding a
+  value, since it varies by call.
 ================================================================================

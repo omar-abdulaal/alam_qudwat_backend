@@ -1,4 +1,10 @@
-from rag.generation.prompt import GROUNDING_RULES, NEVER_IMPERSONATE_RULE, build_chat_messages, narrator_system_prompt
+from rag.generation.prompt import (
+    GROUNDING_RULES,
+    NEVER_IMPERSONATE_RULE,
+    RESPONSE_LENGTH_RULE,
+    build_chat_messages,
+    narrator_system_prompt,
+)
 from rag.retrieval.retriever import RetrievedChunk
 
 CHUNK = RetrievedChunk(
@@ -45,3 +51,13 @@ def test_build_chat_messages_without_chunks_says_no_sources_available():
     messages = build_chat_messages("سؤال", [], mode="kids", character_name="X", history=None)
     assert "لا توجد مصادر" in messages[-1]["content"]
     assert len(messages) == 2  # system + the single grounded user turn, no history
+
+
+def test_response_length_rule_calls_out_generic_tell_me_about_requests():
+    # "حدّثني" reads like a story request on its own -- the rule must
+    # explicitly steer a generic "tell me about this person" question into
+    # the brief bucket instead, or it gets treated as an explicit
+    # detailed-story request.
+    assert "حدثني عن هذه الشخصية" in RESPONSE_LENGTH_RULE
+    assert RESPONSE_LENGTH_RULE in narrator_system_prompt("adults", "أبو بكر الصديق")
+    assert RESPONSE_LENGTH_RULE in narrator_system_prompt("kids", "أبو بكر الصديق")

@@ -1,6 +1,8 @@
-import os
+import base64
+import io
 import json
-import asyncio
+import os
+import wave
 from typing import Optional
 
 import boto3
@@ -10,17 +12,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TARGET_SAMPLE_RATE = 32000
-BYTES_PER_SAMPLE = 2  # int16 mono
-
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 SILMA_SAGEMAKER_ENDPOINT_NAME = os.environ["SILMA_SAGEMAKER_ENDPOINT_NAME"]
 
-# 1 MB = about 16.38 seconds of raw PCM at 32000 Hz int16 mono.
-# Increase this if your frontend/WebSocket can handle larger binary messages.
-MAX_CHUNK_BYTES = str(1024 * 1024)
-
-tts_lock = asyncio.Lock()
+# 1 MB ~= 16.38 seconds of raw PCM at 32000 Hz int16 mono (actual size
+# per second depends on whatever sample_rate SILMA returns for a call).
+MAX_CHUNK_BYTES = 1024 * 1024
+BYTES_PER_SAMPLE = 2  # int16 mono
 
 sagemaker_runtime = boto3.client(
     "sagemaker-runtime",
@@ -36,33 +34,33 @@ sagemaker_runtime = boto3.client(
 )
 
 
-def _invoke_silma_sagemaker_pcm_32000(text: str, voice_id: str = "pixel") -> bytes:
+def _invoke_silma_sagemaker(text: str, voice_id: str = "pixel") -> bytes:
     """
-    Calls SageMaker endpoint and expects raw PCM bytes:
-    int16 little-endian mono 32000 Hz.
+    Calls the SageMaker endpoint (see inference.py). The container always
+    returns JSON: {"audio_base64": <base64 of a COMPLETE WAV file>,
+    "format": "wav", "sample_rate": <int>} — NOT headerless raw PCM, and
+    NOT necessarily at a fixed rate. This returns the decoded WAV bytes;
+    callers must parse them (see silma_tts_stream_pcm below) to get raw
+    PCM samples plus the real sample_rate/channels/sample_width.
     """
 
-    payload = {
-        "text": text,
-        "voice_id": voice_id,
-        "sample_rate": TARGET_SAMPLE_RATE,
-        "response_format": "pcm",
-    }
+    payload = {"text": text, "voice_id": voice_id}
 
     try:
         response = sagemaker_runtime.invoke_endpoint(
             EndpointName=SILMA_SAGEMAKER_ENDPOINT_NAME,
             ContentType="application/json",
-            Accept="application/octet-stream",
+            Accept="application/json",
             Body=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         )
 
-        pcm_bytes = response["Body"].read()
+        body = json.loads(response["Body"].read())
+        audio_b64 = body.get("audio_base64")
 
-        if not pcm_bytes:
-            raise RuntimeError("SageMaker returned empty audio bytes.")
+        if not audio_b64:
+            raise RuntimeError("SageMaker response had no audio_base64 field.")
 
-        return pcm_bytes
+        return base64.b64decode(audio_b64)
 
     except ClientError as e:
         error_code = e.response.get("Error", {}).get("Code")
@@ -70,6 +68,18 @@ def _invoke_silma_sagemaker_pcm_32000(text: str, voice_id: str = "pixel") -> byt
         raise RuntimeError(
             f"SageMaker Silma TTS error: {error_code}: {error_message}"
         ) from e
+
+
+def _extract_pcm_from_wav(wav_bytes: bytes):
+    """Strips the WAV container and returns (pcm_bytes, sample_rate,
+    channels, sample_width) from the file's own fmt chunk."""
+    with wave.open(io.BytesIO(wav_bytes), "rb") as wf:
+        return (
+            wf.readframes(wf.getnframes()),
+            wf.getframerate(),
+            wf.getnchannels(),
+            wf.getsampwidth(),
+        )
 
 
 def _iter_pcm_chunks_minimal(
@@ -84,7 +94,7 @@ def _iter_pcm_chunks_minimal(
     """
 
     if max_chunk_bytes is None:
-        max_chunk_bytes = int(MAX_CHUNK_BYTES)
+        max_chunk_bytes = MAX_CHUNK_BYTES
 
     # Keep chunk size aligned to int16 sample boundaries.
     max_chunk_bytes = max(BYTES_PER_SAMPLE, max_chunk_bytes)
@@ -102,27 +112,25 @@ def _iter_pcm_chunks_minimal(
 
 async def silma_tts_stream_pcm(text: str, voice_id: str = "pixel"):
     """
-    Same external behavior as your old function:
-    async generator yielding raw PCM chunks.
+    Async generator yielding raw PCM chunks (headerless — the WAV
+    container SageMaker returns is decoded and stripped here), plus the
+    real (sample_rate, channels, sample_width) discovered from that WAV
+    file so a caller can label the stream correctly instead of assuming
+    a fixed rate.
     """
 
-    try:
-        async with tts_lock:
-            pcm_bytes = await asyncio.to_thread(
-                _invoke_silma_sagemaker_pcm_32000,
-                text,
-                voice_id,
-            )
+    wav_bytes = _invoke_silma_sagemaker(text, voice_id)
+    pcm_bytes, sample_rate, channels, sample_width = _extract_pcm_from_wav(wav_bytes)
 
-        chunk_count = 0
+    if not pcm_bytes:
+        raise RuntimeError("SageMaker returned empty audio.")
 
-        for chunk in _iter_pcm_chunks_minimal(pcm_bytes):
-            chunk_count += 1
-            yield chunk
-            await asyncio.sleep(0)
+    print(f"Silma SageMaker TTS: sample_rate={sample_rate}, channels={channels}, sample_width={sample_width}")
 
-        print(f"Silma SageMaker TTS chunks: {chunk_count}")
+    chunk_count = 0
 
-    except Exception as e:
-        print("SageMaker Silma TTS error:", e)
-        raise
+    for chunk in _iter_pcm_chunks_minimal(pcm_bytes):
+        chunk_count += 1
+        yield chunk
+
+    print(f"Silma SageMaker TTS chunks: {chunk_count}")

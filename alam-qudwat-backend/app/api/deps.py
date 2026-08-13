@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import AppSettings, get_app_settings
 from app.db.session import get_db
+from app.services.diacritization import OpenAITextDiacritizer, TextDiacritizer
 from app.services.llm import ChatLLM, OpenAIChatLLM
 from app.services.stt import OpenAISTT, SpeechToText
 from app.services.tts import SilmaSageMakerTTS, TextToSpeech
@@ -35,10 +36,15 @@ def get_tts() -> TextToSpeech:
     return SilmaSageMakerTTS()
 
 
+def get_diacritizer() -> TextDiacritizer:
+    return OpenAITextDiacritizer()
+
+
 DbSession = Annotated[Session, Depends(get_db)]
 EmbedderDep = Annotated[EmbeddingProvider, Depends(get_embedder)]
 LLMDep = Annotated[ChatLLM, Depends(get_chat_llm)]
 STTDep = Annotated[SpeechToText, Depends(get_stt)]
 TTSDep = Annotated[TextToSpeech, Depends(get_tts)]
+DiacritizerDep = Annotated[TextDiacritizer, Depends(get_diacritizer)]
 RagSettingsDep = Annotated[Settings, Depends(get_settings)]
 AppSettingsDep = Annotated[AppSettings, Depends(get_app_settings)]

@@ -22,15 +22,20 @@ from sqlalchemy.orm import Session
 from app.db.models import Character, Conversation, Message
 from app.schemas.chat import ChatRequest, CitationOut
 from app.services.llm import ChatLLM
+from app.services.suggestions import MAX_SUGGESTIONS, filter_unused, predefined_suggestions
 from rag.config import Settings
 from rag.embeddings.base import EmbeddingProvider
-from rag.generation.prompt import build_chat_messages, build_suggestions_prompt
+from rag.generation.prompt import CLOSING_QUESTION, build_chat_messages, build_suggestions_prompt
 from rag.retrieval.retriever import RetrievedChunk, retrieve
-
-MAX_SUGGESTIONS = 3
 
 logger = logging.getLogger("app.chat_service")
 
+# The fixed "not enough information" answers deliberately do NOT carry
+# CLOSING_QUESTION — that invitation to keep exploring doesn't make sense
+# right after telling the user the sources don't cover their question,
+# and (see _strip_trailing_closing_question below) baking it in here
+# previously polluted the LLM's own history with a pattern it would
+# sometimes echo back into later answers.
 FALLBACK_TEXT = {
     "kids": (
         "لا تتوفر لديّ معلومات كافية في المصادر المتاحة للإجابة عن هذا السؤال بدقة. "
@@ -41,6 +46,20 @@ FALLBACK_TEXT = {
         "يمكنك إعادة صياغة السؤال أو طرح سؤال آخر متعلق بهذه الشخصية."
     ),
 }
+
+_CLOSING_SUFFIX = "\n\n" + CLOSING_QUESTION
+
+
+def _strip_trailing_closing_question(content: str) -> str:
+    """Assistant messages are stored with CLOSING_QUESTION appended
+    (app/api/routes/chat.py). Feeding that back to the LLM verbatim as its
+    own conversation history taught it a pattern it would sometimes echo
+    mid-answer (a visible duplicate closing question) or reuse in a later
+    turn even when no longer appropriate — so history never includes it,
+    even though storage/display still does."""
+    if content.endswith(_CLOSING_SUFFIX):
+        return content[: -len(_CLOSING_SUFFIX)]
+    return content
 
 
 @dataclass
@@ -56,6 +75,11 @@ class ChatTurn:
     question: str
     character_name: str
     chunks: list[RetrievedChunk]
+    character_categories: list[str]
+    # Every message the user has ever sent in this conversation (including
+    # the current one) — a suggestion matching any of these must never be
+    # offered, predefined or LLM-generated (see app/services/suggestions.py).
+    already_asked: set[str]
 
 
 def _get_or_create_conversation(session: Session, req: ChatRequest) -> Conversation:
@@ -112,12 +136,34 @@ def prepare_turn(
         .all()
     )
     history_rows.reverse()
-    history = [{"role": m.role, "content": m.content} for m in history_rows]
+    history = [
+        {
+            "role": m.role,
+            "content": _strip_trailing_closing_question(m.content) if m.role == "assistant" else m.content,
+        }
+        for m in history_rows
+    ]
+
+    # True only for a conversation's very first assistant answer. Safe to
+    # derive from the (capped) history window: if the conversation were
+    # long enough to have already fallen out of that cap, it would
+    # necessarily already contain an assistant turn within it too.
+    is_first_message = not any(h["role"] == "assistant" for h in history)
 
     # Persist the user's turn immediately so it survives even if generation
     # fails or the client disconnects mid-stream.
     session.add(Message(id=uuid.uuid4(), conversation_id=conversation.id, role="user", content=message))
     session.commit()
+
+    # Every user message in this conversation so far (uncapped, unlike
+    # `history` above) — a suggestion must never repeat one of these, no
+    # matter how far back it was asked (see app/services/suggestions.py).
+    already_asked = {
+        content
+        for (content,) in session.query(Message.content)
+        .filter_by(conversation_id=conversation.id, role="user")
+        .all()
+    }
 
     # Vague follow-ups ("and what happened next?") carry little topical
     # signal on their own and retrieve poorly in isolation, even though the
@@ -157,6 +203,7 @@ def prepare_turn(
             mode=conversation.narrator_mode,
             character_name=character.name_ar,
             history=history,
+            is_first_message=is_first_message,
         )
         if grounded
         else []
@@ -172,6 +219,8 @@ def prepare_turn(
         question=message,
         character_name=character.name_ar,
         chunks=chunks if grounded else [],
+        character_categories=character.categories,
+        already_asked=already_asked,
     )
 
 
@@ -199,28 +248,45 @@ def save_assistant_message(
 
 
 async def generate_suggestions(llm: ChatLLM, turn: ChatTurn, answer_text: str) -> list[str]:
-    """Ask the LLM whether natural follow-up questions exist for this
-    answer; the model itself decides (see
-    rag.generation.prompt.build_suggestions_prompt) — this can and often
-    should return an empty list. Never raises: any failure (API error,
-    malformed JSON, wrong shape) just yields no suggestions rather than
-    breaking an otherwise-successful answer."""
+    """Up to MAX_SUGGESTIONS (3) suggestions: predefined ones first (no
+    LLM call — app.services.suggestions.predefined_suggestions, by
+    NarratorMode and, for adults, the character's role), then — only if
+    slots remain — LLM-generated ones filling the rest, which the model
+    itself decides whether to offer at all (see
+    rag.generation.prompt.build_suggestions_prompt) and can return fewer
+    than requested, or none.
+
+    A suggestion the user has already sent as a message in this
+    conversation (turn.already_asked) is excluded — predefined ones by
+    exact match here, LLM ones by both exact match (post-filtered below)
+    and instruction (the prompt is told the same list, to avoid
+    paraphrase-level repeats too). Never raises: any LLM failure just
+    falls back to the predefined suggestions rather than breaking an
+    otherwise-successful answer."""
+    predefined = filter_unused(
+        predefined_suggestions(turn.mode, turn.character_categories), turn.already_asked
+    )
+    remaining_slots = MAX_SUGGESTIONS - len(predefined)
+    if remaining_slots <= 0:
+        return predefined[:MAX_SUGGESTIONS]
+
     messages = build_suggestions_prompt(
         turn.question,
         answer_text,
         turn.chunks,
         mode=turn.mode,
         character_name=turn.character_name,
+        already_asked=sorted(turn.already_asked),
+        max_suggestions=remaining_slots,
     )
     try:
         result = await llm.complete_json(messages)
     except Exception:
-        logger.exception("suggestions generation failed; continuing without suggestions")
-        return []
+        logger.exception("suggestions generation failed; continuing with predefined suggestions only")
+        return predefined
 
     raw = result.get("suggestions")
-    if not isinstance(raw, list):
-        return []
+    llm_suggestions = [s.strip() for s in raw if isinstance(s, str) and s.strip()] if isinstance(raw, list) else []
+    llm_suggestions = filter_unused(llm_suggestions, turn.already_asked | set(predefined))
 
-    suggestions = [s.strip() for s in raw if isinstance(s, str) and s.strip()]
-    return suggestions[:MAX_SUGGESTIONS]
+    return (predefined + llm_suggestions)[:MAX_SUGGESTIONS]

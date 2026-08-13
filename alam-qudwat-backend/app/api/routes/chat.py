@@ -23,6 +23,8 @@ from fastapi.responses import StreamingResponse
 from app.api.deps import AppSettingsDep, DbSession, EmbedderDep, LLMDep, RagSettingsDep
 from app.schemas.chat import ChatRequest
 from app.services import chat_service
+from app.services.diacritization import strip_diacritics
+from rag.generation.prompt import CLOSING_QUESTION, CLOSING_QUESTION_DIACRITIZED
 
 logger = logging.getLogger("app.chat")
 
@@ -78,19 +80,56 @@ async def chat_stream(
             yield _sse("done", {})
             return
 
-        text_parts: list[str] = []
+        # DIACRITIZATION_RULE (rag/generation/prompt.py) has the LLM write
+        # this answer already fully diacritized — one generation call
+        # doing double duty instead of a second, separate LLM call to
+        # diacritize the same answer later just to synthesize speech for
+        # it (that used to add a full extra round-trip of latency to every
+        # "play audio" request). `raw_parts` keeps that diacritized text
+        # (for TTS use only, see app/api/routes/tts.py); every delta sent
+        # to the client has diacritics stripped in real time, so the user
+        # never sees a tashkeel mark even transiently mid-stream. Stripping
+        # is a plain character-class filter with no cross-character
+        # dependencies, so stripping token-by-token and concatenating
+        # gives byte-for-byte the same result as stripping the joined text
+        # once at the end.
+        raw_parts: list[str] = []
         try:
             async for token in llm.stream(turn.llm_messages):
-                text_parts.append(token)
-                yield _sse("delta", {"text": token})
+                raw_parts.append(token)
+                yield _sse("delta", {"text": strip_diacritics(token)})
         except Exception:
             logger.exception("LLM streaming failed")
             yield _sse("error", {"message": "generation failed"})
             return
 
-        full_text = "".join(text_parts)
+        # Every answer ends with exactly this question — appended here
+        # rather than left to the LLM to reproduce verbatim (the system
+        # prompt separately tells it not to write its own version; see
+        # rag.generation.prompt.NO_OWN_CLOSING_RULE), so it's guaranteed
+        # byte-for-byte rather than merely instructed.
+        #
+        # full_text's closing is the literal CLOSING_QUESTION constant,
+        # appended directly — NOT derived by stripping
+        # CLOSING_QUESTION_DIACRITIZED. Those two don't round-trip through
+        # strip_diacritics() into each other (CLOSING_QUESTION itself
+        # contains a tanween mark — "أيضاً" — that strip_diacritics()
+        # would remove like any other diacritic, same as it does for the
+        # LLM's own output); deriving one from the other here would
+        # silently break "ends with exactly ...".
+        full_text = strip_diacritics("".join(raw_parts)) + "\n\n" + CLOSING_QUESTION
+        full_diacritized_text = "".join(raw_parts) + "\n\n" + CLOSING_QUESTION_DIACRITIZED
+        yield _sse("delta", {"text": "\n\n" + CLOSING_QUESTION})
+
         suggestions = await chat_service.generate_suggestions(llm, turn, full_text)
-        extra = {"suggestions": suggestions} if suggestions else None
+
+        extra: dict = {}
+        if suggestions:
+            extra["suggestions"] = suggestions
+        # Kept so a later POST /api/v1/tts/speak?message_id=... can
+        # synthesize speech for this exact answer without a second LLM
+        # call — see app/api/routes/tts.py.
+        extra["diacritized_content"] = full_diacritized_text
 
         await asyncio.to_thread(
             chat_service.save_assistant_message,

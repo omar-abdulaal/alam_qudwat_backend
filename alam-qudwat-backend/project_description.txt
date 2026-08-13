@@ -84,11 +84,16 @@ c) Character-scoped chat
          an afterthought. Inline citation markers like [1] [2] appear in
          the streamed text (Arabic-Indic digits ١ ٢ ٣...) and should be
          visually tied to the citations list.
-       - is sometimes followed by 0-3 suggested follow-up questions,
-         decided by the AI itself (not always present — an empty
-         suggestion list is the normal case, not a bug). When present,
-         show them as tappable chips; tapping one just sends it as the
-         next chat message.
+       - always ends with the same fixed closing question inviting the
+         user to keep exploring the character's story — this is part of
+         the streamed answer text itself, nothing the UI needs to add.
+       - is sometimes followed by 0-3 suggested follow-up questions (up
+         to 2 fixed per narrator mode/character role, plus AI-decided
+         ones filling any remaining slot — not always present; an empty
+         suggestion list is the normal case, not a bug). A suggestion the
+         user has already tapped/sent once will never reappear later in
+         that same conversation. When present, show them as tappable
+         chips; tapping one just sends it as the next chat message.
        - if the historical sources don't cover the question, the
          narrator will say so honestly instead of inventing an answer —
          the UI should present this gracefully (not as an error state),

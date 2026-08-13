@@ -3,16 +3,37 @@ from __future__ import annotations
 
 from typing import AsyncIterator
 
+from app.services.tts import TTS_SAMPLE_FORMAT, TTSAudio
+
 
 class FakeTTS:
-    def __init__(self, chunks: list[bytes] | None = None, raise_error: Exception | None = None):
+    def __init__(
+        self,
+        chunks: list[bytes] | None = None,
+        raise_error: Exception | None = None,
+        sample_rate: int = 32000,
+        channels: int = 1,
+        sample_format: str = TTS_SAMPLE_FORMAT,
+    ):
         self.chunks = chunks if chunks is not None else [b"\x00\x01" * 100]
         self.raise_error = raise_error
+        self.sample_rate = sample_rate
+        self.channels = channels
+        self.sample_format = sample_format
         self.calls: list[tuple[str, str | None]] = []
 
-    async def speak(self, text: str, *, voice_id: str | None = None) -> AsyncIterator[bytes]:
+    async def speak(self, text: str, *, voice_id: str | None = None) -> TTSAudio:
         self.calls.append((text, voice_id))
         if self.raise_error is not None:
             raise self.raise_error
-        for chunk in self.chunks:
-            yield chunk
+
+        async def _chunks() -> AsyncIterator[bytes]:
+            for chunk in self.chunks:
+                yield chunk
+
+        return TTSAudio(
+            sample_rate=self.sample_rate,
+            channels=self.channels,
+            sample_format=self.sample_format,
+            chunks=_chunks(),
+        )
