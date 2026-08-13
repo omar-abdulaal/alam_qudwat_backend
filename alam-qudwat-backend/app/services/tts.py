@@ -18,12 +18,26 @@ that WAV file's own header (authoritative for how to actually play the
 samples back), not fixed constants — SILMA's native output rate isn't
 guaranteed to be any particular value.
 
-The SageMaker call itself is synchronous and returns the *entire* audio
-in one response (there's no true incremental synthesis happening on the
-SILMA side); `_iter_pcm_chunks_minimal` only chunks it for HTTP transport
-efficiency afterwards. The module-level lock + boto3 client are shared
-across requests on purpose, since the SageMaker endpoint may not tolerate
-high call concurrency well.
+SageMaker itself is not internally streaming: one call always processes
+its whole input text before returning any audio at all. `speak()` takes
+an *async iterator* of text (not a single string) specifically to work
+around that: incoming text is buffered and split into sentence-sized
+segments as it arrives, each segment is synthesized as its own SageMaker
+call, and that segment's audio starts streaming to the caller as soon as
+it's ready — while later segments are still being read from the input
+stream and/or synthesized. For a caller that already has the complete
+text up front (app/api/routes/tts.py today), wrapping it as a one-shot
+iterator still gets the benefit: the first sentence's audio can reach the
+client well before the last sentence has even been sent to SageMaker,
+instead of one giant call that must finish the entire answer first. The
+same interface is also ready for a genuinely live source (e.g. piping
+tokens straight from chat generation) with no further changes needed
+here.
+
+The module-level lock + boto3 client are shared across requests on
+purpose, since the SageMaker endpoint may not tolerate high call
+concurrency well — segments are synthesized one at a time even when
+multiple requests overlap.
 """
 from __future__ import annotations
 
@@ -52,12 +66,25 @@ TTS_SAMPLE_FORMAT = "pcm_s16le"
 _BYTES_PER_SAMPLE = 2
 
 # 1 MB ~= 16.38s of raw PCM at 32000 Hz int16 mono (varies with the
-# actual sample rate SILMA returns for a given call).
+# actual sample rate SILMA returns for a given call) — HTTP transport
+# chunking of one already-synthesized segment's audio, unrelated to
+# _MAX_SEGMENT_CHARS below (that's about the *text* sent to SageMaker).
 _MAX_CHUNK_BYTES = 1024 * 1024
+
+# Every sentence/line is synthesized as its own segment (a separate
+# SageMaker call) regardless of how short it is — this is a safety cap
+# only, for the rare run-on chunk of text with no sentence terminator at
+# all: past this many characters with no boundary found yet, force-split
+# at the nearest word boundary so one segment/call never grows unbounded.
+_MAX_SEGMENT_CHARS = 300
 
 # Strips inline citation markers like "[1]" / "[١٢]" (ASCII or Arabic-Indic
 # digits, optionally preceded by whitespace) — reads badly aloud otherwise.
 _CITATION_MARKER = re.compile(r"\s*[\[［][0-9٠-٩]+[\]］]")
+
+# A segment boundary is a sentence-ending punctuation mark or a newline
+# (paragraph break) — matches Arabic and Latin sentence terminators.
+_SEGMENT_BOUNDARY_RE = re.compile(r"[.!؟\n]")
 
 _tts_lock = asyncio.Lock()
 _sagemaker_runtime = None
@@ -117,9 +144,10 @@ def _extract_pcm_from_wav(wav_bytes: bytes) -> tuple[bytes, int, int, int]:
 
 
 def _invoke_silma_sagemaker(text: str, voice_id: str, endpoint_name: str) -> tuple[bytes, int, int]:
-    """Calls the SageMaker endpoint, decodes its JSON {audio_base64,
-    format, sample_rate} response, and returns (pcm_data, sample_rate,
-    channels) extracted from the WAV file's own header."""
+    """Calls the SageMaker endpoint for a single text segment, decodes its
+    JSON {audio_base64, format, sample_rate} response, and returns
+    (pcm_data, sample_rate, channels) extracted from the WAV file's own
+    header."""
     payload = {"text": text, "voice_id": voice_id}
     try:
         response = _get_sagemaker_runtime().invoke_endpoint(
@@ -163,8 +191,8 @@ def _invoke_silma_sagemaker(text: str, voice_id: str, endpoint_name: str) -> tup
 
 
 def _iter_pcm_chunks_minimal(pcm_bytes: bytes, max_chunk_bytes: Optional[int] = None):
-    """Yields audio in the fewest practical chunks, aligned to int16
-    sample boundaries."""
+    """Yields one already-synthesized segment's audio in the fewest
+    practical chunks, aligned to int16 sample boundaries."""
     if max_chunk_bytes is None:
         max_chunk_bytes = _MAX_CHUNK_BYTES
     max_chunk_bytes = max(_BYTES_PER_SAMPLE, max_chunk_bytes)
@@ -180,15 +208,57 @@ def _iter_pcm_chunks_minimal(pcm_bytes: bytes, max_chunk_bytes: Optional[int] = 
             yield chunk
 
 
+def _pop_ready_segment(buffer: str, max_chars: int = _MAX_SEGMENT_CHARS) -> tuple[Optional[str], str]:
+    """If `buffer` has a complete sentence/paragraph boundary (or has
+    simply grown past `max_chars` with no boundary yet), pop and return
+    (segment, remaining_buffer). Otherwise (None, buffer) — wait for more
+    text to arrive before deciding."""
+    match = _SEGMENT_BOUNDARY_RE.search(buffer)
+    if match:
+        segment = buffer[: match.end()].strip()
+        remainder = buffer[match.end() :]
+        if segment:
+            return segment, remainder
+        # A boundary character with nothing meaningful before it (e.g. a
+        # leading blank line) — consume it and keep looking.
+        return _pop_ready_segment(remainder, max_chars)
+    if len(buffer) > max_chars:
+        split_at = buffer.rfind(" ", 0, max_chars)
+        if split_at <= 0:
+            split_at = max_chars
+        return buffer[:split_at].strip(), buffer[split_at:]
+    return None, buffer
+
+
+def split_into_speech_segments(text: str, max_chars: int = _MAX_SEGMENT_CHARS) -> list[str]:
+    """Split a complete, already-known text into the same sentence-sized
+    segments the streaming path (SilmaSageMakerTTS.speak) would produce
+    incrementally. Exposed mainly for direct testing of the segmenting
+    logic against full inputs."""
+    segments: list[str] = []
+    remaining = text
+    while True:
+        segment, remaining = _pop_ready_segment(remaining, max_chars)
+        if segment is None:
+            break
+        segments.append(segment)
+    tail = remaining.strip()
+    if tail:
+        segments.append(tail)
+    return segments
+
+
 class TextToSpeech(Protocol):
-    async def speak(self, text: str, *, voice_id: str | None = None) -> TTSAudio:
-        """Synthesize `text` and return its audio metadata plus a chunked
-        stream of raw PCM samples matching that metadata."""
+    async def speak(self, text_stream: AsyncIterator[str], *, voice_id: str | None = None) -> TTSAudio:
+        """Synthesize the text carried by `text_stream` (an async
+        iterator of text pieces — a single complete string wrapped as a
+        one-shot iterator is fine) and return its audio metadata plus a
+        chunked stream of raw PCM samples matching that metadata."""
         ...
 
 
 class SilmaSageMakerTTS:
-    async def speak(self, text: str, *, voice_id: str | None = None) -> TTSAudio:
+    async def speak(self, text_stream: AsyncIterator[str], *, voice_id: str | None = None) -> TTSAudio:
         settings = get_app_settings()
         endpoint_name = settings.silma_sagemaker_endpoint_name
         if not endpoint_name:
@@ -197,22 +267,78 @@ class SilmaSageMakerTTS:
             )
         resolved_voice = voice_id or settings.tts_default_voice_id
 
-        try:
+        # A background task keeps reading `text_stream` and pushing
+        # complete segments onto this queue as they become ready, fully
+        # decoupled from how fast the caller below consumes synthesized
+        # audio — this is what lets segment 2's text keep arriving (or
+        # even keep being generated upstream, for a live source) while
+        # segment 1's audio is already streaming out.
+        segment_queue: asyncio.Queue[str | None] = asyncio.Queue()
+
+        async def _produce_segments() -> None:
+            buffer = ""
+            try:
+                async for piece in text_stream:
+                    buffer += piece
+                    while True:
+                        segment, buffer = _pop_ready_segment(buffer)
+                        if segment is None:
+                            break
+                        # Stripped per-segment (not once on the whole text
+                        # up front) so this also works for a live,
+                        # incrementally-arriving stream (see
+                        # app/api/routes/tts.py's /speak/live) where no
+                        # complete text ever exists to pre-strip.
+                        segment = strip_citation_markers(segment)
+                        if segment:
+                            await segment_queue.put(segment)
+                tail = strip_citation_markers(buffer.strip())
+                if tail:
+                    await segment_queue.put(tail)
+            finally:
+                await segment_queue.put(None)  # sentinel: no more segments
+
+        producer_task = asyncio.create_task(_produce_segments())
+
+        async def _synthesize(segment: str) -> tuple[bytes, int, int]:
             async with _tts_lock:
-                pcm_data, sample_rate, channels = await asyncio.to_thread(
-                    _invoke_silma_sagemaker, text, resolved_voice, endpoint_name
-                )
+                return await asyncio.to_thread(_invoke_silma_sagemaker, segment, resolved_voice, endpoint_name)
+
+        # The first segment is synthesized eagerly (not lazily inside
+        # _chunks below) because sample_rate/channels are needed up front
+        # for the HTTP response headers, before any audio can be sent.
+        try:
+            first_segment = await segment_queue.get()
+            if first_segment is None:
+                await producer_task  # surface a producer exception, if any caused the empty stream
+                raise TTSUpstreamAudioError("No text to synthesize.")
+            pcm_data, sample_rate, channels = await _synthesize(first_segment)
         except Exception:
+            producer_task.cancel()
             logger.exception("Silma SageMaker TTS error")
             raise
 
         async def _chunks() -> AsyncIterator[bytes]:
-            chunk_count = 0
+            segment_count = 1
             for chunk in _iter_pcm_chunks_minimal(pcm_data):
-                chunk_count += 1
                 yield chunk
                 await asyncio.sleep(0)
-            logger.info("Silma SageMaker TTS: %d chunk(s), %d Hz", chunk_count, sample_rate)
+
+            try:
+                while True:
+                    segment = await segment_queue.get()
+                    if segment is None:
+                        break
+                    segment_count += 1
+                    seg_pcm, _sr, _ch = await _synthesize(segment)
+                    for chunk in _iter_pcm_chunks_minimal(seg_pcm):
+                        yield chunk
+                        await asyncio.sleep(0)
+                await producer_task  # propagate any late producer-side exception
+            except Exception:
+                logger.exception("Silma SageMaker TTS error mid-stream")
+                raise
+            logger.info("Silma SageMaker TTS: %d segment(s), %d Hz", segment_count, sample_rate)
 
         return TTSAudio(
             sample_rate=sample_rate,

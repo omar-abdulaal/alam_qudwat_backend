@@ -226,27 +226,34 @@ POST /api/v1/tts/speak   <-- TEXT-TO-SPEECH (voice output, SILMA on SageMaker)
     before synthesis automatically (reads badly aloud otherwise) — the
     Flutter app does not need to strip them itself before calling this.
 
-Synthesis always uses fully-diacritized (tashkeel) Arabic text internally
-    to improve SILMA's pronunciation — this never changes `messages.content`
-    or what any other endpoint returns; the client never sees diacritics.
-    How that diacritized text is obtained depends on the source:
-      - `message_id` pointing at an answer POST /api/v1/chat/stream
-        generated after this feature shipped: the exact diacritized text
-        the chat LLM already produced (`extra.diacritized_content`, see
-        GET /api/v1/conversations/{id} above) is used verbatim — no
-        second LLM call, so no added latency here.
+Synthesis uses fully-diacritized (tashkeel) Arabic text when it's
+    available, to improve SILMA's pronunciation — this never changes
+    `messages.content` or what any other endpoint returns; the client
+    never sees diacritics. There is no LLM-based diacritizer anywhere in
+    this endpoint, not even as a fallback:
+      - `message_id` pointing at a grounded answer POST /api/v1/chat/
+        stream generated after this feature shipped: the exact
+        diacritized text the chat LLM already produced
+        (`extra.diacritized_content`, see GET /api/v1/conversations/{id}
+        above) is used verbatim.
       - `text`, or a `message_id` with no stored diacritized version
-        (older messages, or the ungrounded-fallback answer): run through
-        a small on-demand LLM-based diacritizer (app/services/
-        diacritization.py) instead. If that fails for any reason,
-        synthesis proceeds with the plain text rather than failing the
-        request — it's a pronunciation enhancement, not a correctness
-        requirement (same posture as chat's follow-up suggestions).
+        (older messages, or the ungrounded-fallback answer): spoken as
+        plain, undiacritized text — that's fine, not an error.
+
+    The text (diacritized or not) is split into sentence-sized segments
+    (on sentence-ending punctuation and newlines) and each is sent to
+    SageMaker as its own call — SageMaker itself has no incremental/
+    streaming synthesis mode, so this is what actually gets audio
+    flowing early: the first sentence's audio starts streaming back
+    before later sentences have even been sent to SageMaker, rather than
+    one call that must finish synthesizing the entire answer first.
 
     200 -> `Content-Type: application/octet-stream`, streamed body of raw
     PCM audio: int16 little-endian, mono — NOT a WAV/MP3 container, just
-    the raw samples (the backend receives a complete WAV file from
-    SageMaker and strips its header before streaming). Response headers
+    the raw samples (the backend receives a complete WAV file per segment
+    from SageMaker and strips its header before streaming, so segment
+    boundaries are invisible in the byte stream — it's all one continuous
+    raw PCM stream from the client's point of view). Response headers
     describe the actual format of THIS response — always read
     X-Audio-Sample-Rate rather than assuming a fixed value, since it
     reflects whatever rate SILMA actually produced for this call, e.g.:
@@ -271,6 +278,46 @@ Synthesis always uses fully-diacritized (tashkeel) Arabic text internally
           -d '{"message_id":"8dfaf223-4c29-4207-8810-70b12d778fcf"}' \
           --output reply.pcm
 
+
+POST /api/v1/tts/speak/live   <-- TEXT-TO-SPEECH WHILE THE ANSWER IS STILL GENERATING
+    Content-Type: application/json
+    Request body:
+        {"generation_id": "<uuid from chat/stream's 'conversation' event>"}
+        optional: {"voice_id": "pixel"}
+
+    Same response shape/headers/status codes as POST /api/v1/tts/speak
+    (raw PCM, X-Audio-Sample-Rate/Channels/Sample-Format headers, 502/503
+    on synthesis failure). The difference is entirely in what text it
+    speaks and when it can start: this endpoint is paired, via
+    generation_id, to a specific POST /api/v1/chat/stream call — call it
+    immediately after receiving that call's "conversation" event, in
+    PARALLEL with continuing to read the chat SSE stream, rather than
+    waiting for `done`. The backend feeds this endpoint's TTS the same
+    diacritized text as it's produced by the LLM, sentence by sentence
+    (see app/services/tts.py's segmenting, section 10) — so the first
+    sentence's audio can start reaching the client while the chat
+    response is still streaming its second or third sentence as text,
+    instead of waiting for the whole answer plus a round-trip through
+    GET/message_id first.
+
+    A generation_id stays valid for a few minutes after its chat/stream
+    call finishes too (in case the app calls this a moment after `done`
+    rather than mid-stream) — after that, or if it's simply unknown,
+    this returns 404. There is no `text`/`message_id` variant of this
+    endpoint; use POST /api/v1/tts/speak for those.
+
+    400 -> validation error (missing generation_id)
+    404 -> unknown or expired generation_id
+    502/503 -> same meaning as POST /api/v1/tts/speak
+
+    Example (started right after the "conversation" event arrives, while
+    the chat SSE stream above is still being read):
+        curl -X POST $BASE_URL/api/v1/tts/speak/live \
+          -H "Authorization: Bearer $API_AUTH_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d '{"generation_id":"3f29a1f0-2222-4444-8888-abcdef123456"}' \
+          --output reply.pcm
+
 --------------------------------------------------------------------------------
 4. SERVER-SENT EVENTS (SSE) CONTRACT — POST /api/v1/chat/stream
 --------------------------------------------------------------------------------
@@ -284,10 +331,14 @@ Each event is two lines followed by a blank line:
 Events, always in this order:
 
   1. "conversation"  (always first, exactly once)
-        data: {"conversation_id": "<uuid>"}
+        data: {"conversation_id": "<uuid>", "generation_id": "<uuid>"}
         Sent as soon as the conversation is resolved/created — capture
         this immediately so the client has it even if something fails
-        later in the stream.
+        later in the stream. `generation_id` identifies THIS specific
+        answer's in-flight generation — pass it to POST /api/v1/tts/
+        speak/live right away (in parallel with continuing to read this
+        SSE stream) to start hearing the answer before it has finished
+        streaming as text; see section 3.
 
   2. "delta"  (zero or more times)
         data: {"text": "<incremental text chunk>"}
@@ -503,10 +554,11 @@ Automated (no real OpenAI/AWS calls — uses tests/fake_embedder.py,
 tests/fake_llm.py, tests/fake_stt.py, tests/fake_tts.py):
 
     pytest tests/
-    (52 tests as of this writing: RAG pipeline tests + API tests covering
-    auth, character/story listing, the grounded/ungrounded chat paths,
-    conversation persistence, follow-up context handling, LLM-decided
-    suggestions, speech-to-text, and text-to-speech.)
+    (100+ tests as of this writing: RAG pipeline tests + API tests
+    covering auth, character/story listing, the grounded/ungrounded chat
+    paths, conversation persistence, follow-up context handling,
+    LLM-decided suggestions, speech-to-text, and text-to-speech
+    including sentence-segmented and live/mid-generation synthesis.)
 
 Manual, against a real running server + real OpenAI (uses your real
 OPENAI_API_KEY and calls the actual embeddings + chat completion +
@@ -566,8 +618,6 @@ RAG / generation (rag/config.py):
   RETRIEVAL_TOP_K         default 5
   RETRIEVAL_MIN_SCORE     default 0.28
   STT_MODEL               default gpt-4o-mini-transcribe
-  DIACRITIZATION_MODEL    default gpt-4o-mini — adds tashkeel to text right before
-                          TTS synthesis only (app/services/diacritization.py)
   RAG_DATA_DIR            default data/raw — root scanned for dataset subdirectories
                           by the startup auto-ingest sync (see section 6)
 
@@ -684,6 +734,10 @@ Notes for the Flutter integration:
     (open source_url in an in-app browser / external link).
   - Tapping a suggestion chip is just a normal next chat message: send it
     as `message` with the same `conversation_id` — no special endpoint.
+  - `generation_id` (from the "conversation" event) is per-turn and
+    short-lived — unlike `conversation_id`, don't persist it; it's only
+    good for calling POST /api/v1/tts/speak/live for that one answer,
+    for a few minutes after that answer finishes streaming.
   - A package like `flutter_client_sse` can also parse this exact format
     if preferred over hand-rolling the buffer/split logic above — the
     event names and payloads above are what it needs to match.
@@ -706,23 +760,43 @@ VOICE INPUT (speech-to-text) — plain JSON request/response, no streaming:
     // message — this endpoint does NOT generate an answer itself.
 
 VOICE OUTPUT (text-to-speech) — the response body is raw PCM audio
-(int16 little-endian, mono, 32000 Hz — NOT a WAV/MP3 file), so it needs a
-raw-PCM-capable audio player rather than just_audio's default file
-players. Read the X-Audio-Sample-Rate/X-Audio-Channels/X-Audio-Sample-
-Format response headers to confirm format if you want to be defensive
-against a future format change, rather than hardcoding 32000/mono:
+(int16 little-endian, mono — NOT a WAV/MP3 file; sample rate varies per
+call, see below), and the backend itself streams it incrementally (first
+sentence's audio before later sentences are even synthesized — see
+section 10), so the client should consume it as a stream too, not wait
+for `bodyBytes` to buffer the whole thing before playing anything:
 
-    final response = await http.post(
+    final request = http.Request(
+      'POST',
       Uri.parse('$baseUrl/api/v1/tts/speak'),
-      headers: {
-        'Authorization': 'Bearer $apiAuthToken',
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({'message_id': assistantMessageId}),
-    );
-    final pcmBytes = response.bodyBytes;
-    // Feed pcmBytes to a raw-PCM player, e.g. the `flutter_pcm_sound`
-    // package, configured for 32000 Hz / mono / 16-bit signed samples.
+    )
+      ..headers['Authorization'] = 'Bearer $apiAuthToken'
+      ..headers['Content-Type'] = 'application/json'
+      ..body = jsonEncode({'message_id': assistantMessageId});
+
+    final response = await client.send(request);
+    final sampleRate = int.parse(response.headers['x-audio-sample-rate']!);
+    // headers also include x-audio-channels, x-audio-sample-format --
+    // read these rather than hardcoding a fixed rate/format, since they
+    // reflect whatever this specific call's audio actually is.
+
+    await for (final chunk in response.stream) {
+      // Feed each raw-byte chunk to a raw-PCM player as it arrives, e.g.
+      // the `flutter_pcm_sound` package configured with sampleRate /
+      // mono / 16-bit signed samples -- don't accumulate the whole
+      // response first, that throws away the backend's streaming.
+      pcmPlayer.feed(chunk);
+    }
+
+To start hearing an answer before it has finished streaming as text, use
+POST /api/v1/tts/speak/live instead of /speak, called with the
+generation_id from the "conversation" SSE event (section 4) — fire it as
+soon as that event arrives, in parallel with continuing to read the chat
+stream above, not after `done`. Everything else (headers, streamed body,
+player wiring) is identical to the /speak example above; only the
+request body differs:
+
+    body: jsonEncode({'generation_id': generationId})
 
 --------------------------------------------------------------------------------
 10. IMPORTANT DECISIONS & LIMITATIONS
@@ -793,6 +867,39 @@ against a future format change, rather than hardcoding 32000/mono:
   anyway. Getting this wrong (streaming the WAV file's header, or the raw
   JSON bytes, straight through as if already headerless PCM) is what
   previously produced static/noise instead of speech on the client.
+
+- TTS synthesizes sentence-by-sentence (app/services/tts.py), not the
+  whole answer as one SageMaker call. SageMaker has no incremental
+  synthesis mode of its own — a single call always processes its entire
+  input before returning any audio — so for a long answer, splitting
+  into segments and streaming each one's audio as soon as it's ready is
+  what actually gets sound to the client quickly, instead of a long
+  silent wait for one big call to finish. `TextToSpeech.speak()` takes an
+  async *stream* of text (not a single string) specifically so this
+  works whether the caller already has the complete text (today's only
+  caller, POST /api/v1/tts/speak, wraps it as a one-shot stream) or a
+  genuinely live source arriving incrementally — piping live chat-
+  generation tokens straight into TTS as they stream would need no
+  further changes to this module, only new wiring at the call site,
+  which does not exist yet.
+
+- POST /api/v1/tts/speak/live works by fanning out the same diacritized
+  tokens app/api/routes/chat.py is already producing (for `extra.
+  diacritized_content`) to a second, concurrent HTTP request in memory
+  (app/services/live_generation.py) — no extra LLM call, no polling. This
+  is plain in-process state: it assumes one instance handles both the
+  chat/stream and the matching speak/live request, same simplifying
+  assumption already made by the module-level SageMaker client/lock in
+  app/services/tts.py. It has not been load-tested across multiple
+  worker processes/instances and would need sticky routing (or a shared
+  broker) before scaling out to more than one.
+
+- There is no LLM-based diacritizer anywhere in TTS, including as a
+  fallback. Diacritics only ever come from the chat LLM writing them
+  itself (rag/generation/prompt.py DIACRITIZATION_RULE); any text with no
+  pre-existing diacritics (arbitrary `text` requests, older messages, the
+  ungrounded-fallback answer) is simply synthesized without them — a
+  deliberate simplicity/latency trade-off, not a bug.
 
 - STT (POST /api/v1/stt/transcribe) WAS verified end-to-end against the
   real OpenAI API during development (a synthesized speech WAV file

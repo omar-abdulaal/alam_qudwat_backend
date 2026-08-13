@@ -20,9 +20,13 @@ class FakeTTS:
         self.sample_rate = sample_rate
         self.channels = channels
         self.sample_format = sample_format
+        # Each call records the full text collected from the input stream
+        # (real callers only ever send a one-shot stream today, but this
+        # still works correctly for a multi-piece stream).
         self.calls: list[tuple[str, str | None]] = []
 
-    async def speak(self, text: str, *, voice_id: str | None = None) -> TTSAudio:
+    async def speak(self, text_stream: AsyncIterator[str], *, voice_id: str | None = None) -> TTSAudio:
+        text = "".join([piece async for piece in text_stream])
         self.calls.append((text, voice_id))
         if self.raise_error is not None:
             raise self.raise_error

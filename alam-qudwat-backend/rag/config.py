@@ -59,10 +59,6 @@ class Settings(BaseSettings):
     # as chat_model/embedding_model above.
     stt_model: str = Field(default="gpt-4o-mini-transcribe", alias="STT_MODEL")
 
-    # Arabic diacritization for TTS pronunciation only (app/services/
-    # diacritization.py) — same "which OpenAI model" domain as above.
-    diacritization_model: str = Field(default="gpt-4o-mini", alias="DIACRITIZATION_MODEL")
-
     # Root directory containing dataset subdirectories (e.g. data/raw/rashidun,
     # data/raw/companions_tier1) — used by ingest_missing_characters() to
     # discover what's available to ingest. Not read by the manual `ingest`

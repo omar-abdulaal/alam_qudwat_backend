@@ -1,93 +1,42 @@
-"""Arabic diacritization (tashkeel) — TTS pronunciation aid only.
+"""Arabic diacritics (tashkeel) stripping — TTS pronunciation support.
 
-SILMA's pronunciation quality depends heavily on tashkeel: undiacritized
-Arabic is genuinely ambiguous to a TTS model in ways it usually isn't to
-a human reader (the same bare letters can be multiple different words).
+The main chat-generation call writes its answer already fully diacritized
+(rag.generation.prompt.DIACRITIZATION_RULE) — that's the only source of
+diacritics in this system. There is deliberately no LLM-based diacritizer
+here: text that has no diacritics is simply spoken without them rather
+than being sent through a model to add them, even as a fallback. This
+keeps TTS latency-predictable (no extra LLM round-trip ever) and avoids a
+second model call reproducing content the first one already generated.
 
-The main chat-generation call itself now writes its answer already fully
-diacritized (rag.generation.prompt.DIACRITIZATION_RULE) — one LLM call
-does double duty instead of a second one re-diacritizing the same answer
-afterwards (that used to add a full extra round-trip of latency to every
-"play audio" request). app/api/routes/chat.py keeps that raw diacritized
-text (never shown to the user or stored as `messages.content` — see
-strip_diacritics() below) alongside the plain text in `messages.extra`,
-and app/api/routes/tts.py uses it directly, unmodified, when synthesizing
-an existing assistant message.
-
-OpenAITextDiacritizer below still exists for the cases with no
-pre-diacritized text available: synthesizing arbitrary `text` (not an
-existing message — nothing to have pre-diacritized), and the ungrounded-
-fallback answer (a fixed string, not LLM-generated, so never diacritized
-up front). If diacritization fails there, the caller falls back to the
-plain text rather than blocking voice output — this is a pronunciation
-enhancement, not a correctness requirement.
+app/api/routes/chat.py strips diacritics back out before anything is
+shown to/stored for the user (see strip_diacritics() below) but keeps the
+raw diacritized text in `messages.extra["diacritized_content"]` for
+app/api/routes/tts.py to use verbatim.
 """
 from __future__ import annotations
 
 import re
-from typing import Protocol
-
-from openai import AsyncOpenAI
-
-from rag.config import get_settings
 
 # Standard Arabic combining-diacritic codepoint ranges: U+0610-U+061A
 # (Quranic annotation/honorific signs), U+064B-U+065F (tanween, harakat,
 # shadda, sukun and related marks), U+0670 (superscript alef), U+06D6-
-# U+06ED (further Quranic annotation marks). Removing these turns
-# diacritized text back into what the user is shown/what gets stored —
-# see rag.generation.prompt.DIACRITIZATION_RULE, the only source of
-# diacritics this needs to undo (CLOSING_QUESTION_DIACRITIZED is never
-# round-tripped through this; it and CLOSING_QUESTION are independent
-# fixed strings, not derived from one another).
-_ARABIC_DIACRITICS_RE = re.compile("[ؐ-ًؚ-ٰٟۖ-ۭ]")
+# U+06ED (further Quranic annotation marks).
+#
+# Built from explicit (start, end) integer codepoints via chr() rather
+# than a literal-character regex string — a prior literal-character
+# version silently paired range boundaries in the wrong order (a
+# character class pairs "X-Y" by *string position*, not by whichever
+# ranges the author had in mind) and ended up stripping real base letters
+# like ه/ذ/ا along with the actual diacritics. This form can't have that
+# failure mode: each tuple is one unambiguous range.
+_DIACRITIC_RANGES = [
+    (0x0610, 0x061A),
+    (0x064B, 0x065F),
+    (0x0670, 0x0670),
+    (0x06D6, 0x06ED),
+]
+_ARABIC_DIACRITICS_RE = re.compile("[" + "".join(f"{chr(lo)}-{chr(hi)}" for lo, hi in _DIACRITIC_RANGES) + "]")
 
 
 def strip_diacritics(text: str) -> str:
     return _ARABIC_DIACRITICS_RE.sub("", text)
-
-
-_SYSTEM_PROMPT = (
-    "أنت أداة تشكيل نصوص عربية دقيقة. ستتلقى نصًا عربيًا غير مشكَّل، ومهمتك "
-    "إعادة كتابته حرفيًا مع إضافة علامات التشكيل الكاملة (الفتحة، الضمة، "
-    "الكسرة، السكون، الشدة، التنوين) لتحسين نطقه بواسطة نظام تحويل نص إلى "
-    "كلام.\n"
-    "قواعد صارمة:\n"
-    "1. لا تُغيّر أي كلمة، ولا تحذف أو تضف أو تعيد ترتيب أي كلمة أو حرف أو "
-    "علامة ترقيم — أضف التشكيل فقط.\n"
-    "2. لا تُترجم ولا تُفسّر ولا تُضف أي نص جديد؛ أعد النص نفسه حرفيًا مع "
-    "التشكيل فقط.\n"
-    "3. الأرقام والرموز وأي نص غير عربي (إن وُجد) تُعاد كما هي دون أي تغيير.\n"
-    "4. أعد النص المُشكَّل فقط، بدون أي مقدمة أو تعليق إضافي."
-)
-
-
-class TextDiacritizer(Protocol):
-    async def diacritize(self, text: str) -> str:
-        """Return `text` rewritten with full Arabic tashkeel, for TTS use
-        only — the wording/word order must be unchanged."""
-        ...
-
-
-class OpenAITextDiacritizer:
-    def __init__(self, model: str | None = None, api_key: str | None = None):
-        settings = get_settings()
-        self.model = model or settings.diacritization_model
-        key = api_key or settings.openai_api_key
-        if not key:
-            raise RuntimeError(
-                "OPENAI_API_KEY is not set. Add it to your .env file — see .env.example."
-            )
-        self._client = AsyncOpenAI(api_key=key)
-
-    async def diacritize(self, text: str) -> str:
-        response = await self._client.chat.completions.create(
-            model=self.model,
-            temperature=0,
-            messages=[
-                {"role": "system", "content": _SYSTEM_PROMPT},
-                {"role": "user", "content": text},
-            ],
-        )
-        diacritized = response.choices[0].message.content
-        return diacritized.strip() if diacritized else text

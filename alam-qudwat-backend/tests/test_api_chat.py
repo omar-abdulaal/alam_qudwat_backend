@@ -341,7 +341,9 @@ def test_followup_reuses_conversation_and_loads_history(client, db_session):
         json={"message": "وماذا حدث بعد ذلك؟", "conversation_id": conv_id},
     )
     events = _parse_sse(second.text)
-    assert dict(events)["conversation"] == json.dumps({"conversation_id": conv_id})
+    conversation_event = json.loads(dict(events)["conversation"])
+    assert conversation_event["conversation_id"] == conv_id
+    assert "generation_id" in conversation_event
 
     # The second LLM call's messages must include the first turn's history.
     assert len(llm.calls) == 2

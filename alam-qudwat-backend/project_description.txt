@@ -110,6 +110,14 @@ c.1) Voice input and output
      answer, streamed back as raw audio the app plays. Voice output is a
      distinct, on-demand action (e.g. a "play" button on a chat bubble),
      not something that happens automatically for every answer.
+   - There are two ways to request it: for an answer that's already
+     finished streaming as text, use its message_id; for an answer the
+     app wants to start hearing while it's still generating (e.g. an
+     always-on "read aloud" mode), use the generation_id handed back at
+     the very start of that answer's text stream instead — the backend
+     synthesizes and streams audio sentence-by-sentence as the answer is
+     generated, so speech can start well before the text has finished.
+     See api_documentation.txt section 3 for both endpoints.
 
 d) Conversation continuity
    - The app only needs to persist a `conversation_id` locally per
