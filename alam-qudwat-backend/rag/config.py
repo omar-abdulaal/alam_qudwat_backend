@@ -55,6 +55,17 @@ class Settings(BaseSettings):
     retrieval_top_k: int = Field(default=5, alias="RETRIEVAL_TOP_K")
     retrieval_min_score: float = Field(default=0.28, alias="RETRIEVAL_MIN_SCORE")
 
+    # When the first retrieve() attempt fails the grounding gate (empty or
+    # below retrieval_min_score), give it one more chance: ask the chat LLM
+    # to rewrite the user's message into a better *retrieval* query (using
+    # the character and recent conversation context) and retry once with
+    # that instead of immediately falling back to "sources don't cover
+    # this" — see app/services/chat_service.py retry_retrieval(). Costs one
+    # extra small JSON-mode LLM call, but only on the failure path; a
+    # question that already retrieves well never triggers it. Disable to
+    # go back to the old immediate-fallback behavior.
+    retrieval_query_rewrite_on_fallback: bool = Field(default=True, alias="RETRIEVAL_QUERY_REWRITE_ON_FALLBACK")
+
     # Speech-to-text (app/services/stt.py). Same "which OpenAI model" domain
     # as chat_model/embedding_model above.
     stt_model: str = Field(default="gpt-4o-mini-transcribe", alias="STT_MODEL")

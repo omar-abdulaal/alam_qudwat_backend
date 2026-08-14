@@ -18,6 +18,7 @@ import uuid
 from app.api.deps import get_chat_llm, get_embedder
 from app.db.models import Character, Conversation, Message
 from app.main import app
+from app.services import chat_service
 from app.services.suggestions import ADULTS_FIRST_SUGGESTION
 from rag.config import get_settings
 from tests.fake_embedder import FakeEmbeddingProvider
@@ -60,8 +61,8 @@ def test_unknown_character_returns_error_event(client):
     assert events[0][0] == "error"
 
 
-def test_off_topic_message_gets_fallback_without_calling_llm(client, db_session):
-    llm = FakeChatLLM()
+def test_off_topic_message_gets_fallback_without_calling_the_narrator_llm(client, db_session):
+    llm = FakeChatLLM()  # rewritten_query=None -- simulates the rewrite LLM declining to suggest one
     _install_fakes(llm)  # default (real) min-score threshold, noise-scored fake embeddings
 
     resp = client.post(
@@ -74,8 +75,12 @@ def test_off_topic_message_gets_fallback_without_calling_llm(client, db_session)
     assert kinds == ["conversation", "delta", "citations", "suggestions", "done"]
     assert '"citations": []' in dict(events)["citations"]
     assert '"suggestions": []' in dict(events)["suggestions"]
-    assert llm.calls == []  # the LLM must never be called for an ungrounded turn
-    assert llm.json_calls == []  # nor the suggestions call
+    assert llm.calls == []  # the narrator LLM must never be called for an ungrounded turn
+    # One retrieval-query-rewrite attempt happens (RETRIEVAL_QUERY_REWRITE_ON_FALLBACK
+    # defaults to enabled) -- it's a real recovery attempt, not a suggestions call
+    # (there's no narrator answer yet to base suggestions on), and it correctly
+    # can't rescue a genuinely off-topic question either, so the fallback still applies.
+    assert len(llm.json_calls) == 1
 
     import json
 
@@ -87,6 +92,80 @@ def test_off_topic_message_gets_fallback_without_calling_llm(client, db_session)
     # pattern into the LLM's own history on a later turn.
     fallback_delta = json.loads(dict(events)["delta"])["text"]
     assert CLOSING_QUESTION not in fallback_delta
+
+
+def test_query_rewrite_recovers_a_vague_first_message_that_would_otherwise_fall_back(client, monkeypatch):
+    """"حدثني عن هذه الشخصية" carries no character-identifying signal on
+    its own -- the fake retrieve() below simulates that first attempt
+    failing, and the LLM-rewritten query (RETRIEVAL_QUERY_REWRITE_ON_
+    FALLBACK, default enabled) recovering it, without the fallback text
+    or a fabricated embedding score being involved."""
+    from rag.retrieval.retriever import RetrievedChunk
+
+    seen_queries: list[str] = []
+
+    def fake_retrieve(session, query, embedder, *, character, top_k):
+        seen_queries.append(query)
+        if query == "استعلام محسّن يذكر أبو بكر":
+            return [
+                RetrievedChunk(
+                    chunk_id="c1",
+                    text="نص تاريخي عن أبي بكر",
+                    score=0.9,
+                    character="abu_bakr",
+                    caliph_name="أبو بكر الصديق",
+                    book_title="سير أعلام النبلاء",
+                    author="الذهبي",
+                    era="الخلافة الراشدة",
+                    page_id=1,
+                    printed_page="10",
+                    source_url="https://example.com",
+                )
+            ]
+        return []
+
+    monkeypatch.setattr(chat_service, "retrieve", fake_retrieve)
+
+    llm = FakeChatLLM("رد نهائي بعد إعادة صياغة الاستعلام [1].", rewritten_query="استعلام محسّن يذكر أبو بكر")
+    _install_fakes(llm)  # default (real) min-score threshold -- irrelevant here since retrieve() itself is mocked
+
+    resp = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "حدثني عن هذه الشخصية", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    events = _parse_sse(resp.text)
+
+    assert seen_queries == ["حدثني عن هذه الشخصية", "استعلام محسّن يذكر أبو بكر"]
+    assert len(llm.calls) == 1  # the narrator LLM was actually called -- proves this isn't the fallback path
+
+    import json
+
+    all_delta_text = "".join(json.loads(d)["text"] for k, d in events if k == "delta")
+    assert "رد نهائي بعد إعادة صياغة الاستعلام" in all_delta_text
+
+
+def test_query_rewrite_fallback_can_be_disabled_via_settings(client, monkeypatch):
+    def fake_retrieve(session, query, embedder, *, character, top_k):
+        return []  # ungrounded regardless of query -- proves no retry is even attempted
+
+    monkeypatch.setattr(chat_service, "retrieve", fake_retrieve)
+    app.dependency_overrides[get_settings] = lambda: get_settings().model_copy(
+        update={"retrieval_query_rewrite_on_fallback": False}
+    )
+
+    llm = FakeChatLLM(rewritten_query="لن يُستخدم أبدًا")
+    _install_fakes(llm)
+
+    resp = client.post(
+        "/api/v1/chat/stream",
+        json={"message": "حدثني عن هذه الشخصية", "character_slug": "abu_bakr", "mode": "adults"},
+    )
+    events = _parse_sse(resp.text)
+    kinds = [e[0] for e in events]
+
+    assert kinds == ["conversation", "delta", "citations", "suggestions", "done"]
+    assert llm.json_calls == []  # the rewrite call must never happen when the flag is off
+    assert llm.calls == []  # nor the main narrator call -- still the plain fallback
 
 
 def test_grounded_message_streams_llm_response_with_citations_and_persists(client, db_session):

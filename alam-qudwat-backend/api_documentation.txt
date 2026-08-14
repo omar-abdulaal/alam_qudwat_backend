@@ -394,9 +394,12 @@ Events, always in this order:
         A suggestion the user has already sent as a message earlier in
         this same conversation is never shown again — predefined or
         LLM-generated — for the rest of that conversation. Always [] for
-        the ungrounded-fallback case (no LLM call is made for that turn
-        at all, including for suggestions — this is unchanged; predefined
-        suggestions are currently only shown for grounded answers).
+        the ungrounded-fallback case — no suggestions call is ever made
+        for that turn (predefined suggestions are currently only shown
+        for grounded answers), though a *retrieval* rewrite attempt may
+        have happened first trying to avoid the fallback in the first
+        place — see section 5's grounding-gate/retrieval-query-rewrite
+        notes; that attempt never produces or influences suggestions.
 
   5. "done"  (always exactly once, terminal)
         data: {}
@@ -435,12 +438,38 @@ in history. Suggestions are stored in that message's `extra` field
 - Grounding gate: retrieval runs with RETRIEVAL_TOP_K chunks (default 5).
   If zero chunks come back, OR the best (top) result's cosine-similarity
   score is below RETRIEVAL_MIN_SCORE (default 0.28, calibrated against
-  real data — see Limitations), the LLM is skipped entirely and a fixed,
-  mode-appropriate "sources don't cover this" message is returned. This
-  is a hard, deterministic backstop — the system prompt sent to the LLM
+  real data — see Limitations), the first attempt fails the gate. This is
+  a hard, deterministic backstop — the system prompt sent to the LLM
   additionally instructs it (as defense in depth) to say so itself if the
   attached sources are insufficient, and to never invent facts, names, or
   dates beyond them.
+
+- Retrieval query rewrite (one retry before giving up): a generic
+  request with no character-identifying words in it at all — e.g. a
+  conversation's very first message being "حدثني عن هذه الشخصية" ("tell
+  me about this person"), which has nothing for query augmentation above
+  to fold in yet — can still fail the grounding gate even though the
+  character's sources plainly cover it, because the character's name is
+  never part of what gets embedded (retrieval only uses it as a metadata
+  filter on which chunks are eligible, not as retrieval-ranking signal).
+  When the gate fails, the backend gets one more chance before falling
+  back: a small, non-streamed, JSON-mode LLM call (app/services/
+  chat_service.py rewrite_retrieval_query(), using
+  rag/generation/prompt.py build_retrieval_query_rewrite_prompt()) is
+  asked to rewrite the question into a better *search* query — using the
+  character's name and recent conversation context — and is explicitly
+  instructed to never answer the question itself; its output is only
+  ever used as embedding input for a second retrieve() call, never shown
+  to the user or given to the narrator LLM as "the question". If that
+  retry clears the gate, the normal grounded-answer flow continues from
+  there (as if it had cleared the gate on the first try); if it still
+  doesn't, the existing fixed "sources don't cover this" fallback
+  applies exactly as before. This only runs on the failure path — a
+  question that already retrieves well on the first attempt never
+  triggers this extra LLM call, so it adds no latency/cost there.
+  Controlled by RETRIEVAL_QUERY_REWRITE_ON_FALLBACK (default enabled,
+  see section 8); disabling it restores the old immediate-fallback
+  behavior.
 
 - The narrator never speaks as the historical figure in first person —
   the system prompt (rag/generation/prompt.py, narrator_system_prompt())
@@ -617,6 +646,12 @@ RAG / generation (rag/config.py):
   CHAT_TEMPERATURE        default 0.3
   RETRIEVAL_TOP_K         default 5
   RETRIEVAL_MIN_SCORE     default 0.28
+  RETRIEVAL_QUERY_REWRITE_ON_FALLBACK   default true — one retry via an
+                          LLM-rewritten search query when the first
+                          retrieve() attempt fails the grounding gate
+                          above, before falling back to "sources don't
+                          cover this" (section 5). Set to false to go
+                          back to the old immediate-fallback behavior.
   STT_MODEL               default gpt-4o-mini-transcribe
   RAG_DATA_DIR            default data/raw — root scanned for dataset subdirectories
                           by the startup auto-ingest sync (see section 6)
@@ -798,6 +833,38 @@ request body differs:
 
     body: jsonEncode({'generation_id': generationId})
 
+THREE THINGS THE PLAYBACK SIDE MUST HANDLE — not obvious from the wire
+format alone, and getting any of these wrong reads to the user as "the
+audio sounds slow/wrong" even though the bytes themselves are correct:
+
+  - Expect real pauses *between* chunks, not a steady real-time trickle
+    of bytes. Each sentence is its own SageMaker call, and SageMaker has
+    no incremental synthesis of its own — segment N+1 only starts being
+    synthesized once segment N is done, and one such call has been
+    measured (against the real endpoint) taking ~1–2.3 seconds. For a
+    short sentence, that's longer than the sentence's own audio, so
+    `response.stream` can legitimately go quiet for a second or more
+    between chunks. The player needs real buffering/backpressure
+    handling for this (a small pre-buffer before starting playback,
+    tolerating a stall without stuttering) — never an assumption that
+    bytes keep arriving at a fixed real-time rate, and never logic that
+    tries to "catch up" after a pause by skipping or speeding up audio.
+
+  - Re-read `X-Audio-Sample-Rate`/`X-Audio-Channels` from EVERY response
+    and reconfigure the player from them each time — never reuse the
+    previous call's player configuration. SILMA's native rate isn't a
+    fixed constant (see section 10), so two different /speak or
+    /speak/live calls can legitimately return different rates; a player
+    that caches the first call's rate and reuses it for later ones will
+    play a later message back at the wrong speed.
+
+  - For /speak/live specifically: audio necessarily lags behind the text
+    (synthesis is slower than generation), and its generation_id expires
+    a few minutes after that turn's text stream finishes — handle a 404
+    from a stale/unknown generation_id gracefully (e.g. fall back to
+    /speak with the now-available message_id) rather than treating it as
+    a hard failure.
+
 --------------------------------------------------------------------------------
 10. IMPORTANT DECISIONS & LIMITATIONS
 --------------------------------------------------------------------------------
@@ -853,6 +920,18 @@ request body differs:
   JSON mode) over trying to parse structured suggestions out of the
   middle of a token stream. No suggestions call happens at all for the
   ungrounded-fallback path.
+
+- The retrieval-query-rewrite retry (section 5) adds one small,
+  non-streamed LLM call — and correspondingly a small delay before the
+  first "delta" event — whenever the *first* retrieval attempt fails the
+  grounding gate, whether or not the retry actually recovers it (a
+  genuinely off-topic question, e.g. asking a history character about a
+  pizza recipe, still gets one rewrite attempt before the fixed fallback
+  applies, even though no rewrite could possibly help there — the
+  backend has no way to distinguish "genuinely off-topic" from "on-topic
+  but vaguely phrased" ahead of time). This never affects a question
+  that clears the gate on the first try. Set
+  RETRIEVAL_QUERY_REWRITE_ON_FALLBACK=false to disable it entirely.
 
 - TTS (POST /api/v1/tts/speak) is now deployed and live against a real
   SILMA SageMaker endpoint. Its actual inference.py returns JSON —

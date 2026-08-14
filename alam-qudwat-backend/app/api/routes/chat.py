@@ -89,6 +89,26 @@ async def chat_stream(
                 {"conversation_id": str(turn.conversation_id), "generation_id": str(generation_id)},
             )
 
+            # One extra chance to recover before giving up on this
+            # question: if the literal-text retrieval in prepare_turn()
+            # failed the grounding gate (e.g. a vague "حدثني عن هذه
+            # الشخصية" that never names the character), ask the LLM for a
+            # better *search* query — never an answer — using the
+            # character and recent conversation context, and retry
+            # retrieval once with that instead. Only reached on the
+            # failure path, so a question that already retrieves well
+            # never pays for this extra call. Configurable via
+            # RETRIEVAL_QUERY_REWRITE_ON_FALLBACK (rag/config.py),
+            # default enabled.
+            if not turn.grounded and settings.retrieval_query_rewrite_on_fallback:
+                rewritten_query = await chat_service.rewrite_retrieval_query(
+                    llm, turn.question, turn.character_name, turn.history
+                )
+                if rewritten_query:
+                    turn = await asyncio.to_thread(
+                        chat_service.retry_retrieval, session, turn, rewritten_query, embedder, settings
+                    )
+
             if not turn.grounded:
                 yield _sse("delta", {"text": turn.fallback_text})
                 await broadcast.publish(turn.fallback_text)

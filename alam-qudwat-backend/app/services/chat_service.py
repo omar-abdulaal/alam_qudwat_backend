@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import logging
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 
 from fastapi import HTTPException, status
@@ -25,7 +25,12 @@ from app.services.llm import ChatLLM
 from app.services.suggestions import MAX_SUGGESTIONS, filter_unused, predefined_suggestions
 from rag.config import Settings
 from rag.embeddings.base import EmbeddingProvider
-from rag.generation.prompt import CLOSING_QUESTION, build_chat_messages, build_suggestions_prompt
+from rag.generation.prompt import (
+    CLOSING_QUESTION,
+    build_chat_messages,
+    build_retrieval_query_rewrite_prompt,
+    build_suggestions_prompt,
+)
 from rag.retrieval.retriever import RetrievedChunk, retrieve
 
 logger = logging.getLogger("app.chat_service")
@@ -80,6 +85,12 @@ class ChatTurn:
     # the current one) — a suggestion matching any of these must never be
     # offered, predefined or LLM-generated (see app/services/suggestions.py).
     already_asked: set[str]
+    # The two fields below exist only to support the retrieval-query-rewrite
+    # fallback (rewrite_retrieval_query/retry_retrieval below), called from
+    # app/api/routes/chat.py when `grounded` comes back False — not needed
+    # by the main streaming/persistence flow otherwise.
+    character_slug: str
+    history: list[dict[str, str]]
 
 
 def _get_or_create_conversation(session: Session, req: ChatRequest) -> Conversation:
@@ -108,6 +119,64 @@ def _get_or_create_conversation(session: Session, req: ChatRequest) -> Conversat
     session.add(conversation)
     session.flush()
     return conversation
+
+
+def _grade_and_build(
+    session: Session,
+    query_text: str,
+    message: str,
+    embedder: EmbeddingProvider,
+    settings: Settings,
+    *,
+    character_slug: str,
+    character_name: str,
+    mode: str,
+    history: list[dict[str, str]],
+    is_first_message: bool,
+) -> tuple[bool, list[RetrievedChunk], list[CitationOut], list[dict[str, str]]]:
+    """Runs one retrieve() call plus the grounding-gate decision and (only
+    if grounded) prompt building. `query_text` is what gets embedded for
+    retrieval; `message` is always the user's actual, literal question —
+    the one shown to the narrator LLM as "the question" and to the user —
+    the two differ only when called from retry_retrieval() with an
+    LLM-rewritten query_text, never elsewhere. Shared by prepare_turn's
+    initial attempt and that retry so the grounding/prompt-building logic
+    itself only lives in one place."""
+    chunks = retrieve(session, query_text, embedder, character=character_slug, top_k=settings.retrieval_top_k)
+    grounded = bool(chunks) and chunks[0].score >= settings.retrieval_min_score
+
+    citations = (
+        [
+            CitationOut(
+                index=i,
+                book_title=c.book_title,
+                author=c.author,
+                character=c.character,
+                character_name=c.caliph_name,
+                page=c.printed_page or str(c.page_id),
+                source_url=c.source_url,
+                score=c.score,
+            )
+            for i, c in enumerate(chunks, start=1)
+        ]
+        if grounded
+        else []
+    )
+
+    llm_messages = (
+        build_chat_messages(
+            message,
+            chunks,
+            mode=mode,
+            character_name=character_name,
+            history=history,
+            is_first_message=is_first_message,
+        )
+        if grounded
+        else []
+    )
+
+    return grounded, chunks, citations, llm_messages
 
 
 def prepare_turn(
@@ -173,40 +242,17 @@ def prepare_turn(
     last_user_turn = next((h["content"] for h in reversed(history) if h["role"] == "user"), None)
     retrieval_query = f"{last_user_turn}\n{message}" if last_user_turn else message
 
-    chunks = retrieve(
-        session, retrieval_query, embedder, character=conversation.character_slug, top_k=settings.retrieval_top_k
-    )
-    grounded = bool(chunks) and chunks[0].score >= settings.retrieval_min_score
-
-    citations = (
-        [
-            CitationOut(
-                index=i,
-                book_title=c.book_title,
-                author=c.author,
-                character=c.character,
-                character_name=c.caliph_name,
-                page=c.printed_page or str(c.page_id),
-                source_url=c.source_url,
-                score=c.score,
-            )
-            for i, c in enumerate(chunks, start=1)
-        ]
-        if grounded
-        else []
-    )
-
-    llm_messages = (
-        build_chat_messages(
-            message,
-            chunks,
-            mode=conversation.narrator_mode,
-            character_name=character.name_ar,
-            history=history,
-            is_first_message=is_first_message,
-        )
-        if grounded
-        else []
+    grounded, chunks, citations, llm_messages = _grade_and_build(
+        session,
+        retrieval_query,
+        message,
+        embedder,
+        settings,
+        character_slug=conversation.character_slug,
+        character_name=character.name_ar,
+        mode=conversation.narrator_mode,
+        history=history,
+        is_first_message=is_first_message,
     )
 
     return ChatTurn(
@@ -221,6 +267,8 @@ def prepare_turn(
         chunks=chunks if grounded else [],
         character_categories=character.categories,
         already_asked=already_asked,
+        character_slug=conversation.character_slug,
+        history=history,
     )
 
 
@@ -245,6 +293,64 @@ def save_assistant_message(
     if conversation is not None:
         conversation.updated_at = datetime.now(timezone.utc)
     session.commit()
+
+
+async def rewrite_retrieval_query(
+    llm: ChatLLM, question: str, character_name: str, history: list[dict[str, str]]
+) -> str | None:
+    """Only called from app/api/routes/chat.py when the initial retrieve()
+    attempt in prepare_turn() failed the grounding gate (e.g. a vague
+    first message like "حدثني عن هذه الشخصية" that never mentions the
+    character by name, so its embedding carries almost no topical
+    signal) — asks the LLM for a better *search* query using the
+    character and recent conversation context, never an answer (see the
+    prompt's own rule 1 in rag/generation/prompt.py). Gated by
+    Settings.retrieval_query_rewrite_on_fallback (rag/config.py,
+    RETRIEVAL_QUERY_REWRITE_ON_FALLBACK env var, default enabled) at the
+    call site — a question that already retrieves well never reaches
+    this function, so it adds no latency/cost to the common path.
+
+    Never raises: any failure here just means retry_retrieval() below is
+    skipped and the existing "sources don't cover this" fallback proceeds
+    exactly as it did before this feature existed."""
+    messages = build_retrieval_query_rewrite_prompt(question, character_name, history)
+    try:
+        result = await llm.complete_json(messages)
+    except Exception:
+        logger.exception("retrieval query rewrite failed; keeping the original ungrounded result")
+        return None
+    query = result.get("query")
+    return query.strip() if isinstance(query, str) and query.strip() else None
+
+
+def retry_retrieval(
+    session: Session,
+    turn: ChatTurn,
+    rewritten_query: str,
+    embedder: EmbeddingProvider,
+    settings: Settings,
+) -> ChatTurn:
+    """Re-runs retrieval with an LLM-rewritten query (rewrite_retrieval_query
+    above) after the original attempt failed the grounding gate. Returns
+    `turn` unchanged (still ungrounded) if the retry doesn't clear the gate
+    either — callers only ever need to branch on turn.grounded, never on
+    whether a retry happened."""
+    is_first_message = not any(h["role"] == "assistant" for h in turn.history)
+    grounded, chunks, citations, llm_messages = _grade_and_build(
+        session,
+        rewritten_query,
+        turn.question,
+        embedder,
+        settings,
+        character_slug=turn.character_slug,
+        character_name=turn.character_name,
+        mode=turn.mode,
+        history=turn.history,
+        is_first_message=is_first_message,
+    )
+    if not grounded:
+        return turn
+    return replace(turn, grounded=True, chunks=chunks, citations=citations, llm_messages=llm_messages)
 
 
 async def generate_suggestions(llm: ChatLLM, turn: ChatTurn, answer_text: str) -> list[str]:

@@ -42,6 +42,16 @@ class AppSettings(BaseSettings):
     tts_default_voice_id: str = Field(default="pixel", alias="TTS_DEFAULT_VOICE_ID")
     tts_max_text_length: int = Field(default=1000, alias="TTS_MAX_TEXT_LENGTH")
 
+    # Local debugging only: when set, every synthesized segment is also
+    # written as its own .wav (+ a .txt of the exact text sent to SILMA)
+    # under this directory, so a specific segment that sounds wrong in the
+    # app can be replayed/inspected in isolation outside the client. Unset
+    # by default and must stay that way on any deployed server — this
+    # persists spoken content to local disk, which is fine for a dev
+    # machine chasing a playback bug but not something a published
+    # instance should ever do silently.
+    tts_debug_save_audio_dir: str | None = Field(default=None, alias="TTS_DEBUG_SAVE_AUDIO_DIR")
+
     # --- Startup RAG sync (app/services/rag_sync.py) ---
     # Runs rag.ingestion.ingest.ingest_missing_characters() in a background
     # thread on startup so any character present in data/raw/* but not yet

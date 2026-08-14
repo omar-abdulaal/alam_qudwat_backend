@@ -38,6 +38,23 @@ The module-level lock + boto3 client are shared across requests on
 purpose, since the SageMaker endpoint may not tolerate high call
 concurrency well — segments are synthesized one at a time even when
 multiple requests overlap.
+
+Because each segment is its own independent SageMaker call, its format
+is only known once *that* call returns — but the HTTP response's headers
+(sample rate/channels) are fixed up front from the FIRST segment alone
+(see app/api/routes/tts.py), since headers can't change mid-response.
+SilmaSageMakerTTS.speak() therefore checks every later segment's actual
+(sample_rate, channels) against the first segment's before streaming its
+audio, and fails loudly (TTSUpstreamAudioError) rather than silently
+streaming mismatched-rate PCM if SILMA ever returns a different format
+partway through one answer — that mismatch, undetected, is exactly what
+would make a specific chunk play back at the wrong speed/pitch on the
+client despite every individual segment being independently valid audio.
+For chasing this or any other segment-specific playback issue locally,
+set TTS_DEBUG_SAVE_AUDIO_DIR (app/core/config.py) to write every
+synthesized segment as its own standalone, playable .wav (plus the exact
+text sent to SILMA for it) to that directory — unset by default, and
+must stay unset on any deployed server.
 """
 from __future__ import annotations
 
@@ -48,8 +65,10 @@ import io
 import json
 import logging
 import re
+import uuid
 import wave
 from dataclasses import dataclass
+from pathlib import Path
 from typing import AsyncIterator, Optional, Protocol
 
 import boto3
@@ -190,6 +209,38 @@ def _invoke_silma_sagemaker(text: str, voice_id: str, endpoint_name: str) -> tup
     return pcm_data, sample_rate, channels
 
 
+def _save_debug_segment_audio(
+    debug_dir: str,
+    request_id: str,
+    segment_index: int,
+    text: str,
+    pcm_data: bytes,
+    sample_rate: int,
+    channels: int,
+) -> None:
+    """Writes one already-synthesized segment as a standalone, properly
+    headered .wav (playable directly, unlike the headerless PCM this
+    module streams to callers), plus a .txt of the exact text sent to
+    SILMA for it — so a specific segment that sounds wrong in the app can
+    be pulled up and replayed in isolation, and its actual sample rate
+    compared against what the response's headers advertised for the
+    whole answer. Gated by TTS_DEBUG_SAVE_AUDIO_DIR (unset by default,
+    see app/core/config.py); never raises — a failure to write a debug
+    file must never break real synthesis."""
+    try:
+        directory = Path(debug_dir)
+        directory.mkdir(parents=True, exist_ok=True)
+        base_name = f"{request_id}_seg{segment_index:02d}_{sample_rate}hz"
+        with wave.open(str(directory / f"{base_name}.wav"), "wb") as wf:
+            wf.setnchannels(channels)
+            wf.setsampwidth(_BYTES_PER_SAMPLE)
+            wf.setframerate(sample_rate)
+            wf.writeframes(pcm_data)
+        (directory / f"{base_name}.txt").write_text(text, encoding="utf-8")
+    except OSError:
+        logger.exception("failed to write TTS debug audio to %s (continuing without it)", debug_dir)
+
+
 def _iter_pcm_chunks_minimal(pcm_bytes: bytes, max_chunk_bytes: Optional[int] = None):
     """Yields one already-synthesized segment's audio in the fewest
     practical chunks, aligned to int16 sample boundaries."""
@@ -266,6 +317,9 @@ class SilmaSageMakerTTS:
                 "SILMA_SAGEMAKER_ENDPOINT_NAME is not set. Add it to your .env file to enable TTS."
             )
         resolved_voice = voice_id or settings.tts_default_voice_id
+        debug_dir = settings.tts_debug_save_audio_dir
+        request_id = uuid.uuid4().hex[:8]
+        segment_index = 0
 
         # A background task keeps reading `text_stream` and pushing
         # complete segments onto this queue as they become ready, fully
@@ -301,8 +355,15 @@ class SilmaSageMakerTTS:
         producer_task = asyncio.create_task(_produce_segments())
 
         async def _synthesize(segment: str) -> tuple[bytes, int, int]:
+            nonlocal segment_index
             async with _tts_lock:
-                return await asyncio.to_thread(_invoke_silma_sagemaker, segment, resolved_voice, endpoint_name)
+                pcm, sr, ch = await asyncio.to_thread(
+                    _invoke_silma_sagemaker, segment, resolved_voice, endpoint_name
+                )
+            segment_index += 1
+            if debug_dir:
+                _save_debug_segment_audio(debug_dir, request_id, segment_index, segment, pcm, sr, ch)
+            return pcm, sr, ch
 
         # The first segment is synthesized eagerly (not lazily inside
         # _chunks below) because sample_rate/channels are needed up front
@@ -330,7 +391,25 @@ class SilmaSageMakerTTS:
                     if segment is None:
                         break
                     segment_count += 1
-                    seg_pcm, _sr, _ch = await _synthesize(segment)
+                    print(f'segment {segment_count}')
+                    seg_pcm, seg_sample_rate, seg_channels = await _synthesize(segment)
+                    # The response's headers were already sent, fixed to
+                    # the FIRST segment's format (see below) -- a later
+                    # segment silently returned at a different rate would
+                    # stream mismatched-rate PCM with no error, which
+                    # plays back at the wrong speed/pitch on the client
+                    # for exactly that segment. Each individual call
+                    # already validates mono/16-bit on its own (see
+                    # _invoke_silma_sagemaker); this is the one additional
+                    # check that matters here: consistency *across*
+                    # segments within the same answer.
+                    if seg_sample_rate != sample_rate or seg_channels != channels:
+                        raise TTSUpstreamAudioError(
+                            f"SILMA returned inconsistent audio format mid-answer: segment "
+                            f"{segment_count} was {seg_sample_rate} Hz/{seg_channels}ch, but the "
+                            f"first segment (already sent to the client as {sample_rate} Hz/"
+                            f"{channels}ch) was different."
+                        )
                     for chunk in _iter_pcm_chunks_minimal(seg_pcm):
                         yield chunk
                         await asyncio.sleep(0)

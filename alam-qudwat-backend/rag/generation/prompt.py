@@ -223,6 +223,62 @@ def build_chat_messages(
     return messages
 
 
+def _retrieval_query_rewrite_system_prompt() -> str:
+    return (
+        "أنت أداة مساعدة تُحسّن استعلامات البحث الدلالي (retrieval) داخل قاعدة "
+        "مقاطع من مصادر تاريخية إسلامية عن شخصية واحدة محددة. مهمتك الوحيدة "
+        "إعادة صياغة سؤال المستخدم إلى استعلام بحث أكثر تحديدًا يزيد فرصة "
+        "العثور على المقاطع المناسبة له داخل تلك المصادر.\n"
+        "قواعد ملزمة:\n"
+        "1. لا تُجب عن السؤال إطلاقًا، ولا تضف أي معلومة تاريخية من عندك — "
+        "فقط أعد صياغة الاستعلام نفسه بشكل أكثر تحديدًا وقابلية للمطابقة.\n"
+        "2. اجعل الاستعلام يتضمن اسم الشخصية المحدد صراحةً دائمًا، حتى إن لم "
+        "يذكره سؤال المستخدم (كسؤال عام مثل \"حدثني عنها\" أو \"من هو؟\").\n"
+        "3. استخدم سياق المحادثة السابقة أدناه، إن كان يوضّح ما يقصده "
+        "المستخدم فعليًا (كسؤال متابعة غامض يشير إلى موضوع سابق) — تجاهله إن "
+        "لم يكن ذا صلة بالسؤال الحالي.\n"
+        "4. اجعل الاستعلام موجزًا (جملة أو جملتان)، بصياغة تصف الموضوع "
+        "المطلوب مباشرة (أقرب لعنوان أو مقتطف نصي) لا بصيغة سؤال محادثة.\n"
+        "5. أعد الناتج حصريًا بصيغة JSON على الشكل التالي، بدون أي نص إضافي:\n"
+        '{"query": "نص الاستعلام المحسّن"}'
+    )
+
+
+def build_retrieval_query_rewrite_prompt(
+    question: str,
+    character_name: str,
+    history: list[dict[str, str]] | None = None,
+) -> list[dict[str, str]]:
+    """Messages for a small, non-streamed, JSON-mode LLM call used only to
+    rewrite a *retrieval* query — never to answer the user (see the system
+    prompt's rule 1 above). Only called when the first retrieve() attempt
+    (the literal user message, optionally folded with the prior turn) has
+    already failed the grounding gate — see app/services/chat_service.py
+    rewrite_retrieval_query()/retry_retrieval(). The rewritten query is
+    only ever used as embedding input for a second retrieve() call; it is
+    never shown to the user or fed to the narrator LLM as "the question".
+
+    Only the last few turns of ``history`` are included — enough to
+    resolve an ambiguous follow-up without ballooning this small call's
+    token cost.
+    """
+    recent_history = history[-4:] if history else []
+    history_block = (
+        "\n".join(f"{'المستخدم' if h['role'] == 'user' else 'الراوي'}: {h['content']}" for h in recent_history)
+        if recent_history
+        else "(لا يوجد سياق سابق)"
+    )
+    user_content = (
+        f"الشخصية: {character_name}\n\nسياق المحادثة السابقة (إن وُجد):\n{history_block}\n\n"
+        f"سؤال المستخدم الحالي: {question}\n\n"
+        "أعد صياغة هذا كاستعلام بحث أكثر تحديدًا وفق القواعد أعلاه."
+    )
+    return [
+        {"role": "system", "content": _retrieval_query_rewrite_system_prompt()},
+        {"role": "user", "content": user_content},
+    ]
+
+
 def _suggestions_system_prompt(max_suggestions: int) -> str:
     """max_suggestions is the number of *remaining* slots after predefined
     suggestions (app/services/suggestions.py) already filled some of the
